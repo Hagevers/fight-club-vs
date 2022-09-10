@@ -6,6 +6,10 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "mongoose": "^6.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-export-table-to-excel": "^1.0.6",
@@ -35,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.2"
   }
 }

@@ -1,0 +1,39 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1f1f1f;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    transition: 0.2s;
+    text-decoration: none;
+  }
+  
+  li img{
+    height: 49px;
+    width: 200px;
+    display: flex;
+  }
+  
+  .left{
+    float: left;
+  }
+  
+  li a:hover {
+    background-color: #d72323;
+  }
+  
+  .tran{
+    transition: 8000ms;
+  }
+  

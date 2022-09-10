@@ -1,0 +1,56 @@
+.All-Login{
+  background-color: #1e2429;
+  min-height: 96.2vh;
+  display: block;
+  transition: 800ms;
+  opacity: 1;
+}
+
+.All-Login.active{
+  opacity: 1;
+}
+
+.Login-Header{
+  text-align: center;
+  margin: auto;
+}
+
+.Login-Header img{
+  margin-top: 4%;
+  width: 20%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Login-Form{
+  padding: 16px;
+  text-align: center;
+}
+
+.Login-Form input{
+  width: 40%;
+  display: block;
+  padding: 12px 20px;
+  font-size: 16px;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #eeeeee;
+  text-align: right;
+}
+
+.Login-Form input[type="submit"]{
+  text-align: center;
+  color: #eeeeee;
+  background-color: #d72323;
+  font-weight: bold;
+}
+
+.Forgot{
+  text-align: center;
+  color: #eeeeee;
+  font-weight: bold;
+}
