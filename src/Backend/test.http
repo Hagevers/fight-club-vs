@@ -1,9 +1,8 @@
-POST http://localhost:5000/app/signUp
+POST http://localhost:5000/app/signIn
 Content-Type: application/json
 
 {
-    "NickName":"Hsagevesr",
-    "Email":"taya@try.com",
-    "password": "paassPdass" 
+    "Email":"try@try.com",
+    "password": "passPass" 
     
 }
