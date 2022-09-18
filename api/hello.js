@@ -15,12 +15,6 @@ export default async function handler (request, response){
         const table = mongo_client.collection("pmmbrps");
         const result = await table
             .find({})
-            .project({
-                NickName: 0,
-                Password: 0,
-                Email: 0
-
-            })
             .limit(4)
             .toArray();
         response.status(200).json(result);
