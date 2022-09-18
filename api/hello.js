@@ -12,7 +12,7 @@ export default async function handler (request, response){
         const mongo_client = await new MongoClient(uri,options).connect();
         console.log('connected');
         const db = mongo_client.db("pmmbrp");
-        const table = mongo_client.collection("pmmbrps");
+        const table = db.collection("pmmbrps");
         const result = await table
             .find({})
             .limit(4)
