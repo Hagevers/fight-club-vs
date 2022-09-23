@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import '../Styling/HomeMenu.css';
 import LoginPage from './LoginPage'
 import RegisterButton from "./RegisterButton";
+import SmallLogo from '../Styling/smallLogo.PNG'
 
 function HomeMenu (){
   const [seen, setSeen] = useState(false);
@@ -15,7 +16,7 @@ function HomeMenu (){
               <li><a href="#HOME">פרסים</a></li>
               <li><a href="#HOME">FaceBook</a></li>
               <li><a href="#HOME">IG</a></li>
-              <li className='left'><img /></li>
+              <li className='left'><img src={SmallLogo} /></li>
           </ul>
           </div>
           <div>

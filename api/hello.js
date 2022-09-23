@@ -1,4 +1,25 @@
-export default function hello(req, res) {
-    res.statusCode = 200;
-    res.json({ message: 'It works' });
-  }
+import {MongoClient} from 'mongodb';
+
+const uri = process.env.MONGODB_URI
+const options = {}
+
+if (!uri){
+    throw new Error ("Problem accured")
+}
+
+export default async function handler (request, response){
+    try{
+        const mongo_client = await new MongoClient(uri,options).connect();
+        console.log('connected');
+        const db = mongo_client.db("pmmbrp");
+        const table = db.collection("pmmbrps");
+        const result = await table
+            .find({})
+            .limit(4)
+            .toArray();
+        response.status(200).json(result);
+    } catch(e){
+        console.log(e)
+        response.status(500).json(e);
+    }
+}
