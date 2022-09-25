@@ -1,8 +1,8 @@
-POST http://localhost:5000/app/signIn
+POST https://fight-club-vs.vercel.app/api/list
 Content-Type: application/json
 
 {
     "Email":"try@try.com",
-    "password": "passPass" 
+    "password": "pas"
     
 }

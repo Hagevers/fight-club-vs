@@ -9,14 +9,14 @@ function LoginPage (props){
     const [nickName, setNickName] = useState([])
     const clickLogin = async (e) => {
         const registerDetails = {
-          'email': email,
+          'Email': email,
           'password': password
         };
         e.preventDefault();
         const res = await axios ({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json'},
-            url: 'api/list',
+            url: 'api/login',
             data: JSON.stringify(registerDetails),
         });
         if (res.status == 200){

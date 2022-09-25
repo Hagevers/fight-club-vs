@@ -23,6 +23,7 @@ function HomeMenu (){
           </ul>
           </div>
           <RegisterButton />
+          {showLogin ? <LoginPage /> : null}
           {/* <div>
               <CSSTransition
                 in={showLogin}
