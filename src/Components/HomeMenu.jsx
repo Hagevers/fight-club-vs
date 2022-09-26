@@ -8,14 +8,21 @@ import RegisterPage from "./RegisterPage";
 
 function HomeMenu (){
   const [showReg, setShowReg] = useState(false);
-  const [showRegButton, setShowButton] = useState(true)
-  const [showLogin, setShowLogin] = useState(false)
+  const [showRegButton, setShowButton] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
   const refReg = useRef(null);
   const refLog = useRef(null);
+  const refLoad = useRef(null);
+  const [showLoader, setShowLoader] = useState(false);
   const handleLoginClick = () =>{
     setShowLogin(!showLogin)
     if (showReg){setShowReg(false)}
   };
+  const handleLoader = () => {
+    setShowLoader(!showLoader);
+    if (showLogin) {setShowLogin(false)}
+    if (showReg) {setShowReg(false)}
+  }
   return (
       <div>
           <div>
@@ -41,7 +48,7 @@ function HomeMenu (){
             onExited={() => setShowButton(true)}
             >
               <div ref={refReg} dismissible>
-                <RegisterPage onClick={ ()=> setShowReg(false) }/>
+                <RegisterPage showLoader={handleLoader} onClick={ ()=> setShowReg(false) }/>
               </div>
             </CSSTransition>}
             <CSSTransition
@@ -54,10 +61,21 @@ function HomeMenu (){
             onExited={() => setShowButton(true)}
             >
               <div ref={refLog} dismissible>
-                <LoginPage onClick = { handleLoginClick }/>
+                <LoginPage showLoader={handleLoader} onClick = { handleLoginClick }/>
               </div>
             </CSSTransition>
           </div>
+          <CSSTransition
+            in={showLoader}
+            nodeRef={refLoad}
+            timeout={100}
+            classNames='load'
+            unmountOnExit
+            onEnter={()=>setShowButton(false)}
+            onExited={() => setShowButton(true)}
+            >
+              <div ref={refLoad} dismissible class="loader"></div>
+          </CSSTransition>
       </div>
   );
 }

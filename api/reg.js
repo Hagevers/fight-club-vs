@@ -1,30 +1,30 @@
-const signUpTemplate = require('../src/Backend/SignupModel')
-const bcrypt = require('bcrypt')
-
-export default async function handler (request, response){
+import { connectedToDatabase } from "../lib/connectedToDatabase";
+export default async function handlero (request, response){
     try{
-        const saltPass = await bcrypt.genSalt(10);
+        const { mongoClient } = await connectedToDatabase();
+        const db = mongoClient.db("pmmbrp");
+        const table = db.collection("pmmbrps");
+        const bcrypt = require('bcrypt')
         const {NickName,Email,password} = request.body;
-        const securePass = await bcrypt.hash(password, saltPass);
-        // const token = jwt.sign(
-        //     { user_id: user._id, Email },
-        //     process.env.TOKEN_KEY,
-        //     {
-        //     expiresIn: "2h",
-        //     }
-        // );
-        const user = await signUpTemplate.create({
-            NickName,
-            Email,
-            password:securePass}
-        );
-        user.token = 'somthing';
-        response.status(200).json(user);
-        // console.log({NickName});
-        // console.log({Email});
-        // console.log(securePass);
+        const date = Date.now;
+        const exUser = await table
+            .find({Email})
+            .limit(1)
+            .toArray();
+        if(exUser[0] !== undefined){response.status(409).send('User already exist')}
+        const securePass = await bcrypt.hash(password, 10);
+        table.insertOne({
+            "NickName":NickName,
+            "Email":Email,
+            "password":securePass,
+            "isVerified":false,
+            "date_created": date
+        })
+        .then(result => response.status(200).json(result))
+        .catch(err => console.log(`Somthing went off ${err}`))
     }catch(e){
         console.log(e);
+        response.status(500).json(e);
         console.log('somthing went off');
     }
 }

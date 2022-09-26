@@ -22,6 +22,7 @@ function LoginPage (props){
         if (res.status == 200){
             console.log(res);
             console.log(res.data[0].NickName);
+            console.log(typeof props.showLoader);
         }
         setNickName('');
         setEmail('');
@@ -35,7 +36,7 @@ function LoginPage (props){
             <div className="Login-Form">
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="שם משתמש" />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-                <input type="submit" value="התחבר" />
+                <input type="submit" value="התחבר" onClick={props.showLoader} />
             </div>
       </form>
     );

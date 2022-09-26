@@ -31,7 +31,7 @@ function RegisterPage (props){
         <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="כינוי" />
         <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="אימייל" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-        <input type="submit" value="הרשם" />
+        <input type="submit" value="הרשם" onClick={props.showLoader} />
       </div>
       <div className="Forgot">
         <span>שכחתי סיסמא</span>
