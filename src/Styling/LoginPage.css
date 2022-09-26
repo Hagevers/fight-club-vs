@@ -54,3 +54,21 @@
   color: #eeeeee;
   font-weight: bold;
 }
+
+.logcome-enter{
+  opacity: 0;
+  transform: scale(0.3);
+}
+.logcome-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.logcome-exit{
+  opacity: 1;
+}
+.logcome-exit-active{
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity 300ms, transform 300ms;
+}

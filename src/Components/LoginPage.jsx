@@ -30,7 +30,7 @@ function LoginPage (props){
     return(
         <form className={"active All-Login" } onSubmit = {clickLogin}>
             <div className="Login-Header">
-                <img src={Logo} name="Logo" onClick={props.onLogoClick}/>
+                <img src={Logo} name="Logo" onClick={props.onClick}/>
             </div>
             <div className="Login-Form">
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="שם משתמש" />

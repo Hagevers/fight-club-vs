@@ -86,18 +86,3 @@ button::after, button::before {
   transform-origin: 100px 100px;
   transform: scale(1) translate(-10px, -70px);
 }
-
-.my-node-enter {
-  opacity: 0;
-}
-.my-node-enter-active {
-  opacity: 1;
-  transition: 5000ms;
-}
-.my-node-exit {
-  opacity: 1;
-}
-.my-node-exit-active {
-  opacity: 0;
-  transition: 5000ms;
-}

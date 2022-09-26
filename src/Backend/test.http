@@ -1,8 +1,8 @@
-POST https://fight-club-vs.vercel.app/api/list
+POST https://fight-club-vs.vercel.app/api/reg
 Content-Type: application/json
 
 {
-    "Email":"try@try.com",
-    "password": "pas"
-    
+    "NickName":"Nisim",
+    "Email":"moshedinamit@mail.com",
+    "password":"Maplestory"
 }

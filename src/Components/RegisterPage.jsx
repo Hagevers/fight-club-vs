@@ -25,7 +25,7 @@ function RegisterPage (props){
   return(
     <form className="All-Register" onSubmit={handleOnSubmit}>
       <div className="Register-Header">
-        <img src={Logo} name="Logo" onClick={props.isOpen}/>
+        <img src={Logo} name="Logo" onClick={props.onClick}/>
       </div>
       <div className="Register-Form">
         <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="כינוי" />

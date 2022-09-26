@@ -20,6 +20,9 @@ const signUpTemplate = new mongoose.Schema({
     isVerified: {
         type: Boolean,
         default: false
+    },
+    token: {
+        type: String
     }
 }, {versionKey: false});
 

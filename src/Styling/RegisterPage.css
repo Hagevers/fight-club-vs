@@ -2,14 +2,7 @@
   background-color: #1e2429;
   min-height: 96.2vh;
   display: block;
-  transition: 800ms;
-  opacity: 1;
 }
-
-.All-Register.active{
-  opacity: 1;
-}
-
 .Register-Header{
   text-align: center;
   margin: auto;
