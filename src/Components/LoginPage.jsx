@@ -22,7 +22,7 @@ function LoginPage (props){
         if (res.status == 200){
             console.log(res);
             console.log(res.data[0].NickName);
-            console.log(typeof props.showLoader);
+            props.showLoader();
         }
         setNickName('');
         setEmail('');
