@@ -8,6 +8,7 @@ function LoginPage (props){
     const [password, setPassword] = useState('')
     const [nickName, setNickName] = useState([])
     const clickLogin = async (e) => {
+        props.showLoader();
         const registerDetails = {
           'Email': email,
           'password': password
@@ -19,10 +20,15 @@ function LoginPage (props){
             url: 'api/login',
             data: JSON.stringify(registerDetails),
         });
-        if (res.status == 200){
-            console.log(res);
-            console.log(res.data[0].NickName);
-            props.showLoader();
+        if (res.status === 200){
+            alert('Welcome !')
+            props.stopLoader();
+            window.location.reload();
+        }
+        else{
+            alert('Details provided are wrong!');
+            props.stopLoader();
+            window.location.reload();
         }
         setNickName('');
         setEmail('');
@@ -36,7 +42,7 @@ function LoginPage (props){
             <div className="Login-Form">
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="שם משתמש" />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-                <input type="submit" value="התחבר" onClick={props.showLoader} />
+                <input type="submit" value="התחבר" />
             </div>
       </form>
     );

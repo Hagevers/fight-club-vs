@@ -9,19 +9,35 @@ function RegisterPage (props){
   const [NickName, setNickName] = useState('');
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleOnSubmit = function (e){
+  const handleOnSubmit = async (e) => {
+    props.showLoader()
     const registerDetails = {
       NickName: NickName,
       Email: Email,
       password: password
     }
     e.preventDefault()
-    axios.post("http://localhost:5000/app/signUp", registerDetails)
-      .then(response => console.log(response.data))
-    setNickName('')
-    setEmail('')
-    setPassword('')
-  }
+    const res = await axios ({
+      method: 'POST',
+      headers:{ 'Content-Type': 'application/json'},
+      url: 'api/reg',
+      data: JSON.stringify(registerDetails),
+      });
+      if (res.status === 200){
+        alert('User Registerd!')
+        props.stopLoader();
+        window.location.reload()
+        console.log(res);
+      }
+      else{
+        alert('User is already exist!')
+        props.stopLoader();
+        window.location.relad()
+      }
+      setNickName('');
+      setEmail('');
+      setPassword('');
+      }
   return(
     <form className="All-Register" onSubmit={handleOnSubmit}>
       <div className="Register-Header">
@@ -31,7 +47,7 @@ function RegisterPage (props){
         <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="כינוי" />
         <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="אימייל" />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-        <input type="submit" value="הרשם" onClick={props.showLoader} />
+        <input type="submit" value="הרשם"/>
       </div>
       <div className="Forgot">
         <span>שכחתי סיסמא</span>

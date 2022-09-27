@@ -70,19 +70,31 @@ ul {
   transform: scale(0.1);
   transition: opacity 100ms, transform 300ms;
 }
-.loader {
+.loader-wrap{
   position: absolute;
-  border: 20px solid #EAF0F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 43%;
+  left:41%;
+  background-color: #475763;
+  height: 300px;
+  width: 500px;
+  z-index: 300;
+  border: 1px solid #84cdfa;
+  border-radius: 5px;
+}
+.loader {
+  position: relative;
   border-radius: 50%;
-  border-top: 20px solid #d72323;
+  border: 20px solid #EAF0F6;
+  border-top: 15px solid #84cdfa;
   width: 200px;
   height: 200px;
-  animation: spinner 4s linear infinite;
-  top: 45%;
-  left: 46%;
-  transform: translate(-50%, -50%);
+  animation: animate 1.5s linear infinite;
+
 }
-@keyframes spinner {
+@keyframes animate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }

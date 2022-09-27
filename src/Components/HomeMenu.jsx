@@ -22,6 +22,11 @@ function HomeMenu (){
     setShowLoader(!showLoader);
     if (showLogin) {setShowLogin(false)}
     if (showReg) {setShowReg(false)}
+    setShowButton(false);
+  }
+  const stopLoader = () => {
+    setShowLoader(false);
+    //setShowButton(true);
   }
   return (
       <div>
@@ -48,7 +53,7 @@ function HomeMenu (){
             onExited={() => setShowButton(true)}
             >
               <div ref={refReg} dismissible>
-                <RegisterPage showLoader={handleLoader} onClick={ ()=> setShowReg(false) }/>
+                <RegisterPage stopLoader={stopLoader} showLoader={handleLoader} onClick={ ()=> setShowReg(false) }/>
               </div>
             </CSSTransition>}
             <CSSTransition
@@ -61,7 +66,7 @@ function HomeMenu (){
             onExited={() => setShowButton(true)}
             >
               <div ref={refLog} dismissible>
-                <LoginPage showLoader={handleLoader} onClick = { handleLoginClick }/>
+                <LoginPage stopLoader={stopLoader} showLoader={handleLoader} onClick = { handleLoginClick }/>
               </div>
             </CSSTransition>
           </div>
@@ -72,9 +77,15 @@ function HomeMenu (){
             classNames='load'
             unmountOnExit
             onEnter={()=>setShowButton(false)}
-            onExited={() => setShowButton(true)}
             >
-              <div ref={refLoad} dismissible class="loader"></div>
+              <div ref={refLoad} dismissible  class="loader-wrap">
+                <div class="loader">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
           </CSSTransition>
       </div>
   );

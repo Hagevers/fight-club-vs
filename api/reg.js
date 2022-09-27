@@ -1,6 +1,7 @@
 import { connectedToDatabase } from "../lib/connectedToDatabase";
 export default async function handlero (request, response){
     try{
+        const jwt = require('jsonwebtoken');
         const { mongoClient } = await connectedToDatabase();
         const db = mongoClient.db("pmmbrp");
         const table = db.collection("pmmbrps");
@@ -18,7 +19,8 @@ export default async function handlero (request, response){
             "Email":Email,
             "password":securePass,
             "isVerified":false,
-            "date_created": date
+            "date_created": date,
+            "token": ''
         })
         .then(result => response.status(200).json(result))
         .catch(err => console.log(`Somthing went off ${err}`))
