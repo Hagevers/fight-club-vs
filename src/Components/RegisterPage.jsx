@@ -32,7 +32,6 @@ function RegisterPage (props){
       else{
         alert('User is already exist!')
         props.stopLoader();
-        window.location.relad()
       }
       setNickName('');
       setEmail('');

@@ -19,7 +19,7 @@ export default async function handler(request, response){
                 console.log('True welcome!');
                 const token = jwt.sign(
                     { user_id: result[0]['_id'], Email },
-                    "amithadadsss",
+                    process.env.TOKEN_KEY,
                     {
                       expiresIn: "2h",
                     }

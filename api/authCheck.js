@@ -1,17 +1,16 @@
 const jwt = require("jsonwebtoken");
-export default async function handler (request, response){
+export default async function handler (request){
   try{
-    const token = request.header("x-access-token");
-    if (!token) {
-      return res.status(403).send("A token is required for authentication");
-    }
-    const decoded = jwt.verify(token, "amithadadsss");
-    if (decoded){
-      response.status(200).send("Verified successfuly.");
-    }else{
-      response.status(401).send("Invalid token.");
-    }
+    const tokenHeader = request.header["authorization"];
+    const token = tokenHeader && tokenHeader.split(' ')[1];
+    jwt.verify(token, process.env.TOKEN_KEY, (err,user) => {
+      if(err) return response.status(401).send('Not auth')
+      request.user = user
+    })
   } catch (err) {
     return res.status(401).send(err);
   }
   }
+  export const config = {
+    matcher: '/dashboard/:path*',
+  };

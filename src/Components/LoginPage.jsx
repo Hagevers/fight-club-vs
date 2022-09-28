@@ -23,12 +23,12 @@ function LoginPage (props){
         if (res.status === 200){
             alert('Welcome !')
             props.stopLoader();
-            window.location.reload();
+            // window.location.reload();
         }
         else{
             alert('Details provided are wrong!');
             props.stopLoader();
-            window.location.reload();
+            // window.location.reload();
         }
         setNickName('');
         setEmail('');
