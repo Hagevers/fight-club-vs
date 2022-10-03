@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const signUpTemplate = new mongoose.Schema({
+const signUpTemplate = new Schema({
     NickName: {
         type: String,
         required: true
@@ -22,8 +23,9 @@ const signUpTemplate = new mongoose.Schema({
         default: false
     },
     token: {
-        type: String
+        type: String,
+        default: ''
     }
 }, {versionKey: false});
 
-module.exports = mongoose.model('pmmbrp', signUpTemplate)
+module.exports = User = mongoose.model('pmmbrp', signUpTemplate)
