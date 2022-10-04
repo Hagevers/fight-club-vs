@@ -1,8 +1,0 @@
-POST https://fight-club-vs.vercel.app/api/reg
-Content-Type: application/json
-
-{
-    "NickName":"Vardit",
-    "Email":"Vardit",
-    "password":"Vardit"
-}

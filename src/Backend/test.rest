@@ -1,0 +1,12 @@
+GET https://fight-club-vs.vercel.app/api/dashboard
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjMzYjYxZDFiM2QzNDYxYWUxMTM0ZGViIiwiRW1haWwiOiJWYXJkaXQiLCJpYXQiOjE2NjQ4OTYzNDksImV4cCI6MTY2NDkwMzU0OX0.pLVxbYpH6m5vKYbXI85aJxfoYI87VGyTahJliBQ-grI
+
+###
+
+POST https://fight-club-vs.vercel.app/api/login
+Content-Type: application/json
+
+{
+    "Email":"Vardit",
+    "password":"Vardit"
+}

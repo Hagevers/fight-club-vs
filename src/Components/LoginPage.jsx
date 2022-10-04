@@ -24,6 +24,11 @@ function LoginPage (props){
             alert('Welcome !')
             props.stopLoader();
             // window.location.reload();
+            const d = new Date()
+            d.setTime(d.getTime() + 1800000);
+            console.log(res);
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = "token=" + res.data.token + ";" + expires;
         }
         else{
             alert('Details provided are wrong!');
