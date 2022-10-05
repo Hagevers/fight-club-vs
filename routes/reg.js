@@ -1,6 +1,7 @@
 const reg = require("express").Router();
-const signUpTemplate = require('../src/Backend/SignupModel')
-const bcrypt = require('bcrypt')
+const signUpTemplate = require('../src/Backend/SignupModel');
+const resourcesTemple = require('../src/Backend/ResourcesModel');
+const bcrypt = require('bcrypt');
 reg.post("/reg", async function (request, response) {
     const {NickName,Email,password} = request.body;
     console.log({NickName,Email,password});
@@ -23,6 +24,14 @@ reg.post("/reg", async function (request, response) {
                 console.log('created now saving...');
                 newUser.save()
                 .then(data => {
+                    const resources = new resourcesTemple({
+                        UserId: data._id,
+                        Gold: 750,
+                        Solfour: 750,
+                        Marble: 750,
+                        Food: 750
+                    })
+                    resources.save()
                     response.status(200).send(data);
                     console.log('saved');
                 })
