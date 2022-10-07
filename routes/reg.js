@@ -19,18 +19,20 @@ reg.post("/reg", async function (request, response) {
                 const newUser = new signUpTemplate({
                     NickName: NickName,
                     Email: Email,
-                    password: securePass
+                    password: securePass,
                 });
-                console.log('created now saving...');
+                const resources = new resourcesTemple({
+                    UserId: "",
+                    Gold: 750,
+                    Solfour: 750,
+                    Marble: 750,
+                    Food: 750
+                });
+                resources.UserId = newUser._id;
+                await resources.save();
                 newUser.save()
                 .then(data => {
-                    const resources = new resourcesTemple({
-                        UserId: data._id,
-                        Gold: 750,
-                        Solfour: 750,
-                        Marble: 750,
-                        Food: 750
-                    })
+                    
                     resources.save()
                     response.status(200).send(data);
                     console.log('saved');

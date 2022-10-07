@@ -27,5 +27,5 @@ const signUpTemplate = new Schema({
         default: ''
     }
 }, {versionKey: false});
-
-module.exports = User = mongoose.model('pmmbrp', signUpTemplate)
+const User = mongoose.model('User', signUpTemplate);
+module.exports = User;

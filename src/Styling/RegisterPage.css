@@ -32,7 +32,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #eeeeee;
-  text-align: right;
+  text-align: left;
 }
 
 .Register-Form input[type="submit"]{

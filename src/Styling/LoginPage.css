@@ -39,7 +39,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   background-color: #eeeeee;
-  text-align: right;
+  text-align: left ;
 }
 
 .Login-Form input[type="submit"]{

@@ -23,7 +23,7 @@ function LoginPage (props){
         if (res.status === 200){
             alert('Welcome !')
             props.stopLoader();
-            // window.location.reload();
+            window.location.reload();
             const d = new Date()
             d.setTime(d.getTime() + 1800000);
             console.log(res);
@@ -33,7 +33,7 @@ function LoginPage (props){
         else{
             alert('Details provided are wrong!');
             props.stopLoader();
-            // window.location.reload();
+            window.location.reload();
         }
         setNickName('');
         setEmail('');
@@ -45,9 +45,9 @@ function LoginPage (props){
                 <img src={Logo} name="Logo" onClick={props.onClick}/>
             </div>
             <div className="Login-Form">
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="שם משתמש" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-                <input type="submit" value="התחבר" />
+                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                <input type="submit" value="Login" />
             </div>
       </form>
     );

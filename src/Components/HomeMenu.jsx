@@ -32,13 +32,13 @@ function HomeMenu (){
       <div>
           <div>
             <ul> 
-                <li onClick={handleLoginClick}><a href='#'><span>התחבר</span></a></li>
-                <li><a href="#HOME">הוראות</a></li>
-                <li><a href="#HOME">תמיכה</a></li>
-                <li><a href="#HOME">פרסים</a></li>
+                <li onClick={handleLoginClick}><a href='#'><span>Login</span></a></li>
+                <li><a href="#HOME">Instruction</a></li>
+                <li><a href="#HOME">Support</a></li>
+                <li><a href="#HOME">Prizes</a></li>
                 <li><a href="#HOME">FaceBook</a></li>
                 <li><a href="#HOME">IG</a></li>
-                <li className='left'><img src={SmallLogo} /></li>
+                <li className='right'><img src={SmallLogo} /></li>
             </ul>
           </div>
           <div>

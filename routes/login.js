@@ -14,9 +14,10 @@ login.post("/login", async function (request, response) {
                 response.status(400).send({msg:"username/password is not exist"})
             }
             else{
+                const NickName = user.NickName;
                 if(await bcrypt.compare(password, user.password)){
                     const token = jwt.sign(
-                        { user_id: user.id, Email },
+                        { user_id: user.id, NickName },
                         process.env.TOKEN_KEY,
                         {
                           expiresIn: "2h",

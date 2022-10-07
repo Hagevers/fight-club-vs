@@ -8,11 +8,11 @@ function RegisterButton(props){
     <div>
       <div className="HomeWrapper">
         <div className="para">
-          <p>הרכיבו את הצבא החזק ביותר</p>
-          <p>והצטרפו למועדון הקרב</p>
+          <p>Build the strongest army</p>
+          <p>And join the Fight Club</p>
         </div>
         <div className="div-btn">
-          <button className="Reg-Btn" onClick={props.onClick}>התחילו עכשיו</button>
+          <button className="Reg-Btn" onClick={props.onClick}>Start Now</button>
         </div>
       </div>
     </div>

@@ -1,13 +1,47 @@
-div{
-    text-align: center;
+.wrapper{
+    position: relative;
+    margin: auto;
 }
 .members_table,
 .members_table td {
-  border: 1px solid #cccccc;
+  border: 1px solid #d72323;
+  text-align: center;
 }
 td {
   height: 80px;
   width: 160px;
   text-align: center;
   vertical-align: middle;
+  border-top: none;
+  color: white;
+  transition: background-color 0.3s;
 }
+td:hover{
+    background-color: #1b1b20;
+}
+.members_table{
+    position: relative;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1f1f1f;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    transition: 0.2s;
+    text-decoration: none;
+  }
+  li a:hover {
+    background-color: #d72323;
+  }

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const ResourcesTemple = new Schema({
     UserId: {
-        type:String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     Gold: {
@@ -23,5 +24,5 @@ const ResourcesTemple = new Schema({
         required: true
     }
 }, {versionKey: false});
-
-module.exports = Resources = mongoose.model('resources', ResourcesTemple)
+const Resources = mongoose.model('Resources', ResourcesTemple);
+module.exports = Resources;

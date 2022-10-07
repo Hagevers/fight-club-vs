@@ -24,14 +24,15 @@ function RegisterPage (props){
       data: JSON.stringify(registerDetails),
       });
       if (res.status === 200){
-        alert('User Registerd!')
+        alert('User Registerd!');
         props.stopLoader();
-        window.location.reload()
+        window.location.reload();
         console.log(res);
       }
       else{
         alert('User is already exist!')
         props.stopLoader();
+        window.location.reload();
       }
       setNickName('');
       setEmail('');
@@ -43,13 +44,13 @@ function RegisterPage (props){
         <img src={Logo} name="Logo" onClick={props.onClick}/>
       </div>
       <div className="Register-Form">
-        <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="כינוי" />
-        <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="אימייל" />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="סיסמא" />
-        <input type="submit" value="הרשם"/>
+        <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="Nickname" />
+        <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+        <input type="submit" value="Register"/>
       </div>
       <div className="Forgot">
-        <span>שכחתי סיסמא</span>
+        <span>Forgot password</span>
       </div>
     </form>
   )

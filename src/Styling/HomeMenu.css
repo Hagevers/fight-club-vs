@@ -7,7 +7,7 @@ ul {
   }
   
   li {
-    float: right;
+    float: left;
   }
   
   li a {
@@ -25,8 +25,8 @@ ul {
     display: flex;
   }
   
-  .left{
-    float: left;
+  .right{
+    float: right;
   }
   
   li a:hover {
