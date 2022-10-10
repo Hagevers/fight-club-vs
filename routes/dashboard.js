@@ -5,18 +5,11 @@ const User = require('../src/Backend/SignupModel');
 const jwt = require('jsonwebtoken');
 
 dashboard.get('/dashboard', auth, async function (request, response) {
-    // users.find({},'NickName' , function (err, res){
-    //     if (err){
-    //         response.status(500).send('somthing happend');
-    //     }else {
-    //         response.status(200).send(res);
-    //     }
-    // })
     resources.find({})
         .select('Food Marble Solfour Gold')
         .populate('UserId', 'NickName')
         .then(data => response.status(200).send(data))
-        .catch(error => console.log(error));
-})
+        .catch(error => response.status(500).send(error));
+});
 
 module.exports = dashboard

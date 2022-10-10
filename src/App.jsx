@@ -6,12 +6,12 @@ import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState();
-  // useEffect(() => {
-  //   const loggedInUser = document.cookie && document.cookie.split('=')[1];
-  //   if (loggedInUser) {
-  //     setUser(loggedInUser);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const loggedInUser = document.cookie && document.cookie.split('=')[1];
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    }
+  }, []);
   return (
     <div>
       <BrowserRouter>
