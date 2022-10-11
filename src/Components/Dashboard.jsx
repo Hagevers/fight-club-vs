@@ -15,6 +15,7 @@ function Dashboard(){
                 url: 'api/dashboard',
                 headers:{ 'Content-Type': 'application/json'}
             });
+            window.localStorage.setItem('dashboardTable', res.data);
             console.log(res.data);
             console.log("after fetch time "+ time);
             const map = res.data.map(
@@ -27,26 +28,35 @@ function Dashboard(){
             console.log(e);
         }
     }
-  const [apiResponse, setApiResponse] = useState(window.localStorage.getItem('dashboardTable').innerHTML);
-  const [resource, setResource] = useState(window.localStorage.getItem('myResources'));
+  const [apiResponse, setApiResponse] = useState(firstGetRes);
+  const [resource, setResource] = useState();
   const logout = () =>{
     const cookie = document.cookie;
     document.cookie = cookie + ";max-age=0";
     window.location.reload();
   }
+  const firstGetRes = () => {
+    const res = window.localStorage.getItem('dashboardTable');
+    console.log(res);
+    if (res){
+        const final = res.map(
+            user => <tr><td>{user.UserId.NickName}</td><td>{user.Gold}</td><td>{user.Solfour}</td><td>{user.Marble}</td><td>{user.Food}</td></tr>
+        );
+        return final
+    }else{
+        return null
+    }
+
+  }
   useEffect(() => {
-    document.getElementById("dashboardTable").innerHTML = window.localStorage.getItem('dashboardTable')
     getTable().then(
         (result) => {
             setApiResponse(result)
-            const dash = document.getElementById("dashboardTable").innerHTML
-            window.localStorage.setItem('dashboardTable', dash)
         }
     );
     getResources().then(
         (result) =>{
              setResource(result)
-            window.localStorage.setItem('myResources', result)
         }
     );
     },[]);
