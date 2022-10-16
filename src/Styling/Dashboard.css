@@ -1,47 +1,102 @@
 .wrapper{
-    position: relative;
-    margin: auto;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
 }
-.members_table,
-.members_table td {
-  border: 1px solid #d72323;
-  text-align: center;
+
+.sideBar{
+  position: absolute;
+  width: 270px;
+  height: 1024px;
+  left: 0px;
+  top: 0px;
+
+  background: #474B4F;
 }
-td {
-  height: 80px;
-  width: 160px;
-  text-align: center;
-  vertical-align: middle;
-  border-top: none;
-  color: white;
-  transition: background-color 0.3s;
+
+.sideBar-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 11px;
+
+  position: absolute;
+  width: 270px;
+  height: 815px;
+  left: 0px;
+  top: 29px;
 }
-td:hover{
-    background-color: #1b1b20;
+
+.sideBar-content span{
+  width: 182px;
+height: 53px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
 }
-.members_table{
-    position: relative;
+
+.sideBar-content button{
+  width: 77px;
+  height: 77px;
+
+  background: #6E7479;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #1f1f1f;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    transition: 0.2s;
-    text-decoration: none;
-  }
-  li a:hover {
-    background-color: #d72323;
-  }
+
+.sideBar-content ul{
+  display: flex;
+flex-direction: column;
+align-items: center;
+padding: 0px;
+
+width: 270px;
+height: 663px;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
+}
+.sideBar-content li{
+  width: 211px;
+height: 51px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}

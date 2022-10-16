@@ -12,7 +12,7 @@ function Dashboard(){
             }, 1000);
             const res = await axios({
                 method: 'GET',
-                url: 'api/dashboard',
+                url: 'http://localhost:3000/dashboard',
                 headers:{ 'Content-Type': 'application/json'}
             });
             window.localStorage.setItem('dashboardTable', res.data);
@@ -61,14 +61,17 @@ function Dashboard(){
     );
     },[]);
     return (
-        <div>
-            <ul>
-                <li onClick={logout}><a href="#logout">Logout</a></li>
-                {resource}
-            </ul>
-            
-            
-            <div className="wrapper">
+        <div className="wrapper">
+            <div className="sideBar">
+                <div className="sideBar-content">
+                    <span>Amit</span>
+                    <button></button>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+            <div >
                 <table id="dashboardTable" className="members_table">
                     <tr>
                         <th>Nick Name</th>
@@ -88,7 +91,7 @@ function Dashboard(){
 const getResources = async () => {
     const res = await axios({
         method: 'GET',
-        url: 'api/getRes',
+        url: 'getRes',
         headers:{ 'Content-Type': 'application/json'}
     });
     const resource = res.data.map(

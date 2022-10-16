@@ -17,7 +17,7 @@ function LoginPage (props){
         const res = await axios ({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json'},
-            url: 'api/login',
+            url: 'http://localhost:3000/login',
             data: JSON.stringify(registerDetails),
         });
         if (res.status === 200){
