@@ -1,4 +1,4 @@
-const app = require("./src/handler");
+const app = require("./handler");
 const routes = require("./routes/router");
 console.log('pass first dev');
 app.use("/", routes);
