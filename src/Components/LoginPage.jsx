@@ -16,7 +16,7 @@ function LoginPage (props){
         e.preventDefault();
         const res = await axios ({
             method: 'POST',
-            headers:{ 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"},
+            headers:{ 'Content-Type': 'application/json'},
             url: 'https://powerful-anchorage-21815.herokuapp.com/login',
             data: JSON.stringify(registerDetails),
         });
