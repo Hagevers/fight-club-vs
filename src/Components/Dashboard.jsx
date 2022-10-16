@@ -12,7 +12,7 @@ function Dashboard(){
             }, 1000);
             const res = await axios({
                 method: 'GET',
-                url: 'http://localhost:3000/dashboard',
+                url: 'api/dashboard',
                 headers:{ 'Content-Type': 'application/json'}
             });
             window.localStorage.setItem('dashboardTable', res.data);
@@ -91,7 +91,7 @@ function Dashboard(){
 const getResources = async () => {
     const res = await axios({
         method: 'GET',
-        url: 'getRes',
+        url: 'api/dashboard',
         headers:{ 'Content-Type': 'application/json'}
     });
     const resource = res.data.map(
