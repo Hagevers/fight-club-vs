@@ -17,7 +17,7 @@ function LoginPage (props){
         const res = await axios ({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json'},
-            url: 'api/login',
+            url: 'https://powerful-anchorage-21815.herokuapp.com/login',
             data: JSON.stringify(registerDetails),
         });
         if (res.status === 200){
