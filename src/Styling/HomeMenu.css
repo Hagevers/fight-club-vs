@@ -1,100 +1,126 @@
-.navBar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #1f1f1f;
-  }
-  
-  .navBar li {
-    float: left;
-  }
-  
-  .navBar li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    transition: 0.2s;
-    text-decoration: none;
-  }
-  
-  .navBar li img{
-    height: 49px;
-    width: 200px;
+.fightclub__navbar{
     display: flex;
-  }
-  
-  .right{
-    float: right;
-  }
-  
-  .navBar li a:hover {
-    background-color: #d72323;
-  }
-  
-  .tran{
-    transition: 8000ms;
-  }
-.income-enter{
-  opacity: 0;
-  transform: scale(0.3);
-}
-.income-enter-active{
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
-}
-.income-exit{
-  opacity: 1;
-}
-.income-exit-active{
-  opacity: 0;
-  transform: scale(0.3);
-  transition: opacity 300ms, transform 300ms;
-}
-.load-enter{
-  opacity: 0;
-  transform: scale(0.1);
-}
-.load-enter-active{
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 100ms, transform 300ms;
-}
-.load-exit{
-  opacity: 1;
-}
-.load-exit-active{
-  opacity: 0;
-  transform: scale(0.1);
-  transition: opacity 100ms, transform 300ms;
-}
-.loader-wrap{
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 43%;
-  left:41%;
-  background-color: #475763;
-  height: 300px;
-  width: 500px;
-  z-index: 300;
-  border: 1px solid #84cdfa;
-  border-radius: 5px;
-}
-.loader {
-  position: relative;
-  border-radius: 50%;
-  border: 20px solid #EAF0F6;
-  border-top: 15px solid #84cdfa;
-  width: 200px;
-  height: 200px;
-  animation: animate 1.5s linear infinite;
+    justify-content: space-between;
+    align-items: center;
 
+    padding: 2rem 6rem;
 }
-@keyframes animate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+
+.fightclub__navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fightclub__navbar-links_logo {
+    margin-right: 2rem;
+}
+.fightclub__navbar-links_logo img {
+    width: 124px;
+    height: 32px;
+}
+
+.fightclub__navbar-links_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.fightclub__navbar-sign{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.fightclub__navbar-links_container p,
+.fightclub__navbar-sign p,
+.fightclub__navbar-menu_container p {
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.fightclub__navbar-sign button,
+.fightclub__navbar-menu_container button {
+    padding: 1rem 2rem;
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    background-color: #0d81ec;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+.fightclub__navbar-menu{
+    margin-left: 1rem;
+    position: relative;
+    display: none;
+}
+
+.fightclub__navbar-menu svg{
+    cursor: pointer;
+}
+
+.fightclub__navbar-menu_container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    text-align: end;
+    background: var(--color-footer);
+    padding: 2rem;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    margin-top: 1rem;
+    min-width: 210px;
+    border-radius: 5px;
+    box-shadow:  0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.fightclub__navbar-menu_container p{
+    margin: 1rem 0;
+}
+
+.fightclub__navbar-menu_container-links-sign {
+    display: none;
+}
+
+@media screen and (max-width: 1050px) {
+    .fightclub__navbar-links_container{
+        display: none;
+    }
+    .fightclub__navbar-menu{
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .fightclub__navbar{
+        padding: 2rem 4rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .fightclub__navbar{
+        padding: 2rem;
+    }
+    .fightclub__navbar-sign {
+        display: none;
+    }
+    .fightclub__navbar-menu_container{
+        top: 20px;
+    }
+    .fightclub__navbar-menu_container-links-sign{
+        display: block;
+    }
 }

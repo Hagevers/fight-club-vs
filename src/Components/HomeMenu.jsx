@@ -1,92 +1,51 @@
 import React, {useState, useRef} from "react";
 import '../Styling/HomeMenu.css';
-import LoginPage from './LoginPage'
-import RegisterButton from "./RegisterButton";
-import SmallLogo from '../Styling/smallLogo.PNG'
-import { CSSTransition } from "react-transition-group";
-import RegisterPage from "./RegisterPage";
+import logo from '../Styling/smallLogo.PNG';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+
+const Menu = () => (
+  <>
+    <p><a href="#Home">Home</a></p>
+    <p><a href="#Join">About</a></p>
+    <p><a href="#Prizes">Prizes</a></p>
+    <p><a href="#Contact">Contact</a></p>
+  </>
+)
 
 function HomeMenu (){
-  const [showReg, setShowReg] = useState(false);
-  const [showRegButton, setShowButton] = useState(true);
-  const [showLogin, setShowLogin] = useState(false);
-  const refReg = useRef(null);
-  const refLog = useRef(null);
-  const refLoad = useRef(null);
-  const [showLoader, setShowLoader] = useState(false);
-  const handleLoginClick = () =>{
-    setShowLogin(!showLogin)
-    if (showReg){setShowReg(false)}
-  };
-  const handleLoader = () => {
-    setShowLoader(!showLoader);
-    if (showLogin) {setShowLogin(false)}
-    if (showReg) {setShowReg(false)}
-    setShowButton(false);
-  }
-  const stopLoader = () => {
-    setShowLoader(false);
-    //setShowButton(true);
-  }
+  const [toggleMenu, setToggleMenu] = useState(false);
   return (
-      <div>
-          <div className="navBar">
-            <ul> 
-                <li onClick={handleLoginClick}><a href='#'><span>Login</span></a></li>
-                <li><a href="#HOME">Instruction</a></li>
-                <li><a href="#HOME">Support</a></li>
-                <li><a href="#HOME">Prizes</a></li>
-                <li><a href="#HOME">FaceBook</a></li>
-                <li><a href="#HOME">IG</a></li>
-                <li className='right'><img src={SmallLogo} /></li>
-            </ul>
+      <div className="fightclub__navbar">
+        <div className="fightclub__navbar-links">
+          <div className="fightclub__navbar-links_logo">
+            <img src={logo} alt= "logo" />
           </div>
-          <div>
-            {showRegButton && (<RegisterButton onClick={ () => setShowReg(true)} />) }
-            {showLogin ? null : <CSSTransition
-            in={showReg}
-            nodeRef={refReg}
-            timeout={100}
-            classNames='income'
-            unmountOnExit
-            onEnter={()=>setShowButton(false)}
-            onExited={() => setShowButton(true)}
-            >
-              <div ref={refReg} dismissible>
-                <RegisterPage stopLoader={stopLoader} showLoader={handleLoader} onClick={ ()=> setShowReg(false) }/>
-              </div>
-            </CSSTransition>}
-            <CSSTransition
-            in={showLogin}
-            nodeRef={refLog}
-            timeout={100}
-            classNames='logcome'
-            unmountOnExit
-            onEnter={()=>setShowButton(false)}
-            onExited={() => setShowButton(true)}
-            >
-              <div ref={refLog} dismissible>
-                <LoginPage stopLoader={stopLoader} showLoader={handleLoader} onClick = { handleLoginClick }/>
-              </div>
-            </CSSTransition>
+          <div className="fightclub__navbar-links_container">
+            <Menu />
           </div>
-          <CSSTransition
-            in={showLoader}
-            nodeRef={refLoad}
-            timeout={100}
-            classNames='load'
-            unmountOnExit
-            onEnter={()=>setShowButton(false)}
-            >
-              <div ref={refLoad} dismissible  class="loader-wrap">
-                <div class="loader">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+        </div>
+        <div className="fightclub__navbar-sign">
+          <p>Sign in</p>
+          <button type="button">Sign up</button>
+        </div>
+        <div className="fightclub__navbar-menu">
+          {toggleMenu 
+          ? <CloseIcon color="#fff" size={"27px"} onClick={() => setToggleMenu(false)}/>
+          : <MenuIcon color="#fff" size={"27px"} onClick={() => setToggleMenu(true)} />
+        }
+        {toggleMenu && (
+          <div className="fightclub__navbar-menu_container scale-up-center">
+            <div className="fightclub__navbar-menu_container-links">
+              <Menu />
+              <div className="fightclub__navbar-menu_container-links-sign">
+                <p>Sign in</p>
+                <button type="button">Sign up</button>
               </div>
-          </CSSTransition>
+            </div>
+          </div>
+        )}
+        </div>
       </div>
   );
 }

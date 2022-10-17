@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import HomeMenu from './Components/HomeMenu';
 import Dashboard from './Components/Dashboard';
 import './App.css';
+import LandingOpener from './Components/LandingOpener';
 import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom";
 
 function App() {
@@ -14,11 +15,15 @@ function App() {
   }, []);
   return (
     <div>
-      <BrowserRouter>
+      <div className='gradient__bg'>
+        <HomeMenu />
+        <LandingOpener />
+      </div>
+      {/* <BrowserRouter>
         <Routes>
           {user ? <Route exact path="/" element={<Dashboard/>}/> : <Route exact path="/" element={<HomeMenu/>}/>}
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import Sidebar from "./Sidebar";
+import DisplayBox from "./DisplayBox";
 import '../Styling/Dashboard.css';
+
 function Dashboard(){
     const axios = require('axios');
     const getTable = async () => {
@@ -64,6 +66,11 @@ function Dashboard(){
     return (
         <div className="Dashboard">
             <Sidebar />
+            <div className="HeaderContent">
+                <DisplayBox />
+                <DisplayBox />
+                <DisplayBox />
+            </div>
         </div>
     )
 }

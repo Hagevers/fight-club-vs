@@ -1,0 +1,152 @@
+.fightclub__header{
+    display: flex;
+}
+
+.fightclub__header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 5rem;
+}
+
+.fightclub__header-content h1{
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.fightclub__header-content p{
+    font-family: var(--font-family);
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--color-text);
+    margin-top: 1.5rem;
+}
+
+.fightclub__header-content__input{
+    width: 100%;
+    margin: 2rem 0 1rem;
+    display: flex;
+}
+
+.fightclub__header-content__input input{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    flex: 2;
+    width: 100%;
+    min-height: 50px;
+    background: #1A1B1F;
+    font-family: var(--font-family);
+    font-size: 20px;
+    border: 2px solid var(--color-footer);
+    line-height: 27px;
+    padding: 0 1rem;
+    outline: none;
+    color: #fff;
+}
+
+.fightclub__header-content__input button {
+    flex: 0.6px;
+    width: 100%;
+    min-height: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: #0d81ec;
+    font-family: var(--font-family);
+    font-size: 20px;
+    line-height: 27px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    padding: 0 1rem;
+    border: none;
+}
+
+.fightclub__header-content__pepole {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.fightclub__header-content__pepole img {
+    width: 181.79px;
+    height: 38px;
+}
+
+.fightclub__header-content__pepole p {
+    font-family: var(--font-family);
+    margin: 0 0 0 1rem;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 38px;
+    color: #fff;
+    text-align: center;
+
+}
+
+.fightclub__header-image{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fightclub__header-image img{
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1050px) {
+    .fightclub__header{
+        flex-direction: column;
+    }
+
+    .fightclub__header-content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .fightclub__header h1{
+        font-size: 48px;
+        line-height: 60px;
+    }
+    .fightclub__header p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .fightclub__header-content__pepole{
+        flex-direction: column;
+    }
+    .fightclub__header-content__pepole p{
+        margin: 0;
+    }
+    .fightclub__header-content__input input,
+    .fightclub__header-content__input button  {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .fightclub__header h1{
+        font-size: 36px;
+        line-height: 48px;
+    }
+    .fightclub__header p{
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .fightclub__header-content__input input,
+    .fightclub__header-content__input button  {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}

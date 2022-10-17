@@ -1,17 +1,26 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: rgb(201, 201, 201);
+  background-color: #1a1b1f;
 }
+
+/* ----------------------- SIDEBAR CSS ----------------------- */
 .Dashboard{
   height: 100vh;
   width: 100vw;
-
+}
+.HeaderContent{
+  width: 100%;
+  display: flex;
+  margin-left: 250px;
+  gap: 60px;
+  flex-direction: row;
 }
 .sideBar{
   height: 100%;
   width: 250px;
-  background-color:  #2f4050;
+  border-right: 1px solid #28282d;
+  background-color:  #1a1b1f;
 }
 
 .sideBarList{
@@ -30,6 +39,7 @@ body{
   flex-direction: row;
   color: #fff;
   justify-content: center;
+  transition: background-color 200ms;
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -46,8 +56,23 @@ body{
 
 .sideBarList .row:hover{
   cursor: pointer;
-  background-color: #293846;
+  background-color: #0d81ec;
 }
 .sideBar #active{
-  background-color: #1b252e;
+  background-color: #0d81ec;
+  filter: drop-shadow(0 0 0.75rem crimson);
 }
+
+/* ----------------------- END OF SIDEBAR CSS ----------------------- */
+
+/* ----------------------- DASHBOARD CSS ---------------------------- */
+
+.DisplayBox{
+  width: 400px;
+  height: 250px;
+  background-color: #21232b;
+  border-radius: 20%;
+  border: 1px solid #28282d;
+}
+
+/* ----------------------- END OF DASHBOARD CSS ---------------------------- */
