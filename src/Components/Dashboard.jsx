@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
+import Sidebar from "./Sidebar";
 import '../Styling/Dashboard.css';
 function Dashboard(){
     const axios = require('axios');
@@ -48,43 +49,21 @@ function Dashboard(){
     }
 
   }
-  useEffect(() => {
-    getTable().then(
-        (result) => {
-            setApiResponse(result)
-        }
-    );
-    getResources().then(
-        (result) =>{
-             setResource(result)
-        }
-    );
-    },[]);
+//   useEffect(() => {
+//     getTable().then(
+//         (result) => {
+//             setApiResponse(result)
+//         }
+//     );
+//     getResources().then(
+//         (result) =>{
+//              setResource(result)
+//         }
+//     );
+//     },[]);
     return (
-        <div className="wrapper">
-            <div className="sideBar">
-                <div className="sideBar-content">
-                    <span>Amit</span>
-                    <button></button>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </div>
-            </div>
-            <div >
-                <table id="dashboardTable" className="members_table">
-                    <tr>
-                        <th>Nick Name</th>
-                        <th>Gold</th>
-                        <th>Solfour</th>
-                        <th>Marble</th>
-                        <th>Food</th>
-                        <th>Soldiers</th>
-                        <th>Power</th>
-                    </tr>
-                    {apiResponse}
-                </table>
-            </div>
+        <div className="Dashboard">
+            <Sidebar />
         </div>
     )
 }

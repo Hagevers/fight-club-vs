@@ -1,4 +1,4 @@
-ul {
+.navBar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -6,11 +6,11 @@ ul {
     background-color: #1f1f1f;
   }
   
-  li {
+  .navBar li {
     float: left;
   }
   
-  li a {
+  .navBar li a {
     display: block;
     color: white;
     text-align: center;
@@ -19,7 +19,7 @@ ul {
     text-decoration: none;
   }
   
-  li img{
+  .navBar li img{
     height: 49px;
     width: 200px;
     display: flex;
@@ -29,7 +29,7 @@ ul {
     float: right;
   }
   
-  li a:hover {
+  .navBar li a:hover {
     background-color: #d72323;
   }
   

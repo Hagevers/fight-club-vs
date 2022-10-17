@@ -1,102 +1,53 @@
-.wrapper{
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(201, 201, 201);
 }
+.Dashboard{
+  height: 100vh;
+  width: 100vw;
 
+}
 .sideBar{
-  position: absolute;
-  width: 270px;
-  height: 1024px;
-  left: 0px;
-  top: 0px;
-
-  background: #474B4F;
+  height: 100%;
+  width: 250px;
+  background-color:  #2f4050;
 }
 
-.sideBar-content{
+.sideBarList{
+  height: auto;
+  width: 100%;
+  margin: 0%;
+  padding: 0;
+}
+
+.sideBarList .row{
+  width: 100%;
+  height: 60px;
+  list-style-type: none;
+  margin: 0%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  color: #fff;
+  justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 11px;
-
-  position: absolute;
-  width: 270px;
-  height: 815px;
-  left: 0px;
-  top: 29px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.sideBar-content span{
-  width: 182px;
-height: 53px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 29px;
-text-align: center;
-
-color: #FFFFFF;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 0;
-flex-grow: 0;
+.row #icon{
+  flex: 30%;
+  display: grid;
+  place-items: center;
 }
 
-.sideBar-content button{
-  width: 77px;
-  height: 77px;
-
-  background: #6E7479;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
+.row #title{
+  flex: 70%;
 }
 
-.sideBar-content ul{
-  display: flex;
-flex-direction: column;
-align-items: center;
-padding: 0px;
-
-width: 270px;
-height: 663px;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 2;
-flex-grow: 0;
+.sideBarList .row:hover{
+  cursor: pointer;
+  background-color: #293846;
 }
-.sideBar-content li{
-  width: 211px;
-height: 51px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 29px;
-text-align: center;
-
-color: #FFFFFF;
-
-
-/* Inside auto layout */
-
-flex: none;
-order: 0;
-flex-grow: 0;
+.sideBar #active{
+  background-color: #1b252e;
 }

@@ -30,7 +30,7 @@ function HomeMenu (){
   }
   return (
       <div>
-          <div>
+          <div className="navBar">
             <ul> 
                 <li onClick={handleLoginClick}><a href='#'><span>Login</span></a></li>
                 <li><a href="#HOME">Instruction</a></li>
