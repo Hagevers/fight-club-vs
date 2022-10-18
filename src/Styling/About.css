@@ -1,0 +1,72 @@
+.fightclub__about{
+    display: flex;
+}
+
+.fightclub__about-content{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.fightclub__about-content h1{
+    font-family: var(--font-family);
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: -0.04em;
+}
+
+.fightclub__about-content__boxes{
+    width: 100%;
+    margin: 2rem 0 1rem;
+    display: flex;
+}
+
+.fightclub__about-content__boxes-box{
+    width: 100%;
+    min-height: 350px;
+    border-radius: 20px;
+    background: #21232b;
+    border: 2px solid #28282d;
+    padding: 0 1rem;
+    margin: 2rem 1.5rem;
+    transition: padding 200ms;
+}
+.fightclub__about-content__boxes-box:hover{
+    padding: 1rem 2rem;
+}
+
+.fightclub__about-content__boxes-box p{
+    text-align: center;
+    color: #bdbec7;
+    margin-top: 2rem;
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 32px;
+}
+
+@media screen and (max-width: 1050px) {
+    .fightclub__about-content__boxes{
+        flex-direction: column;
+    }
+    .fightclub__about-content__boxes-box{
+        margin: 1.5rem 0;
+        min-height: 250px;
+    }
+    .fightclub__about-content {
+        margin: 0 1rem 1rem;
+    }
+}
+@media screen and (max-width: 650px) {
+    .fightclub__about h1{
+        font-size: 34px;
+        line-height: 45px;
+    }
+    .fightclub__about-content__boxes-box p{
+        font-size: 16px;
+        line-height: 24px;
+    }
+}

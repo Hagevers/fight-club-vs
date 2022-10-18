@@ -42,7 +42,7 @@
     background: #1A1B1F;
     font-family: var(--font-family);
     font-size: 20px;
-    border: 2px solid var(--color-footer);
+    border: 2px solid #5b627c;
     line-height: 27px;
     padding: 0 1rem;
     outline: none;

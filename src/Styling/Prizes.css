@@ -1,0 +1,46 @@
+.fightclub__prizes{
+    display: flex;
+}
+
+.fightclub__prizes-content{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.fightclub__prizes-content__places{
+    width: 100%;
+    margin: 2rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fightclub__prizes-content__places-box{
+    width: 100%;
+    min-height: 250px;
+    border-radius: 20px;
+    margin: 2rem;
+    padding: 0 1rem;
+}
+
+.firstPlace, 
+.secthirdPlace{
+    width: 30%;
+    font-size: 108px;
+    font-weight: 500;
+    line-height: 120px;
+    color: #111;
+    margin: 2rem;
+}
+.firstPlace .fightclub__prizes-content__places-box{
+    background: #ffd700;
+}
+.secthirdPlace .fightclub__prizes-content__places-box:nth-child(1){
+    background: #C0C0C0;
+}
+
+.secthirdPlace .fightclub__prizes-content__places-box:nth-child(2){
+    background: #cd7f32;
+}

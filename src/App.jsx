@@ -4,6 +4,8 @@ import Dashboard from './Components/Dashboard';
 import './App.css';
 import LandingOpener from './Components/LandingOpener';
 import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom";
+import About from './Components/About';
+import Prizes from './Components/Prizes';
 
 function App() {
   const [user, setUser] = useState();
@@ -19,6 +21,8 @@ function App() {
         <HomeMenu />
         <LandingOpener />
       </div>
+      <About />
+      <Prizes />
       {/* <BrowserRouter>
         <Routes>
           {user ? <Route exact path="/" element={<Dashboard/>}/> : <Route exact path="/" element={<HomeMenu/>}/>}
