@@ -4,16 +4,17 @@ import logo from '../Styling/smallLogo.PNG';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-const Menu = () => (
+const Menu = (props) => (
   <>
-    <p><a href="#Home">Home</a></p>
-    <p><a href="#Join">About</a></p>
-    <p><a href="#Prizes">Prizes</a></p>
-    <p><a href="#Contact">Contact</a></p>
+    <p><a href="#home">Home</a></p>
+    <p><a href="#about">About</a></p>
+    <p><a href="#prizes">Prizes</a></p>
+    <p><a href="#contact">Contact</a></p>
   </>
 )
 
-function HomeMenu (){
+function HomeMenu (props){
+  const [current, setCurrent] = useState();
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
       <div className="fightclub__navbar">
@@ -22,7 +23,7 @@ function HomeMenu (){
             <img src={logo} alt= "logo" />
           </div>
           <div className="fightclub__navbar-links_container">
-            <Menu />
+            <Menu prop={props.click} refes={props.refs}/>
           </div>
         </div>
         <div className="fightclub__navbar-sign">

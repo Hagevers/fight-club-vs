@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef } from 'react';
 import HomeMenu from './Components/HomeMenu';
 import Dashboard from './Components/Dashboard';
 import './App.css';
@@ -21,7 +21,7 @@ function App() {
         <HomeMenu />
         <LandingOpener />
       </div>
-      <About />
+      <About  />
       <Prizes />
       {/* <BrowserRouter>
         <Routes>

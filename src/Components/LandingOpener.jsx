@@ -11,7 +11,7 @@ function LandingOpener() {
         <p>A new generation of turn based game, Developed by a pasionate web developer that was tired of boring look turn based games.</p>
         <div className='fightclub__header-content__input'>
           <input type="email" placeholder='Enter your email' />
-          <button type='button'>Follow after the creator</button>
+          <button type='button'>Follow the creator</button>
         </div>
         <div className='fightclub__header-content__pepole'>
           <img src={people} alt="No one really follows him except his friends" />
