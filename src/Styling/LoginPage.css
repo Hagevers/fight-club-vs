@@ -76,7 +76,6 @@ body {
   background-color: #1a1b1f;
 }
 .fightclub__login{
-  min-height: 100vh;
   background:-moz-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%); 
   /* safari 5.1+,chrome 10+ */
   background:-webkit-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
@@ -88,38 +87,38 @@ body {
   background:-ms-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
   /* global 94%+ browsers support */
   background:linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   padding: 2rem 6rem;
 }
 .fightclub__login-content {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  width: 50%;
 }
-.fightclub__login-content_title{
-  margin-right: 2rem;
+.fightclub__login-content__title{
+  margin-right: 65rem;
 }
-.fightclub__login-content_title h1{
+.fightclub__login-content__title h1{
   color:#fff;
   justify-content: flex-start;
   font-family: var(--font-family);
   letter-spacing: 0.09em;
 }
-.fightclub_login-content_form{
+.fightclub__login-content__form{
   background: rgba(59, 61, 70, 1);
   font-family: var(--font-family);
   padding: 4rem;
-  margin: 4rem;
   display: flex;
   flex-direction: column;
+  width: 80%;
   color: #fff;
-  width: 30%;
+
 }
-.fightclub_login-content_form input{
+.fightclub__login-content__form input{
   display: flex;
   margin: 0.5rem 0;
   background: #1A1B1F;
@@ -130,7 +129,7 @@ body {
   width: 100%;
   border: 2px solid #5b627c;
 }
-.fightclub_login-content_form input[type=submit]{
+.fightclub__login-content__form-submit input[type=submit]{
   align-items: center;
   justify-content: center;
   width: 60%;
@@ -141,5 +140,34 @@ body {
   cursor: pointer;
   outline: none;
   border: none;
-  background: #0d81ec;
+  background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+}
+.fightclub__login-content__form-submit input[type=submit]:hover{
+  background: linear-gradient(90deg, #069bff 0%, #2dabff 100%);
+}
+.fightclub__login-content__form-submit{
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+.fightclub__login-content__form-error{
+  text-align: center;
+  color: #c15755;
+  margin-top: 1rem;
+  font-size: 12px;
+  height: 15px;
+  font-weight: 500;
+}
+.fightclub__login-content__form-forgot{
+  text-align: center;
+}
+.fightclub__login-social{
+  background: rgba(59, 61, 70, 1);
+  border-left: 2px solid #5b627c;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 35%;
+  
 }

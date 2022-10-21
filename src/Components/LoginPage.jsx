@@ -50,19 +50,29 @@ function LoginPage (props){
     //             <input type="submit" value="Login" />
     //         </div>
     //   </form>
-        <div className="fightclub__login section__pading">
+        <div className="fightclub__login section__padding">
+            <div className="fightclub__login-content__title">
+                <h1>SIGN IN</h1>
+            </div>
             <div className="fightclub__login-content">
-                <div className="fightclub__login-content_title">
-                    <h1>SIGN IN</h1>
-                </div>
-                <div className="fightclub_login-content_form">
+                <div className="fightclub__login-content__form">
                     <span>SIGN IN WITH EMAIL</span>
                     <input type="text" />
                     <span>PASSWORD</span>
                     <input type="password" />
-                    <input type="submit" />
+                    <div className="fightclub__login-content__form-submit">
+                        <input type="submit" />
+                    </div>
+                    <div className="fightclub__login-content__form-error">
+                        
+                    </div>
+                    <a href="#nothing" className="fightclub__login-content__form-forgot">Cannot sign in</a>
+                </div>
+                <div className="fightclub__login-social">
+                    asdasd
                 </div>
             </div>
+
         </div>
     );
 }
