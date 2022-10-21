@@ -40,16 +40,30 @@ function LoginPage (props){
         setPassword('');
       };
     return(
-        <form className={"active All-Login" } onSubmit = {clickLogin}>
-            <div className="Login-Header">
-                <img src={Logo} name="Logo" onClick={props.onClick}/>
+    //     <form className={"active All-Login" } onSubmit = {clickLogin}>
+    //         <div className="Login-Header">
+    //             <a href="/"><img src={Logo} name="Logo"/></a>
+    //         </div>
+    //         <div className="Login-Form">
+    //             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+    //             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+    //             <input type="submit" value="Login" />
+    //         </div>
+    //   </form>
+        <div className="fightclub__login section__pading">
+            <div className="fightclub__login-content">
+                <div className="fightclub__login-content_title">
+                    <h1>SIGN IN</h1>
+                </div>
+                <div className="fightclub_login-content_form">
+                    <span>SIGN IN WITH EMAIL</span>
+                    <input type="text" />
+                    <span>PASSWORD</span>
+                    <input type="password" />
+                    <input type="submit" />
+                </div>
             </div>
-            <div className="Login-Form">
-                <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-                <input type="submit" value="Login" />
-            </div>
-      </form>
+        </div>
     );
 }
 

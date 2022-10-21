@@ -27,7 +27,7 @@ function HomeMenu (props){
           </div>
         </div>
         <div className="fightclub__navbar-sign">
-          <p>Sign in</p>
+          <p><a href="/login">Sign in</a></p>
           <button type="button">Sign up</button>
         </div>
         <div className="fightclub__navbar-menu">

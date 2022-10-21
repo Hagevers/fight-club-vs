@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef } from 'react';
 import HomeMenu from './Components/HomeMenu';
 import Dashboard from './Components/Dashboard';
 import './App.css';
+import LoginPage from './Components/LoginPage';
 import LandingOpener from './Components/LandingOpener';
 import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom";
 import About from './Components/About';
@@ -28,6 +29,7 @@ function App() {
           {user ? <Route exact path="/" element={<Dashboard/>}/> : <Route exact path="/" element={<HomeMenu/>}/>}
         </Routes>
       </BrowserRouter> */}
+
     </div>
   );
 }
