@@ -32,8 +32,8 @@ function HomeMenu (props){
         </div>
         <div className="fightclub__navbar-menu">
           {toggleMenu 
-          ? <CloseIcon color="#fff" size={"27px"} onClick={() => setToggleMenu(false)}/>
-          : <MenuIcon color="#fff" size={"27px"} onClick={() => setToggleMenu(true)} />
+          ? <CloseIcon sx={{color:"#fff"}} size={"27px"} onClick={() => setToggleMenu(false)}/>
+          : <MenuIcon sx={{color:"#fff"}} size={"27px"} onClick={() => setToggleMenu(true)} />
         }
         {toggleMenu && (
           <div className="fightclub__navbar-menu_container scale-up-center">

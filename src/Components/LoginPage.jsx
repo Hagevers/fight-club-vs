@@ -40,39 +40,59 @@ function LoginPage (props){
         setPassword('');
       };
     return(
-    //     <form className={"active All-Login" } onSubmit = {clickLogin}>
-    //         <div className="Login-Header">
-    //             <a href="/"><img src={Logo} name="Logo"/></a>
-    //         </div>
-    //         <div className="Login-Form">
-    //             <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-    //             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-    //             <input type="submit" value="Login" />
-    //         </div>
-    //   </form>
-        <div className="fightclub__login section__padding">
-            <div className="fightclub__login-content__title">
-                <h1>SIGN IN</h1>
-            </div>
-            <div className="fightclub__login-content">
-                <div className="fightclub__login-content__form">
-                    <span>SIGN IN WITH EMAIL</span>
-                    <input type="text" />
-                    <span>PASSWORD</span>
-                    <input type="password" />
-                    <div className="fightclub__login-content__form-submit">
-                        <input type="submit" />
+        // <div className="fightclub__login section__padding">
+        //     <div className="fightclub__login-content__title">
+        //         <h1>SIGN IN</h1>
+        //     </div>
+        //     <div className="fightclub__login-content">
+        //         <div className="fightclub__login-content__form">
+        //             <span>SIGN IN WITH EMAIL</span>
+        //             <input type="text" />
+        //             <span>PASSWORD</span>
+        //             <input type="password" />
+        //             <div className="fightclub__login-content__form-submit">
+        //                 <input type="submit" />
+        //             </div>
+        //             <div className="fightclub__login-content__form-error">
+        //             </div>
+        //             <a href="#nothing" className="fightclub__login-content__form-forgot">Cannot sign in</a>
+        //         </div>
+        //         <div className="fightclub__login-social">
+        //             asdasd
+        //         </div>
+        //     </div>
+        // </div>
+        <div className="fightclub__login">
+            <div className="fightclub__login-container">
+                <div className="fightclub__login-content">
+                    <div className="fightclub__form-title">
+                        <div className="fightclub__form-title__text">
+                            SIGN IN
+                        </div>
                     </div>
-                    <div className="fightclub__login-content__form-error">
-                        
+                    <div className="fightclub__form-content">
+                        <div className="fightclub__form-content_input-form">
+                            <div className="fightclub__form-content_input-form__email">
+                                <span>LOGIN WITH EMAIL</span>
+                                <input type="text" />
+                            </div>
+                            <div className="fightclub__form-content_input-form__password">
+                                <span>PASSWORD</span>
+                                <input type="password" />
+                            </div>
+                            <div className="fightclub__form-content_input-form__error">
+                                ERROR!
+                            </div>
+                            <div className="fightclub__form-content_input-form__submit">
+                                <input type="submit" value="Login" />
+                            </div>
+                            <div className="fightclub__form-content_input-form__forgot">
+                                <a href="#forgot">FORGOT PASSWORD</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="#nothing" className="fightclub__login-content__form-forgot">Cannot sign in</a>
-                </div>
-                <div className="fightclub__login-social">
-                    asdasd
                 </div>
             </div>
-
         </div>
     );
 }

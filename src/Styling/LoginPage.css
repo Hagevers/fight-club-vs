@@ -1,96 +1,20 @@
-  /* .All-Login{
-  background-color: #1e2429;
-  min-height: 96.2vh;
-  display: block;
-  transition: 800ms;
-  opacity: 1;
-}
-
-.All-Login.active{
-  opacity: 1;
-}
-
-.Login-Header{
-  text-align: center;
-  margin: auto;
-}
-
-.Login-Header img{
-  margin-top: 4%;
-  width: 20%;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.Login-Form{
-  padding: 16px;
-  text-align: center;
-}
-
-.Login-Form input{
-  width: 40%;
-  display: block;
-  padding: 12px 20px;
-  font-size: 16px;
-  margin-left: auto;
-  margin-top: 10px;
-  margin-right: auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  background-color: #eeeeee;
-  text-align: left ;
-}
-
-.Login-Form input[type="submit"]{
-  text-align: center;
-  color: #eeeeee;
-  background-color: #d72323;
-  font-weight: bold;
-}
-
-.Forgot{
-  text-align: center;
-  color: #eeeeee;
-  font-weight: bold;
-}
-
-.logcome-enter{
-  opacity: 0;
-  transform: scale(0.3);
-}
-.logcome-enter-active{
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 300ms, transform 300ms;
-}
-.logcome-exit{
-  opacity: 1;
-}
-.logcome-exit-active{
-  opacity: 0;
-  transform: scale(0.3);
-  transition: opacity 300ms, transform 300ms;
-} */
 body {
   background-color: #1a1b1f;
 }
+/*
 .fightclub__login{
   background:-moz-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%); 
-  /* safari 5.1+,chrome 10+ */
+
   background:-webkit-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-  /* opera 11.10+ */
+
   background:-o-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-  /* ie 6-9 */
+
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1A1B1F', endColorstr='#3B3D46', GradientType=0 );
-  /* ie 10+ */
+
   background:-ms-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-  /* global 94%+ browsers support */
   background:linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
 
   display: flex;
-  align-items: center;
-  flex-direction: column;
   padding: 2rem 6rem;
 }
 .fightclub__login-content {
@@ -100,7 +24,9 @@ body {
   width: 50%;
 }
 .fightclub__login-content__title{
-  margin-right: 65rem;
+  display: flex;
+  justify-items: left;
+  flex: 1;
 }
 .fightclub__login-content__title h1{
   color:#fff;
@@ -170,4 +96,111 @@ body {
   text-align: center;
   width: 35%;
   
+}
+*/
+
+.fightclub__login{
+  padding-top: 80px;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fightclub__login-container{
+  position: relative;
+}
+
+.fightclub__login-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+}
+
+.fightclub__form-title{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* margin-bottom: 1rem; */
+}
+.fightclub__form-title__text{
+  color: #fff;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: .055em;
+  font-weight: 200;
+}
+.fightclub__form-content{
+  background:-moz-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%); 
+
+  background:-webkit-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
+
+  background:-o-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1A1B1F', endColorstr='#3B3D46', GradientType=0 );
+
+  background:-ms-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
+  background:linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
+  border-radius: 4px;
+  padding: 24px 32px;
+  flex: 1;
+  min-width: 636px;
+}
+.fightclub__form-content_input-form{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.fightclub__form-content_input-form div input{
+  border-radius: 2px;
+  color: #fff;
+  padding: 10px;
+  background: #1A1B1F;
+  outline: none;
+  font-size: 15px;
+  border: 1px solid #5b627c;
+}
+.fightclub__form-content_input-form__email,
+.fightclub__form-content_input-form__password,
+.fightclub__form-content_input-form__submit{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.fightclub__form-content_input-form__email span,
+.fightclub__form-content_input-form__password span,
+.fightclub__form-content_input-form__forgot{
+  color: rgb(156, 156, 156);
+  margin-bottom: 1rem;
+}
+.fightclub__form-content_input-form__email span{
+  color: #06BFFF;
+}
+.fightclub__form-content_input-form__submit{
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.fightclub__form-content_input-form__error{
+  text-align: center;
+  color: #c15755;
+  display: none;
+}
+.fightclub__form-content_input-form__submit input[type=submit]{
+  width: 70%;
+  min-height: 50px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+}
+.fightclub__form-content_input-form__submit input[type=submit]:hover{
+  background: linear-gradient(90deg, #069bff 0%, #2dabff 100%);
+}
+.fightclub__form-content_input-form__forgot{
+  text-align: center;
 }
