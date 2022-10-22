@@ -1,4 +1,8 @@
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 import React, {useState, useEffect} from "react";
+import { pink } from '@mui/material/colors';
 import '../Styling/LoginPage.css'
 import Logo from '../Styling/logo.png'
 
@@ -40,28 +44,6 @@ function LoginPage (props){
         setPassword('');
       };
     return(
-        // <div className="fightclub__login section__padding">
-        //     <div className="fightclub__login-content__title">
-        //         <h1>SIGN IN</h1>
-        //     </div>
-        //     <div className="fightclub__login-content">
-        //         <div className="fightclub__login-content__form">
-        //             <span>SIGN IN WITH EMAIL</span>
-        //             <input type="text" />
-        //             <span>PASSWORD</span>
-        //             <input type="password" />
-        //             <div className="fightclub__login-content__form-submit">
-        //                 <input type="submit" />
-        //             </div>
-        //             <div className="fightclub__login-content__form-error">
-        //             </div>
-        //             <a href="#nothing" className="fightclub__login-content__form-forgot">Cannot sign in</a>
-        //         </div>
-        //         <div className="fightclub__login-social">
-        //             asdasd
-        //         </div>
-        //     </div>
-        // </div>
         <div className="fightclub__login">
             <div className="fightclub__login-container">
                 <div className="fightclub__login-content">
@@ -79,6 +61,12 @@ function LoginPage (props){
                             <div className="fightclub__form-content_input-form__password">
                                 <span>PASSWORD</span>
                                 <input type="password" />
+                            </div>
+                            <div className="fightclub__form-content_input-form__remember">
+                                <FormGroup>
+                                    <FormControlLabel sx={{color:"rgb(156, 156, 156)"}} control={<Checkbox sx={{color: "#06BFFF",'&.Mui-checked': {color: "#06BFFF",}}}/>} label="Remember me" />
+                                </FormGroup>
+                                
                             </div>
                             <div className="fightclub__form-content_input-form__error">
                                 ERROR!
