@@ -2,22 +2,32 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import React, {useState, useEffect} from "react";
-import { pink } from '@mui/material/colors';
 import '../Styling/LoginPage.css'
-import Logo from '../Styling/logo.png'
+import toast, { Toaster } from 'react-hot-toast';
 
 function LoginPage (props){
-    const axios = require('axios')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [nickName, setNickName] = useState([])
+    const axios = require('axios');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
+    const [isChecked, setisChecked] = useState(false);
     const clickLogin = async (e) => {
-        props.showLoader();
+        e.preventDefault();
+        if(password.length < 8){
+            setErrorMsg('PASSWORD MUST CONTAIN ATLEAST 8 DIGITS!');
+            console.log(errorMsg);
+            return;
+        }else if(!email.includes('@') || !email.includes('.')){
+            setErrorMsg('EMAIL IS NOT VALID!');
+            console.log(errorMsg);
+            console.log(email);
+            return;
+        }
+        const toastId = toast.loading('Loading...');
         const registerDetails = {
           'Email': email,
           'password': password
         };
-        e.preventDefault();
         const res = await axios ({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json'},
@@ -25,26 +35,27 @@ function LoginPage (props){
             data: JSON.stringify(registerDetails),
         });
         if (res.status === 200){
-            alert('Welcome !')
-            props.stopLoader();
-            window.location.reload();
+            if(res.data.msg){
+                toast.error('Details provided are wrong!',{id: toastId});
+                return;
+            }
             const d = new Date()
             d.setTime(d.getTime() + 1800000);
             console.log(res);
             let expires = "expires="+ d.toUTCString();
             document.cookie = "token=" + res.data.token + ";" + expires;
+            toast.success('Welcome!',{id: toastId});
+            window.location.href = '/';
         }
         else{
-            alert('Details provided are wrong!');
-            props.stopLoader();
-            window.location.reload();
+            toast.error('Details provided are wrong!',{id: toastId});
         }
-        setNickName('');
         setEmail('');
         setPassword('');
       };
     return(
         <div className="fightclub__login">
+            <Toaster />
             <div className="fightclub__login-container">
                 <div className="fightclub__login-content">
                     <div className="fightclub__form-title">
@@ -56,11 +67,11 @@ function LoginPage (props){
                         <div className="fightclub__form-content_input-form">
                             <div className="fightclub__form-content_input-form__email">
                                 <span>LOGIN WITH EMAIL</span>
-                                <input type="text" />
+                                <input type="text" onChange= {(e)=>setEmail(e.target.value)}/>
                             </div>
                             <div className="fightclub__form-content_input-form__password">
                                 <span>PASSWORD</span>
-                                <input type="password" />
+                                <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
                             </div>
                             <div className="fightclub__form-content_input-form__remember">
                                 <FormGroup>
@@ -69,10 +80,10 @@ function LoginPage (props){
                                 
                             </div>
                             <div className="fightclub__form-content_input-form__error">
-                                ERROR!
+                                {errorMsg}
                             </div>
                             <div className="fightclub__form-content_input-form__submit">
-                                <input type="submit" value="Login" />
+                                <input type="submit" value="Login" onClick={clickLogin} />
                             </div>
                             <div className="fightclub__form-content_input-form__forgot">
                                 <a href="#forgot">FORGOT PASSWORD</a>

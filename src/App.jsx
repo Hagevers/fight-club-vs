@@ -18,19 +18,21 @@ function App() {
   }, []);
   return (
     <div>
-      <div className='gradient__bg'>
-        <HomeMenu />
-        <LandingOpener />
+      {!user ?
+        <div>
+            <div className='gradient__bg'>
+              <HomeMenu />
+              <LandingOpener />
+            </div>
+            <About  />
+        </div>
+      :
+      <div>
+        <h1>Welcome brother</h1>
       </div>
-      <About  />
-      <Prizes />
-      {/* <BrowserRouter>
-        <Routes>
-          {user ? <Route exact path="/" element={<Dashboard/>}/> : <Route exact path="/" element={<HomeMenu/>}/>}
-        </Routes>
-      </BrowserRouter> */}
-
+      }
     </div>
+
   );
 }
 
