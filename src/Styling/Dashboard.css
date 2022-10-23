@@ -5,28 +5,21 @@ body{
 }
 
 /* ----------------------- SIDEBAR CSS ----------------------- */
-.Dashboard{
-  height: 100vh;
-  width: 100vw;
-}
-.HeaderContent{
-  width: 100%;
-  display: flex;
-  margin-left: 250px;
-  gap: 60px;
-  flex-direction: row;
-}
+
 .sideBar{
   height: 100%;
   width: 250px;
   border-right: 1px solid #28282d;
   background-color:  #1a1b1f;
 }
-
+.sideBar-div{
+  display: flex;
+  flex-direction: column;
+}
 .sideBarList{
   height: auto;
   width: 100%;
-  margin: 0%;
+  margin: 0;
   padding: 0;
 }
 
@@ -41,7 +34,7 @@ body{
   justify-content: center;
   transition: background-color 200ms;
   align-items: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: var(--font-family);
 }
 
 .row #icon{
@@ -66,13 +59,114 @@ body{
 /* ----------------------- END OF SIDEBAR CSS ----------------------- */
 
 /* ----------------------- DASHBOARD CSS ---------------------------- */
-
-.DisplayBox{
-  width: 400px;
-  height: 250px;
-  background-color: #21232b;
-  border-radius: 20%;
-  border: 1px solid #28282d;
+.spacer{
+  padding: 2rem 4rem;
+}
+.Dashboard{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+.Header_tool_bar{
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+.Header_tool_bar_input{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.Header_tool_bar_icons{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-right: 1.5rem;
+  gap: 18px;
+}
+.Header_tool_bar_input_search{
+  border-radius: 20px;
+  width: 30%;
+  padding: 1rem 1rem 1rem 3rem;
+  color: #fff;
+  background: #1A1B1F;
+  outline: none;
+  font-size: 15px;
+  font-family: var(--font-family);
+  border: 1px solid #5b627c;
+}
+.search_icon{
+  position: relative;
+  display: inline-block;
+  left: 36px
+}
+.Header_content{
+  margin: 0.5rem 0 2em;
+  width: 100%;
+}
+.content{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.Header_content{
+  display: flex;
+  width: 100%;
+}
+.Dashboard_content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.fightclub__dashboard-big__box{
+  width: 100%;
+  display: flex;
+  margin: 2rem 0 1rem;
+  min-height: 450px;
+}
+.fightclub__dashboard-content__boxes{
+  width: 100%;
+  margin: 2rem 0 1rem;
+  display: flex;
+  flex-direction: row;
 }
 
+.fightclub__dashboard-content__boxes-box{
+  width: 100%;
+  min-height: 250px;
+  border-radius: 20px;
+  background: #21232b;
+  border: 2px solid #28282d;
+  padding: 0 1rem;
+  margin: 2rem 1.5rem;
+  transition: padding 200ms;
+}
+/* .fightclub__dashboard-content__boxes-box:hover{
+  padding: 1rem 2rem;
+} */
+
+.fightclub__dashboard-content__boxes-box p{
+  text-align: center;
+  color: #bdbec7;
+  margin-top: 2rem;
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+}
+.Header_tool_bar_icons_profile,
+.Header_tool_bar_icons_shop,
+.Header_tool_bar_icons_noti{
+  background-color: #21232b;
+  padding: 0.5rem;
+  border-radius: 20px;
+  transition: background-color 200ms , color 200ms;
+}
+.Header_tool_bar_icons_profile:hover,
+.Header_tool_bar_icons_shop:hover,
+.Header_tool_bar_icons_noti:hover{
+  background-color: #0d81ec;
+  color:#fff;
+}
 /* ----------------------- END OF DASHBOARD CSS ---------------------------- */

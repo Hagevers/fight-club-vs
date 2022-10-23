@@ -4,31 +4,37 @@ import StoreIcon from '@mui/icons-material/Store';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export const SidebarData = [
     {
         title: "Base",
         icon: <DashboardIcon />,
-        link: "/base"
+        link: "/#base"
     },
     {
         title: "Attack",
         icon: <SportsMartialArtsIcon />,
-        link: "/attack"
+        link: "/#attack"
     },
     {
         title: "Training",
         icon: <MilitaryTechIcon />,
-        link: "/training"
+        link: "/#training"
     },
     {
         title: "Upgrade",
         icon: <UpgradeIcon />,
-        link: "/upgrade"
+        link: "/#upgrade"
     },
     {
         title: "Shop",
         icon: <StoreIcon />,
-        link: "/shop"
+        link: "/#shop"
+    },
+    {
+        title: "Logout",
+        icon: <LogoutIcon />,
+        link: "/#logout"
     }
 ]

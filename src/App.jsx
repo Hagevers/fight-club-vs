@@ -25,10 +25,11 @@ function App() {
               <LandingOpener />
             </div>
             <About  />
+            <Prizes />
         </div>
       :
       <div>
-        <h1>Welcome brother</h1>
+        <Dashboard />
       </div>
       }
     </div>

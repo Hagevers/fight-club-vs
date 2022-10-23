@@ -6,6 +6,7 @@ import '../Styling/LoginPage.css'
 import toast, { Toaster } from 'react-hot-toast';
 
 function LoginPage (props){
+    var submitButton = document.getElementById('submit-button');
     const axios = require('axios');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -23,6 +24,8 @@ function LoginPage (props){
             console.log(email);
             return;
         }
+        
+        submitButton.setAttribute('disabled', '')
         const toastId = toast.loading('Loading...');
         const registerDetails = {
           'Email': email,
@@ -37,6 +40,7 @@ function LoginPage (props){
         if (res.status === 200){
             if(res.data.msg){
                 toast.error('Details provided are wrong!',{id: toastId});
+                submitButton.removeAttribute('disabled');
                 return;
             }
             const d = new Date()
@@ -45,10 +49,12 @@ function LoginPage (props){
             let expires = "expires="+ d.toUTCString();
             document.cookie = "token=" + res.data.token + ";" + expires;
             toast.success('Welcome!',{id: toastId});
+            submitButton.removeAttribute('disabled');
             window.location.href = '/';
         }
         else{
             toast.error('Details provided are wrong!',{id: toastId});
+            submitButton.removeAttribute('disabled');
         }
         setEmail('');
         setPassword('');
@@ -83,7 +89,7 @@ function LoginPage (props){
                                 {errorMsg}
                             </div>
                             <div className="fightclub__form-content_input-form__submit">
-                                <input type="submit" value="Login" onClick={clickLogin} />
+                                <input id="submit-button" type="submit" value="Login" onClick={clickLogin} />
                             </div>
                             <div className="fightclub__form-content_input-form__forgot">
                                 <a href="#forgot">FORGOT PASSWORD</a>

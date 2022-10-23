@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import Sidebar from "./Sidebar";
-import DisplayBox from "./DisplayBox";
+import nisim from "../Styling/nisim.png"
+import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
+import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
+import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded';
 import '../Styling/Dashboard.css';
+import { Avatar } from "@mui/material";
 
 function Dashboard(){
     const axios = require('axios');
@@ -32,6 +36,9 @@ function Dashboard(){
         }
     }
   const [apiResponse, setApiResponse] = useState(firstGetRes);
+  const [notiColor, setNotiColor] = useState("#bdbec7");
+  const [cartColor, setCartColor] = useState("#bdbec7");
+  const [searchColor, setSearchColor] = useState("#bdbec7");
   const [resource, setResource] = useState();
   const logout = () =>{
     const cookie = document.cookie;
@@ -51,25 +58,49 @@ function Dashboard(){
     }
 
   }
-//   useEffect(() => {
-//     getTable().then(
-//         (result) => {
-//             setApiResponse(result)
-//         }
-//     );
-//     getResources().then(
-//         (result) =>{
-//              setResource(result)
-//         }
-//     );
-//     },[]);
     return (
         <div className="Dashboard">
-            <Sidebar />
-            <div className="HeaderContent">
-                <DisplayBox />
-                <DisplayBox />
-                <DisplayBox />
+            <div className="sideBar-div">
+                <Sidebar />
+            </div>
+            <div className="content spacer">
+                <div className="Header_content">
+                    <div className="Header_tool_bar">
+                        <div className="Header_tool_bar_input">
+                            <LocationSearchingIcon sx={{color:searchColor}} className="search_icon"/>
+                            <input type="search" className="Header_tool_bar_input_search" onMouseLeave={()=>setSearchColor("#bdbec7")} onMouseEnter={()=>setSearchColor("#fff")} placeholder="Search..." />
+                        </div>
+                        <div className="Header_tool_bar_icons">
+                            <a href="#"><div onMouseLeave={()=>setNotiColor("#bdbec7")} onMouseEnter={()=>setNotiColor("#fff")} className="Header_tool_bar_icons_noti">
+                                <CircleNotificationsRoundedIcon sx={{color:notiColor, width:42, height:42}}/>
+                            </div></a>
+                            <a href="#"><div onMouseLeave={()=>setCartColor("#bdbec7")} onMouseEnter={()=>setCartColor("#fff")} className="Header_tool_bar_icons_shop">
+                                <ShoppingCartCheckoutRoundedIcon sx={{color:cartColor, width:42, height:42}}/>
+                            </div></a>
+                            <a href="#"><div className="Header_tool_bar_icons_profile">
+                                <Avatar alt="Remy Sharp" src={nisim} sx={{color:"#bdbec7", width:48, height:48}}/>
+                            </div></a>
+                        </div>
+                    </div>
+                </div>
+                <div className="Dashboard_content">
+                    <div className="fightclub__dashboard-big__box">
+                        <div className='fightclub__dashboard-content__boxes-box'>
+                            <p>Main header, will be displayed the main stats</p>
+                        </div>
+                    </div>
+                    <div className='fightclub__dashboard-content__boxes'>
+                        <div className='fightclub__dashboard-content__boxes-box'>
+                            <p>Secondary stats</p>
+                        </div>
+                        <div className='fightclub__dashboard-content__boxes-box'>
+                            <p>Secondary stats</p>
+                        </div>
+                        <div className='fightclub__dashboard-content__boxes-box'>
+                            <p>Secondary stats</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
