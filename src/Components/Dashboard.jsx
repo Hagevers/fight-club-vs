@@ -40,11 +40,6 @@ function Dashboard(){
   const [cartColor, setCartColor] = useState("#bdbec7");
   const [searchColor, setSearchColor] = useState("#bdbec7");
   const [resource, setResource] = useState();
-  const logout = () =>{
-    const cookie = document.cookie;
-    document.cookie = cookie + ";max-age=0";
-    window.location.reload();
-  }
   const firstGetRes = () => {
     const res = window.localStorage.getItem('dashboardTable');
     console.log(res);
@@ -57,6 +52,34 @@ function Dashboard(){
         return null
     }
 
+  }
+  const getResources = () => {
+    const res = axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/resources',{withCredentials: true})
+    .then(result=>{
+        console.log(result);
+    })
+    .catch(err => { /* not hit since no 401 */ })
+    // const res = await axios({
+    //     method: 'GET',
+    //     url: 'https://powerful-anchorage-21815.herokuapp.com/resources',
+    //     withCredentials: true
+    // });
+    // const resource = res.data.map(
+    //     reso => <div className="army_resources"><div>{reso.Gold}</div><div>{reso.Marble}</div><div>{reso.Solfour}</div><div>{reso.Food}</div></div>
+    // )
+    // setResource(resource);
+  }
+//   useEffect(()=>{
+//     getResources();
+//   },[]);
+  const getCookie = () => {
+    const res = axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie')
+    .then(result=>{
+        console.log(result);
+    })
+    .catch(err => console.log(err))
   }
     return (
         <div className="Dashboard">
@@ -86,12 +109,12 @@ function Dashboard(){
                 <div className="Dashboard_content">
                     <div className="fightclub__dashboard-big__box">
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Main header, will be displayed the main stats</p>
+                            <p>Nickname: None</p>
                         </div>
                     </div>
                     <div className='fightclub__dashboard-content__boxes'>
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Secondary stats</p>
+                            <p>{resource}</p>
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
                             <p>Secondary stats</p>
@@ -102,18 +125,8 @@ function Dashboard(){
                     </div>
                 </div>
             </div>
+            <button onClick={getCookie}>CCCASD</button>
         </div>
     )
-}
-const getResources = async () => {
-    const res = await axios({
-        method: 'GET',
-        url: 'api/dashboard',
-        headers:{ 'Content-Type': 'application/json'}
-    });
-    const resource = res.data.map(
-        reso => <ul className="resourceList"><li><a>Gold - {reso.Gold}</a></li><li><a>Solfour - {reso.Solfour}</a></li><li><a>Marble - {reso.Marble}</a></li><li><a>Food - {reso.Food}</a></li></ul>
-    )
-    return resource
 }
 export default Dashboard;

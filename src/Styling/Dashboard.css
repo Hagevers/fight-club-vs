@@ -90,7 +90,7 @@ body{
   width: 30%;
   padding: 1rem 1rem 1rem 3rem;
   color: #fff;
-  background: #1A1B1F;
+  background: #21232b;
   outline: none;
   font-size: 15px;
   font-family: var(--font-family);
@@ -147,7 +147,6 @@ body{
 } */
 
 .fightclub__dashboard-content__boxes-box p{
-  text-align: center;
   color: #bdbec7;
   margin-top: 2rem;
   font-family: var(--font-family);
@@ -170,3 +169,12 @@ body{
   color:#fff;
 }
 /* ----------------------- END OF DASHBOARD CSS ---------------------------- */
+/* ----------------------- RESOURCES CSS ---------------------------- */
+.army_resources{
+  display: flex;
+  flex-direction: column;
+}
+.army_resources div{
+  font-family: var(--font-family);
+}
+/* ----------------------- END OF RESOURCES CSS ---------------------------- */

@@ -9,12 +9,19 @@ import About from './Components/About';
 import Prizes from './Components/Prizes';
 
 function App() {
-  const [user, setUser] = useState();
+  const axios = require('axios');
+  const [user, setUser] = useState(false);
   useEffect(() => {
-    const loggedInUser = document.cookie && document.cookie.split('=')[1];
-    if (loggedInUser) {
-      setUser(loggedInUser);
-    }
+    const res = axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',{withCredentials: 'include'})
+    .then(result=>{
+        setUser(true)
+    })
+    .catch(err => console.log(err))
+    // const loggedInUser = document.cookie && document.cookie.split('=')[1];
+    // if (loggedInUser) {
+    //   setUser(loggedInUser);
+    // }
   }, []);
   return (
     <div>
