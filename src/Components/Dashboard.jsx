@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, {useState, useEffect} from "react";
 import Sidebar from "./Sidebar";
 import nisim from "../Styling/nisim.png"
@@ -40,47 +39,58 @@ function Dashboard(){
   const [cartColor, setCartColor] = useState("#bdbec7");
   const [searchColor, setSearchColor] = useState("#bdbec7");
   const [resource, setResource] = useState();
-  const firstGetRes = () => {
-    const res = window.localStorage.getItem('dashboardTable');
-    console.log(res);
-    if (res){
-        const final = res.map(
-            user => <tr><td>{user.UserId.NickName}</td><td>{user.Gold}</td><td>{user.Solfour}</td><td>{user.Marble}</td><td>{user.Food}</td></tr>
-        );
-        return final
-    }else{
-        return null
-    }
+  const [nickname, setNickName] = useState("");
+  const firstGetRes = (res) => {
+    const final = res.map(
+        user => <div className="box-content"><div>Gold: {user.Gold}</div><div>Solfour: {user.Solfour}</div><div>Marble: {user.Marble}</div><div>Food: {user.Food}</div></div>
+    );
+    setResource(final);
 
   }
   const getResources = () => {
-    const res = axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/resources',{withCredentials: true})
+    axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/getResources')
     .then(result=>{
         console.log(result);
     })
     .catch(err => { /* not hit since no 401 */ })
-    // const res = await axios({
-    //     method: 'GET',
-    //     url: 'https://powerful-anchorage-21815.herokuapp.com/resources',
-    //     withCredentials: true
-    // });
-    // const resource = res.data.map(
-    //     reso => <div className="army_resources"><div>{reso.Gold}</div><div>{reso.Marble}</div><div>{reso.Solfour}</div><div>{reso.Food}</div></div>
-    // )
-    // setResource(resource);
   }
-//   useEffect(()=>{
-//     getResources();
-//   },[]);
-  const getCookie = () => {
-    const res = axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie')
-    .then(result=>{
-        console.log(result);
+  const getNickName = () => {
+    const nick = getCookie('token').split(' ')[1];
+    const decode = JSON.parse(Buffer.from(nick.split('.')[1], 'base64'));
+    return decode.NickName
+  }
+  const getCookie = (cname) =>{
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) === 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  useEffect(()=>{
+    setNickName(getNickName());
+    axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
+    {headers:{'Authorization': getCookie('token')}
     })
-    .catch(err => console.log(err))
-  }
+    .then(result=>{
+    })
+    axios
+    .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
+    {headers:{'Authorization': getCookie('token')}
+    })
+    .then(result=>{
+        firstGetRes(result.data);
+    })
+  }, []);
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
@@ -109,12 +119,18 @@ function Dashboard(){
                 <div className="Dashboard_content">
                     <div className="fightclub__dashboard-big__box">
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Nickname: None</p>
+                            <p>Nickname: {nickname}</p>
                         </div>
                     </div>
                     <div className='fightclub__dashboard-content__boxes'>
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>{resource}</p>
+                            {resource}
+                            <div className="box-content">
+                                <div>Mine:</div>
+                                <div>Mountains:</div>
+                                <div>Quary:</div>
+                                <div>Farm:</div>
+                            </div>
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
                             <p>Secondary stats</p>
@@ -125,7 +141,6 @@ function Dashboard(){
                     </div>
                 </div>
             </div>
-            <button onClick={getCookie}>CCCASD</button>
         </div>
     )
 }

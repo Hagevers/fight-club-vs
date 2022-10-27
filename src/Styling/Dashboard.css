@@ -135,6 +135,8 @@ body{
 .fightclub__dashboard-content__boxes-box{
   width: 100%;
   min-height: 250px;
+  display: flex;
+  flex-direction: row;
   border-radius: 20px;
   background: #21232b;
   border: 2px solid #28282d;
@@ -142,13 +144,20 @@ body{
   margin: 2rem 1.5rem;
   transition: padding 200ms;
 }
+
+.box-content{
+  gap: 12px;
+  flex: 1;
+}
 /* .fightclub__dashboard-content__boxes-box:hover{
   padding: 1rem 2rem;
 } */
 
-.fightclub__dashboard-content__boxes-box p{
+.fightclub__dashboard-content__boxes-box p,
+.fightclub__dashboard-content__boxes-box div{
   color: #bdbec7;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   font-family: var(--font-family);
   font-size: 22px;
   font-weight: 500;

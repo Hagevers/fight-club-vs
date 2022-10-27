@@ -43,21 +43,21 @@ function LoginPage (props){
                 submitButton.removeAttribute('disabled');
                 return;
             }
-            // const d = new Date()
-            // d.setTime(d.getTime() + 1800000);
-            // console.log(res);
-            // let expires = "expires="+ d.toUTCString();
-            // document.cookie = "token=" + res.data.token + ";" + expires;
+            const d = new Date()
+            d.setTime(d.getTime() + 1800000);
+            console.log(res);
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = "token=Bearer " + res.data + ";" + expires;
             toast.success('Welcome!',{id: toastId});
             submitButton.removeAttribute('disabled');
-            // window.location.href = '/';
+            setEmail('');
+            setPassword('');
+            return window.location.href = '/';
         }
         else{
             toast.error('Details provided are wrong!',{id: toastId});
             submitButton.removeAttribute('disabled');
         }
-        setEmail('');
-        setPassword('');
       };
     return(
         <div className="fightclub__login">
