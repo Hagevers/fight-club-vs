@@ -79,13 +79,13 @@ function Dashboard(){
     setNickName(getNickName());
     axios
     .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
-    {headers:{'Authorization': getCookie('token'),'Access-Control-Allow-Origin': true}
+    {headers:{'Authorization': getCookie('token'),'Access-Control-Allow-Origin': '*'}
     })
     .then(result=>{
     })
     axios
     .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
-    {headers:{'Authorization': getCookie('token'), 'Access-Control-Allow-Origin': true}
+    {headers:{'Authorization': getCookie('token'), 'Access-Control-Allow-Origin': '*'}
     })
     .then(result=>{
         firstGetRes(result.data);
