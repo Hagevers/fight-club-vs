@@ -1,5 +1,6 @@
 .fightclub__about{
     display: flex;
+    background-color: rgb(56, 58, 66);
 }
 
 .fightclub__about-content{

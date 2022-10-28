@@ -7,6 +7,7 @@ body {
   padding-bottom: 150px;
   display: flex;
   flex-direction: column;
+  background-color: #1a1b1f;
   align-items: center;
 }
 

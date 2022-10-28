@@ -42,7 +42,25 @@ function Dashboard(){
   const [nickname, setNickName] = useState("");
   const firstGetRes = (res) => {
     const final = res.map(
-        user => <div className="box-content"><div>Gold: {user.Gold}</div><div>Solfour: {user.Solfour}</div><div>Marble: {user.Marble}</div><div>Food: {user.Food}</div></div>
+        user =>
+            <div className="whole_box_wrraper">
+                <div className="box-content">
+                    <h1>Resources</h1>
+                    <div>Available Workers : {user.Workers}</div>
+                    <div>Gold: {user.ResourcesId.Gold}</div>
+                    <div>Solfour: {user.ResourcesId.Solfour}</div>
+                    <div>Marble: {user.ResourcesId.Marble}</div>
+                    <div>Food: {user.ResourcesId.Food}</div>
+                </div>
+                <div className="box-content">
+                    <h1>Workers</h1>
+                    <div>Workers : {user.Workers}</div>
+                    <div>Mine: {user.Mine}</div>
+                    <div>Mountains: {user.Mountains}</div>
+                    <div>Quary: {user.Quaru}</div>
+                    <div>Farm: {user.Farm}</div>
+                </div>
+            </div>
     );
     setResource(final);
 
@@ -119,24 +137,18 @@ function Dashboard(){
                 <div className="Dashboard_content">
                     <div className="fightclub__dashboard-big__box">
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Nickname: {nickname}</p>
+                            <p>NickName: {nickname}</p>
                         </div>
                     </div>
                     <div className='fightclub__dashboard-content__boxes'>
                         <div className='fightclub__dashboard-content__boxes-box'>
                             {resource}
-                            <div className="box-content">
-                                <div>Mine:</div>
-                                <div>Mountains:</div>
-                                <div>Quary:</div>
-                                <div>Farm:</div>
-                            </div>
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
                             <p>Secondary stats</p>
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Secondary stats</p>
+                            <p>Additional stats</p>
                         </div>
                     </div>
                 </div>
