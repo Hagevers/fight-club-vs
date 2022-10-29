@@ -34,19 +34,20 @@ function Dashboard(){
             console.log(e);
         }
     }
-  const [apiResponse, setApiResponse] = useState(firstGetRes);
+  const [apiResponse, setApiResponse] = useState('');
   const [notiColor, setNotiColor] = useState("#bdbec7");
   const [cartColor, setCartColor] = useState("#bdbec7");
   const [searchColor, setSearchColor] = useState("#bdbec7");
   const [resource, setResource] = useState();
+  const [efficiency, setEfficiency] = useState();
   const [nickname, setNickName] = useState("");
   const firstGetRes = (res) => {
-    const final = res.map(
+    const resources = res.map(
         user =>
             <div className="whole_box_wrraper">
                 <div className="box-content">
                     <h1>Resources</h1>
-                    <div>Available Workers : {user.Workers}</div>
+                    <div>Available Workers : {user.ResourcesId.Available_Workers}</div>
                     <div>Gold: {user.ResourcesId.Gold}</div>
                     <div>Solfour: {user.ResourcesId.Solfour}</div>
                     <div>Marble: {user.ResourcesId.Marble}</div>
@@ -57,12 +58,32 @@ function Dashboard(){
                     <div>Workers : {user.Workers}</div>
                     <div>Mine: {user.Mine}</div>
                     <div>Mountains: {user.Mountains}</div>
-                    <div>Quary: {user.Quaru}</div>
+                    <div>Quary: {user.Quary}</div>
                     <div>Farm: {user.Farm}</div>
                 </div>
             </div>
     );
-    setResource(final);
+    const efficiency = res.map(
+        user =>
+            <div className="whole_box_wrraper">
+                <div className="box-content">
+                    <h1>Vault</h1>
+                    <div>Gold: {user.ResourcesId.Vault_Gold}</div>
+                    <div>Solfour: {user.ResourcesId.Vault_Solfour}</div>
+                    <div>Marble: {user.ResourcesId.Vault_Marble}</div>
+                    <div>Food: {user.ResourcesId.Vault_Food}</div>
+                </div>
+                <div className="box-content">
+                    <h1>Efficiency</h1>
+                    <div>Mine: {user.Mine_Efficiency}</div>
+                    <div>Mountains: {user.Mountains_Efficiency}</div>
+                    <div>Quary: {user.Quary_Efficiency}</div>
+                    <div>Farm: {user.Farm_Efficiency}</div>
+                </div>
+            </div>
+    );
+    setResource(resources);
+    setEfficiency(efficiency);
 
   }
   const getResources = () => {
@@ -145,10 +166,10 @@ function Dashboard(){
                             {resource}
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Secondary stats</p>
+                            {efficiency}
                         </div>
                         <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Additional stats</p>
+                            <p>Power stats</p>
                         </div>
                     </div>
                 </div>

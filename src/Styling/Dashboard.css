@@ -151,16 +151,18 @@ body{
 .wrapper-box-content{
   display: flex;
   width: 100%;
-  text-align: center;
   flex-direction: column;
 }
 .box-content, .wrapper-box-content h1{
-  flex: 1;
   color: #fff;
+}
+.box-content{
+  flex:1;
+  margin-left: 2rem;
 }
 .box-content div{
   color: #fff;
-  margin-left: 1rem;
+  margin-left: 2rem;
 }
 .wrapper-box-content h1{
   font-size: 34px;
