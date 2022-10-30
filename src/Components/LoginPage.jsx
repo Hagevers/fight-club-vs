@@ -52,7 +52,7 @@ function LoginPage (props){
             submitButton.removeAttribute('disabled');
             setEmail('');
             setPassword('');
-            return window.location.href = '/';
+            return window.location.href = '/Dashboard';
         }
         else{
             toast.error('Details provided are wrong!',{id: toastId});

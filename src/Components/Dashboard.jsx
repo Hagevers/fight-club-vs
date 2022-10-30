@@ -6,6 +6,8 @@ import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificati
 import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartCheckoutRounded';
 import '../Styling/Dashboard.css';
 import { Avatar } from "@mui/material";
+import Base from "./Base";
+import Shop from "./Shop";
 
 function Dashboard(){
     const axios = require('axios');
@@ -34,106 +36,24 @@ function Dashboard(){
             console.log(e);
         }
     }
-  const [apiResponse, setApiResponse] = useState('');
-  const [notiColor, setNotiColor] = useState("#bdbec7");
-  const [cartColor, setCartColor] = useState("#bdbec7");
-  const [searchColor, setSearchColor] = useState("#bdbec7");
-  const [resource, setResource] = useState();
-  const [efficiency, setEfficiency] = useState();
-  const [nickname, setNickName] = useState("");
-  const firstGetRes = (res) => {
-    const resources = res.map(
-        user =>
-            <div className="whole_box_wrraper">
-                <div className="box-content">
-                    <h1>Resources</h1>
-                    <div>Available Workers : {user.ResourcesId.Available_Workers}</div>
-                    <div>Gold: {user.ResourcesId.Gold}</div>
-                    <div>Solfour: {user.ResourcesId.Solfour}</div>
-                    <div>Marble: {user.ResourcesId.Marble}</div>
-                    <div>Food: {user.ResourcesId.Food}</div>
-                </div>
-                <div className="box-content">
-                    <h1>Workers</h1>
-                    <div>Workers : {user.Workers}</div>
-                    <div>Mine: {user.Mine}</div>
-                    <div>Mountains: {user.Mountains}</div>
-                    <div>Quary: {user.Quary}</div>
-                    <div>Farm: {user.Farm}</div>
-                </div>
-            </div>
-    );
-    const efficiency = res.map(
-        user =>
-            <div className="whole_box_wrraper">
-                <div className="box-content">
-                    <h1>Vault</h1>
-                    <div>Gold: {user.ResourcesId.Vault_Gold}</div>
-                    <div>Solfour: {user.ResourcesId.Vault_Solfour}</div>
-                    <div>Marble: {user.ResourcesId.Vault_Marble}</div>
-                    <div>Food: {user.ResourcesId.Vault_Food}</div>
-                </div>
-                <div className="box-content">
-                    <h1>Efficiency</h1>
-                    <div>Mine: {user.Mine_Efficiency}</div>
-                    <div>Mountains: {user.Mountains_Efficiency}</div>
-                    <div>Quary: {user.Quary_Efficiency}</div>
-                    <div>Farm: {user.Farm_Efficiency}</div>
-                </div>
-            </div>
-    );
-    setResource(resources);
-    setEfficiency(efficiency);
-
-  }
-  const getResources = () => {
-    axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getResources')
-    .then(result=>{
-        console.log(result);
-    })
-    .catch(err => { /* not hit since no 401 */ })
-  }
-  const getNickName = () => {
-    const nick = getCookie('token').split(' ')[1];
-    const decode = JSON.parse(Buffer.from(nick.split('.')[1], 'base64'));
-    return decode.NickName
-  }
-  const getCookie = (cname) =>{
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
-      }
+    const [notiColor, setNotiColor] = useState("#bdbec7");
+    const [cartColor, setCartColor] = useState("#bdbec7");
+    const [searchColor, setSearchColor] = useState("#bdbec7");
+    const [active, setActive] = useState('Base');
+    const loadComp = (link) => {
+        switch (link){
+            case 'Base':
+                return <Base />
+            case 'Shop':
+                return <Shop />
+            default:
+                return <Base />
+        }
     }
-    return "";
-  }
-  useEffect(()=>{
-    setNickName(getNickName());
-    axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
-    {headers:{'Authorization': getCookie('token')}
-    })
-    .then(result=>{
-    })
-    axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
-    {headers:{'Authorization': getCookie('token')}
-    })
-    .then(result=>{
-        firstGetRes(result.data);
-    })
-  }, []);
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
-                <Sidebar />
+                <Sidebar acti= {(val) => setActive(val)}/>
             </div>
             <div className="content spacer">
                 <div className="Header_content">
@@ -155,24 +75,10 @@ function Dashboard(){
                         </div>
                     </div>
                 </div>
-                <div className="Dashboard_content">
-                    <div className="fightclub__dashboard-big__box">
-                        <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>NickName: {nickname}</p>
-                        </div>
-                    </div>
-                    <div className='fightclub__dashboard-content__boxes'>
-                        <div className='fightclub__dashboard-content__boxes-box'>
-                            {resource}
-                        </div>
-                        <div className='fightclub__dashboard-content__boxes-box'>
-                            {efficiency}
-                        </div>
-                        <div className='fightclub__dashboard-content__boxes-box'>
-                            <p>Power stats</p>
-                        </div>
-                    </div>
-                </div>
+                    {
+                        console.log(active)
+                    }
+                
             </div>
         </div>
     )

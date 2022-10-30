@@ -5,6 +5,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import LogoutIcon from '@mui/icons-material/Logout';
+import toast, { Toaster } from 'react-hot-toast';
 
 export const SidebarData = [
     {
@@ -30,11 +31,19 @@ export const SidebarData = [
     {
         title: "Shop",
         icon: <StoreIcon />,
-        link: "/#shop"
+        link: "Shop",
+
     },
     {
         title: "Logout",
         icon: <LogoutIcon />,
-        link: "/#logout"
+        link: "/logout",
+        logout : () =>{
+            const d = new Date();
+            d.setTime(d.getTime() - 8880);
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = 'token' + "=" + 'loggedOut' + ";" + expires + ";path=/";
+            window.location.href="/"
+        }
     }
 ]
