@@ -40,6 +40,25 @@ function Dashboard(){
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
     const [active, setActive] = useState('Base');
+    const getCookie = (cname) =>{
+        try{
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+            }
+            return "";
+        }catch{
+            return "";
+        }
+    }
     const loadComp = (link) => {
         switch (link){
             case 'Base':
@@ -50,6 +69,11 @@ function Dashboard(){
                 return <Base />
         }
     }
+    useEffect(()=>{
+        if(!getCookie('token')){
+            return window.location.href = '/'
+        }
+    })
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
@@ -76,7 +100,7 @@ function Dashboard(){
                     </div>
                 </div>
                     {
-                        console.log(active)
+                        loadComp(active)
                     }
                 
             </div>

@@ -11,34 +11,48 @@ export const SidebarData = [
     {
         title: "Base",
         icon: <DashboardIcon />,
-        link: "/#base"
+        link: "/#base",
+        func: function(props){
+            props('Base');
+        }
     },
     {
         title: "Attack",
         icon: <SportsMartialArtsIcon />,
-        link: "/#attack"
+        link: "/#attack",
+        func: function(props){
+            props('Attack');
+        }
     },
     {
         title: "Training",
         icon: <MilitaryTechIcon />,
-        link: "/#training"
+        link: "/#training",
+        func: function(props){
+            props('Training');
+        }
     },
     {
         title: "Upgrade",
         icon: <UpgradeIcon />,
-        link: "/#upgrade"
+        link: "/#upgrade",
+        func: function(props){
+            props('Upgrade');
+        }
     },
     {
         title: "Shop",
         icon: <StoreIcon />,
         link: "Shop",
-
+        func: function(props){
+            props('Shop');
+        }
     },
     {
         title: "Logout",
         icon: <LogoutIcon />,
         link: "/logout",
-        logout : () =>{
+        func : () =>{
             const d = new Date();
             d.setTime(d.getTime() - 8880);
             let expires = "expires=" + d.toUTCString();

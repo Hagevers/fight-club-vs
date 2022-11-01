@@ -22,12 +22,14 @@ body {
   gap: 32px;
 
 }
-
 .fightclub__form-title{
   display: flex;
   flex-direction: column;
   gap: 8px;
   /* margin-bottom: 1rem; */
+}
+.fightclub__form-title img{
+  border-radius: 25%;
 }
 .fightclub__form-title__text{
   color: #fff;

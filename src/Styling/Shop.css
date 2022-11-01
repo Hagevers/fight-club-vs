@@ -1,0 +1,61 @@
+
+.shop_wrapper{
+    height: 100vh;
+    width: 100vw;
+    margin: 2rem 0 1rem;
+}
+
+.shop__table__wrapper{
+    width: 100%;
+    font-family: var(--font-family);
+    color: #fff;
+    margin: 2rem 1.5rem;
+}
+
+.shop__table__wrapper th{
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 27px;
+}
+.shop__table__wrapper tbody tr td{
+    padding: 2rem;
+    text-align: center;
+}
+.table_row{
+    border: 2px solid #fff;
+}
+.gold{
+    color: #f39c12;
+}
+.marble{
+    color: #8d8d8d;
+}
+.solfour{
+    color: #9ccc17;
+}
+.resources__ammount{
+    border-radius: 10px;
+    padding: 1rem;
+    color: #fff;
+    background: #212940;
+    background: linear-gradient(143deg, #212940 0%, #1c2437 100%);
+    outline: none;
+    font-size: 15px;
+    font-family: var(--font-family);
+    border: 1px solid #364163;
+    text-align: center;
+    height: 30px;
+}
+.resources__buy{
+    border-radius: 10px;
+    color: #fff;
+    background: #212940;
+    background: linear-gradient(143deg, #212940 0%, #1c2437 100%);
+    outline: none;
+    font-size: 15px;
+    font-family: var(--font-family);
+    border: 1px solid #364163;
+    height: 30px;
+    text-align: center;
+    width: 30%;
+}

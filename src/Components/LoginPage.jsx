@@ -4,7 +4,7 @@ import Checkbox from '@mui/material/Checkbox';
 import React, {useState, useEffect} from "react";
 import '../Styling/LoginPage.css'
 import toast, { Toaster } from 'react-hot-toast';
-
+import logo from '../Styling/smallLogo.PNG';
 function LoginPage (props){
     var submitButton = document.getElementById('submit-button');
     const axios = require('axios');
@@ -14,14 +14,14 @@ function LoginPage (props){
     const [isChecked, setisChecked] = useState(false);
     const clickLogin = async (e) => {
         e.preventDefault();
-        if(password.length < 8){
-            setErrorMsg('PASSWORD MUST CONTAIN ATLEAST 8 DIGITS!');
-            console.log(errorMsg);
-            return;
-        }else if(!email.includes('@') || !email.includes('.')){
+        if(!email.includes('@') || !email.includes('.')){
             setErrorMsg('EMAIL IS NOT VALID!');
             console.log(errorMsg);
             console.log(email);
+            return;
+        }else if(password.length < 8){
+            setErrorMsg('PASSWORD MUST CONTAIN ATLEAST 8 DIGITS!');
+            console.log(errorMsg);
             return;
         }
         
@@ -65,37 +65,40 @@ function LoginPage (props){
             <div className="fightclub__login-container">
                 <div className="fightclub__login-content">
                     <div className="fightclub__form-title">
+                        <a href='/'><img src={logo} alt="Logo" /></a>
                         <div className="fightclub__form-title__text">
                             SIGN IN
                         </div>
                     </div>
-                    <div className="fightclub__form-content">
-                        <div className="fightclub__form-content_input-form">
-                            <div className="fightclub__form-content_input-form__email">
-                                <span>LOGIN WITH EMAIL</span>
-                                <input type="text" onChange= {(e)=>setEmail(e.target.value)}/>
-                            </div>
-                            <div className="fightclub__form-content_input-form__password">
-                                <span>PASSWORD</span>
-                                <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
-                            </div>
-                            <div className="fightclub__form-content_input-form__remember">
-                                <FormGroup>
-                                    <FormControlLabel sx={{color:"rgb(156, 156, 156)"}} control={<Checkbox sx={{color: "#06BFFF",'&.Mui-checked': {color: "#06BFFF",}}}/>} label="Remember me" />
-                                </FormGroup>
-                                
-                            </div>
-                            <div className="fightclub__form-content_input-form__error">
-                                {errorMsg}
-                            </div>
-                            <div className="fightclub__form-content_input-form__submit">
-                                <input id="submit-button" type="submit" value="Login" onClick={clickLogin} />
-                            </div>
-                            <div className="fightclub__form-content_input-form__forgot">
-                                <a href="#forgot">FORGOT PASSWORD</a>
+                    <form onSubmit={clickLogin}>
+                        <div className="fightclub__form-content">
+                            <div className="fightclub__form-content_input-form">
+                                <div className="fightclub__form-content_input-form__email">
+                                    <span>LOGIN WITH EMAIL</span>
+                                    <input type="text" onChange= {(e)=>setEmail(e.target.value)}/>
+                                </div>
+                                <div className="fightclub__form-content_input-form__password">
+                                    <span>PASSWORD</span>
+                                    <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
+                                </div>
+                                <div className="fightclub__form-content_input-form__remember">
+                                    <FormGroup>
+                                        <FormControlLabel sx={{color:"rgb(156, 156, 156)"}} control={<Checkbox sx={{color: "#06BFFF",'&.Mui-checked': {color: "#06BFFF",}}}/>} label="Remember me" />
+                                    </FormGroup>
+                                    
+                                </div>
+                                <div className="fightclub__form-content_input-form__error">
+                                    {errorMsg}
+                                </div>
+                                <div className="fightclub__form-content_input-form__submit">
+                                    <input id="submit-button" type="submit" value="Login" />
+                                </div>
+                                <div className="fightclub__form-content_input-form__forgot">
+                                    <a href="#forgot">FORGOT PASSWORD</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
