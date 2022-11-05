@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import '../Styling/Dashboard.css'
+import LoadingBoxes from './LoadingBoxes';
 function Base() {
     const axios = require('axios');
     const [nickname, setNickName] = useState("");
     const [resource, setResource] = useState();
+    const [loading, setLoading] = useState(true);
+
     const firstGetRes = (res) => {
         const resources = res.map(
             user =>
@@ -110,6 +113,7 @@ function Base() {
     {headers:{'Authorization': getCookie('token')}
     })
     .then(result=>{
+        setTimeout(() => setLoading(false), 1000);
         firstGetRes(result.data);
     })
     }, []);
@@ -120,7 +124,37 @@ function Base() {
                 <p>NickName: {nickname}</p>
             </div>
         </div>
+        {loading ? 
+        <>
+            <div className="fightclub__dashboard-content__boxes">
+                <div className="fightclub__dashboard-content__boxes-box">
+                    <div className="whole_box_wrraper">
+                        <div className="box-content">
+                            <LoadingBoxes />
+                        </div>
+                    </div>
+                </div>
+                <div className="fightclub__dashboard-content__boxes-box">
+                    <div className="whole_box_wrraper">
+                        <div className="box-content">
+                            <LoadingBoxes />
+                        </div>
+                    </div>
+                </div>
+                <div className="fightclub__dashboard-content__boxes-box">
+                    <div className="whole_box_wrraper">
+                        <div className="box-content">
+                            <LoadingBoxes />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+        : 
+        <div>
         {resource}
+        </div>
+        }
     </div>
   )
 }

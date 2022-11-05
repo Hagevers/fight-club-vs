@@ -8,6 +8,7 @@ import '../Styling/Dashboard.css';
 import { Avatar } from "@mui/material";
 import Base from "./Base";
 import Shop from "./Shop";
+import Attack from "./Attack";
 
 function Dashboard(){
     const axios = require('axios');
@@ -65,6 +66,8 @@ function Dashboard(){
                 return <Base />
             case 'Shop':
                 return <Shop />
+            case 'Attack':
+                return <Attack />
             default:
                 return <Base />
         }

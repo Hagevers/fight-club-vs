@@ -1,0 +1,13 @@
+.table__content{
+    width: 100%;
+}
+table{
+    color: #fff;
+    font-family: var(--font-family);
+}
+thead{
+    text-align: center;
+}
+tbody{
+    text-align: center;
+}
