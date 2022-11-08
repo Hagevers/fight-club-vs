@@ -209,3 +209,30 @@ body{
   font-family: var(--font-family);
 }
 /* ----------------------- END OF RESOURCES CSS ---------------------------- */
+
+.table__content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.table__content-table{
+  width: 100%;
+  padding: 20px;
+}
+.table__content-table__row{
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 24px;
+  width: 100%;
+  font-weight: 500;
+  transition: background-color 200ms;
+  min-height: 40px;
+}
+
+.table__content-table__row td{
+  text-align: center;
+}
+
+.table__content-table__row:hover{
+  background-color: #2e3958;
+}

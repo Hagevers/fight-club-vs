@@ -1,21 +1,23 @@
 import React, {useEffect, useState} from 'react'
-import '../Styling/Attack.css'
+// import '../Styling/Attack.css'
+import '../Styling/Dashboard.css'
 
 function Attack() {
     const axios = require('axios');
-    const i = 1;
     const [members, setMembers] = useState('');
     const getTableMembers = (result) =>{
-        const members = result.map(
-            member =>
-            <tr>
-                <td>1</td>
-                <td>{member.NickName}</td>
-                <td>Alliance</td>
-                <td>Status</td>
-                <td>Attack</td>
-            </tr>
-        )
+        let i = 1
+        const members = result.map((member) =>{
+            return(
+                <tr className='table__content-table__row'>
+                    <td>{i++}</td>
+                    <td>{member.NickName}</td>
+                    <td>{member.Power.Soldiers.Ammount}</td>
+                    <td>Alliance</td>
+                    <td>Status</td>
+                    <td>Attack</td>
+                </tr>
+            )})
         setMembers(members);
     }
     const getCookie = (cname) =>{
@@ -46,19 +48,16 @@ function Attack() {
     },[])
   return (
     <div className='table__content'>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>NickName</th>
-                    <th>Alliance</th>
-                    <th>Satus</th>
-                    <th>Attack</th>
-                </tr>
-            </thead>
-            <tbody>
-                {members}
-            </tbody>
+        <table className='table__content-table'>
+            <tr className='table__content-table__row'>
+                <th>Rank</th>
+                <th>NickName</th>
+                <th>Soldiers</th>
+                <th>Alliance</th>
+                <th>Satus</th>
+                <th>Attack</th>
+            </tr>
+            {members}
         </table>
     </div>
   )

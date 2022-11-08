@@ -1,13 +1,25 @@
 .table__content{
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
-table{
+.table__content-table{
+    /* color: #fff;
+    font-family: var(--font-family);
+    margin: 2rem;
+    font-size: 24px;
+    font-weight: 500; */
+}
+.table__content-table__row{
     color: #fff;
     font-family: var(--font-family);
+    margin: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 12px;
+    border-bottom: 1px solid #fff;
 }
-thead{
-    text-align: center;
-}
-tbody{
+
+.table__content-table__row td{
     text-align: center;
 }
