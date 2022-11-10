@@ -12,31 +12,31 @@ import Attack from "./Attack";
 
 function Dashboard(){
     const axios = require('axios');
-    const getTable = async () => {
-        let time = 0;
-        try{
-            const timer = setInterval(() => {
-                console.log(time);
-                time++
-            }, 1000);
-            const res = await axios({
-                method: 'GET',
-                url: 'api/dashboard',
-                headers:{ 'Content-Type': 'application/json'}
-            });
-            window.localStorage.setItem('dashboardTable', res.data);
-            console.log(res.data);
-            console.log("after fetch time "+ time);
-            const map = res.data.map(
-                user => <tr><td>{user.UserId.NickName}</td><td>{user.Gold}</td><td>{user.Solfour}</td><td>{user.Marble}</td><td>{user.Food}</td></tr>
-            )
-            console.log("after map time "+ time);
-            clearInterval(timer);
-            return map
-        }catch(e){
-            console.log(e);
-        }
-    }
+    // const getTable = async () => {
+    //     let time = 0;
+    //     try{
+    //         const timer = setInterval(() => {
+    //             console.log(time);
+    //             time++
+    //         }, 1000);
+    //         const res = await axios({
+    //             method: 'GET',
+    //             url: 'api/dashboard',
+    //             headers:{ 'Content-Type': 'application/json'}
+    //         });
+    //         window.localStorage.setItem('dashboardTable', res.data);
+    //         console.log(res.data);
+    //         console.log("after fetch time "+ time);
+    //         const map = res.data.map(
+    //             user => <tr><td>{user.UserId.NickName}</td><td>{user.Gold}</td><td>{user.Solfour}</td><td>{user.Marble}</td><td>{user.Food}</td></tr>
+    //         )
+    //         console.log("after map time "+ time);
+    //         clearInterval(timer);
+    //         return map
+    //     }catch(e){
+    //         console.log(e);
+    //     }
+    // }
     const [notiColor, setNotiColor] = useState("#bdbec7");
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
