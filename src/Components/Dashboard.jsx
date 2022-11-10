@@ -9,6 +9,7 @@ import { Avatar } from "@mui/material";
 import Base from "./Base";
 import Shop from "./Shop";
 import Attack from "./Attack";
+import Logout from "./Logout";
 
 function Dashboard(){
     const axios = require('axios');
@@ -68,6 +69,8 @@ function Dashboard(){
                 return <Shop />
             case 'Attack':
                 return <Attack />
+            case 'Logout':
+                return <Logout />
             default:
                 return <Base />
         }

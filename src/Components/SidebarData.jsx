@@ -52,12 +52,8 @@ export const SidebarData = [
         title: "Logout",
         icon: <LogoutIcon />,
         link: "/logout",
-        func : () =>{
-            const d = new Date();
-            d.setTime(d.getTime() - 8880);
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = 'token' + "=" + 'loggedOut' + ";" + expires + ";path=/";
-            window.location.href="/"
+        func: function(props){
+            props('Logout');
         }
     }
 ]

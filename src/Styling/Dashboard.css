@@ -236,3 +236,31 @@ body{
 .table__content-table__row:hover{
   background-color: #2e3958;
 }
+
+.lgot-btn-wrapper{
+  text-align: center;
+  margin: auto;
+}
+
+.lgot-btn-wrapper h1{
+  color: #fff;
+  font-family: var(--font-family);
+}
+
+.lgot-btn{
+  width: 170px;
+  font-family: var(--font-family);
+  height: 80px;
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid #5944a8;
+  background-color: rgba(0,0,0,0);
+  transition: background-color 300ms;
+}
+
+.lgot-btn:hover{
+  background-color: #5944a8;
+}
