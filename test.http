@@ -2,7 +2,7 @@ POST https://powerful-anchorage-21815.herokuapp.com/register
 Content-Type: application/json
 
 {
-    "NickName": "Moasdshe",
-    "Email": "moshemosheasdasdom",
-    "password": "moshemosshe"
+    "NickName": "Roy",
+    "Email": "roy@roy.com",
+    "password": "royroy"
 }
