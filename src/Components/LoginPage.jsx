@@ -83,7 +83,7 @@ function LoginPage (props){
                                 </div>
                                 <div className="fightclub__form-content_input-form__remember">
                                     <FormGroup>
-                                        <FormControlLabel sx={{color:"rgb(156, 156, 156)"}} control={<Checkbox sx={{color: "#06BFFF",'&.Mui-checked': {color: "#06BFFF",}}}/>} label="Remember me" />
+                                        <FormControlLabel sx={{color:"rgb(156, 156, 156)"}} control={<Checkbox sx={{color: "rgb(101,74,134)",'&.Mui-checked': {color: "rgb(101,74,134)",}}}/>} label="Remember me" />
                                     </FormGroup>
                                     
                                 </div>

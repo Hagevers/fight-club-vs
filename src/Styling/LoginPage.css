@@ -1,14 +1,15 @@
-body {
-  background-color: #1a1b1f;
-}
-
 .fightclub__login{
   padding-top: 80px;
   padding-bottom: 150px;
   display: flex;
   flex-direction: column;
-  background-color: #1a1b1f;
+  background: rgb(101,74,134);
+  background: -moz-linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+  background: linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#654a86",endColorstr="#5944a8",GradientType=1);
   align-items: center;
+  height: 100vh;
 }
 
 .fightclub__login-container{
@@ -39,17 +40,9 @@ body {
   font-weight: 200;
 }
 .fightclub__form-content{
-  background:-moz-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%); 
-
-  background:-webkit-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-
-  background:-o-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1A1B1F', endColorstr='#3B3D46', GradientType=0 );
-
-  background:-ms-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-  background:linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
+  background-color: #fff;
   border-radius: 4px;
+  outline: none;
   padding: 24px 32px;
   flex: 1;
   min-width: 636px;
@@ -61,9 +54,7 @@ body {
 }
 .fightclub__form-content_input-form div input{
   border-radius: 2px;
-  color: #fff;
   padding: 10px;
-  background: #1A1B1F;
   outline: none;
   font-size: 15px;
   border: 1px solid #5b627c;
@@ -80,9 +71,7 @@ body {
 .fightclub__form-content_input-form__forgot{
   color: rgb(156, 156, 156);
   margin-bottom: 1rem;
-}
-.fightclub__form-content_input-form__email span{
-  color: #06BFFF;
+  color: rgb(101,74,134);
 }
 .fightclub__form-content_input-form__submit{
   align-items: center;
@@ -98,13 +87,15 @@ body {
   font-weight: bold;
   font-size: 20px;
   line-height: 27px;
+  color: #fff;
+  font-family: var(--font-family);
   cursor: pointer;
   outline: none;
   border: none;
-  background: linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%);
+  background: linear-gradient(90deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
 }
 .fightclub__form-content_input-form__submit input[type=submit]:hover{
-  background: linear-gradient(90deg, #069bff 0%, #2dabff 100%);
+  background: linear-gradient(90deg, rgb(112, 86, 204) 0%, rgb(136, 100, 180) 100%);
 }
 .fightclub__form-content_input-form__forgot{
   text-align: center;

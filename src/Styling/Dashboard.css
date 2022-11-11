@@ -66,8 +66,8 @@ body{
   height: 100vh;
   width: 100vw;
   display: flex;
-  background: rgb(60,75,116);
-  background: linear-gradient(143deg, rgba(60,75,116,1) 0%, rgba(0,0,0,1) 100%);
+  background: rgb(101,74,134);
+  background: linear-gradient(143deg, rgb(101,74,134) 0%, rgba(0,0,0,1) 100%);
 }
 .Header_tool_bar{
   width: 100%;
@@ -92,8 +92,8 @@ body{
   width: 30%;
   padding: 1rem 1rem 1rem 3rem;
   color: #fff;
-  background: rgb(42,84,112);
-  background: linear-gradient(143deg, #364368 0%, #2e3958 100%);
+  background: rgb(101,74,134);
+  background: linear-gradient(143deg, rgb(101,74,134) 0%, #4d3866 100%);
   outline: none;
   font-size: 15px;
   font-family: var(--font-family);
@@ -141,12 +141,16 @@ body{
   display: flex;
   flex-direction: row;
   border-radius: 20px;
-  background: rgb(42,84,112);
-  background: linear-gradient(143deg, #364368 0%, rgba(76,65,119,1) 100%);
+  background: rgb(101,74,134);
+  background: linear-gradient(143deg, rgb(101,74,134) 0%, #271c34 100%);
   /* border: 2px solid rgb(42,84,112); */
   padding: 0 1rem;
   margin: 2rem 1.5rem;
   transition: padding 200ms;
+}
+.fightclub__dashboard-content__boxes-box:nth-child(2){
+  background: #362848;
+  background: linear-gradient(143deg, #483661 0%, #17111e 100%);
 }
 .wrapper-box-content{
   display: flex;

@@ -15,15 +15,10 @@ a {
 
 .gradient__bg {
     background:-moz-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%); 
-    /* safari 5.1+,chrome 10+ */
     background:-webkit-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-    /* opera 11.10+ */
     background:-o-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-    /* ie 6-9 */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1A1B1F', endColorstr='#3B3D46', GradientType=0 );
-    /* ie 10+ */
     background:-ms-linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
-    /* global 94%+ browsers support */
     background:linear-gradient(90deg, rgba(59, 61, 70, 1) 0%, rgba(26, 27, 31, 1) 100%);
 }
 
