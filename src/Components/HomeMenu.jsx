@@ -28,7 +28,7 @@ function HomeMenu (){
         </div>
         <div className="fightclub__navbar-sign">
           <p><a href="/login">Sign in</a></p>
-          <button type="button">Sign up</button>
+          <a href="/register"><button type="button">Sign up</button></a>
         </div>
         <div className="fightclub__navbar-menu">
           {toggleMenu 

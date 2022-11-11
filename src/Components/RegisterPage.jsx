@@ -1,6 +1,7 @@
 import React, {Component, useState, setState} from 'react';
-import Logo from '../Styling/logo.png'
-import '../Styling/RegisterPage.css'
+import Logo from '../Styling/logo.png';
+import '../Styling/RegisterPage.css';
+import toast, { Toaster } from 'react-hot-toast';
 //import {faCheck, faTimes, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 //import {fontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
@@ -10,29 +11,29 @@ function RegisterPage (props){
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleOnSubmit = async (e) => {
-    props.showLoader()
     const registerDetails = {
       NickName: NickName,
       Email: Email,
       password: password
     }
     e.preventDefault()
+    const toastId = toast.loading('Loading...');
     const res = await axios ({
       method: 'POST',
       headers:{ 'Content-Type': 'application/json'},
-      url: 'api/reg',
+      url: 'https://powerful-anchorage-21815.herokuapp.com/register',
       data: JSON.stringify(registerDetails),
       });
       if (res.status === 200){
-        alert('User Registerd!');
-        props.stopLoader();
-        window.location.reload();
+        if(res.data.msg){
+          toast.error('User already exist',{id: toastId});
+          return;
+        }
+        toast.success('Welcome! glad to have you',{id: toastId});
         console.log(res);
       }
       else{
-        alert('User is already exist!')
-        props.stopLoader();
-        window.location.reload();
+        toast.error('User already exist',{id: toastId});
       }
       setNickName('');
       setEmail('');
@@ -40,6 +41,7 @@ function RegisterPage (props){
       }
   return(
     <form className="All-Register" onSubmit={handleOnSubmit}>
+      <Toaster />
       <div className="Register-Header">
         <img src={Logo} name="Logo" onClick={props.onClick}/>
       </div>
