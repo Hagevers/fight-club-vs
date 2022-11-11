@@ -5,11 +5,17 @@ import toast, { Toaster } from 'react-hot-toast';
 //import {faCheck, faTimes, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 //import {fontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-function RegisterPage (props){
+function RegisterPage (){
   const axios = require('axios');
   const [NickName, setNickName] = useState('');
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [stage, setStage] = useState(1);
+  const handleNext = (e) => {
+    e.preventDefault();
+    setStage(stage+1);
+  }
   const handleOnSubmit = async (e) => {
     const registerDetails = {
       NickName: NickName,
@@ -38,23 +44,73 @@ function RegisterPage (props){
       setNickName('');
       setEmail('');
       setPassword('');
+  }
+  const loadStage = (stage) =>{
+      switch(stage){
+        case 1: {
+          return(
+            <div className="fightclub__form-content_input-form__email">
+              <span>ENTER YOUR EMAIL</span>
+              <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+            </div>
+          )
+        }
+        case 2: {
+          return (
+            <div>
+              <div className="fightclub__form-content_input-form__password">
+                  <span>PASSWORD</span>
+                  <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
+              </div>
+              <div className="fightclub__form-content_input-form__password">
+                    <span>CONFIRM PASSWORD</span>
+                    <input type="password" onChange= {(e)=>setConfirmPassword(e.target.value)}/>
+              </div>
+            </div>
+          )
+        }
+        case 3: {
+          return (
+            <div>
+              <div className="fightclub__form-content_input-form__nickname">
+                  <span>AVATAR</span>
+                  <input type="password" onChange= {(e)=>setNickName(e.target.value)}/>
+              </div>
+              <div className="fightclub__form-content_input-form__nickname">
+                  <span>NICK NAME</span>
+                  <input type="password" onChange= {(e)=>setNickName(e.target.value)}/>
+              </div>
+            </div>
+          )
       }
+    }
+  }
   return(
-    <form className="All-Register" onSubmit={handleOnSubmit}>
+    <div className='fightclub__register'>
       <Toaster />
-      <div className="Register-Header">
-        <img src={Logo} name="Logo" onClick={props.onClick}/>
+      <div className='fightclub__register-container'>
+        <div className='fightclub__register-content'>
+          <div className="fightclub__form-title">
+              <div className="fightclub__form-title__text">
+                  Register
+              </div>
+          </div>
+          <form>
+            <div className='fightclub__form-content'>
+              <div className='fightclub__form-content_input-form'>
+                {loadStage(stage)}
+                <div className='fightclub__form-content_input-form__submit'>
+                  <button onClick={handleNext}>Next</button>
+                </div>
+              </div>
+              <div className='fightclub__form-content_login'>
+                  <span>Already registered? <a href="/login">Start playing!</a></span>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div className="Register-Form">
-        <input type="text" value={NickName} onChange={(e) => setNickName(e.target.value)} placeholder="Nickname" />
-        <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
-        <input type="submit" value="Register"/>
-      </div>
-      <div className="Forgot">
-        <span>Forgot password</span>
-      </div>
-    </form>
+    </div>
   )
 }
 export default RegisterPage;
