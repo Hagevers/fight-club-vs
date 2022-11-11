@@ -4,7 +4,7 @@ import Checkbox from '@mui/material/Checkbox';
 import React, {useState, useEffect} from "react";
 import '../Styling/LoginPage.css'
 import toast, { Toaster } from 'react-hot-toast';
-import logo from '../Styling/smallLogo.PNG';
+import logo from '../Styling/fight_club_l.png';
 function LoginPage (props){
     var submitButton = document.getElementById('submit-button');
     const axios = require('axios');
@@ -64,8 +64,10 @@ function LoginPage (props){
             <Toaster />
             <div className="fightclub__login-container">
                 <div className="fightclub__login-content">
+                    <div className='logo_div'>
+                        <a href='/'><img src={logo} alt="Logo" className='logo_back' /></a>
+                    </div>
                     <div className="fightclub__form-title">
-                        <a href='/'><img src={logo} alt="Logo" /></a>
                         <div className="fightclub__form-title__text">
                             SIGN IN
                         </div>

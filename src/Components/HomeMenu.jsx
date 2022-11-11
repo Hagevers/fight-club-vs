@@ -40,8 +40,8 @@ function HomeMenu (){
             <div className="fightclub__navbar-menu_container-links">
               <Menu />
               <div className="fightclub__navbar-menu_container-links-sign">
-                <p>Sign in</p>
-                <button type="button">Sign up</button>
+                <p><a href="/login">Sign in</a></p>
+                <a href="/register"><button type="button">Sign up</button></a>
               </div>
             </div>
           </div>

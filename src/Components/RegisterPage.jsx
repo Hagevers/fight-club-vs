@@ -1,9 +1,7 @@
 import React, {Component, useState, setState} from 'react';
-import Logo from '../Styling/logo.png';
 import '../Styling/RegisterPage.css';
 import toast, { Toaster } from 'react-hot-toast';
-//import {faCheck, faTimes, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
-//import {fontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import logo from '../Styling/fight_club_l.png';
 
 function RegisterPage (){
   const axios = require('axios');
@@ -90,6 +88,9 @@ function RegisterPage (){
       <Toaster />
       <div className='fightclub__register-container'>
         <div className='fightclub__register-content'>
+          <div className='logo_div'>
+              <a href='/'><img src={logo} alt="Logo" className='logo_back' /></a>
+          </div>
           <div className="fightclub__form-title">
               <div className="fightclub__form-title__text">
                   Register

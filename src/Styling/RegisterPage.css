@@ -107,3 +107,16 @@
 .fightclub__form-content_login span a{
   color: rgb(101,74,134);
 }
+
+@media screen and (max-width: 280px) {
+  .fightclub__register{
+    padding-top: 20px;
+  }
+  .fightclub__form-title__text {
+    font-size: 22px;
+  }
+  .fightclub__form-content{
+    min-width: 250px;
+    margin: 0.1rem;
+  }
+}

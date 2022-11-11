@@ -110,8 +110,39 @@
   color: rgb(101,74,134);
 }
 
+.logo_back{
+  height: 30%;
+  width: 30%;
+  border-radius: 20%;
+}
+
+.logo_div{
+  text-align: center;
+}
+
 @media screen and (max-width: 650px) {
   .fightclub__form-content{
     min-width: 350px;
+    margin: 1rem;
+  }
+  .logo_back{
+    height: 40%;
+    width: 40%;
+  }
+  .fightclub__form-title{
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .fightclub__form-content{
+    min-width: 250px;
+    margin: 0.1rem;
+  }
+  .fightclub__login{
+    padding-top: 20px;
+  }
+  .fightclub__form-title__text {
+    font-size: 22px;
   }
 }
