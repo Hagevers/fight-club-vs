@@ -101,6 +101,15 @@
   text-align: center;
 }
 
+.fightclub__form-content_signup{
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+.fightclub__form-content_signup span a{
+  color: rgb(101,74,134);
+}
+
 @media screen and (max-width: 650px) {
   .fightclub__form-content{
     min-width: 350px;

@@ -97,6 +97,9 @@ function LoginPage (props){
                                     <a href="#forgot">FORGOT PASSWORD</a>
                                 </div>
                             </div>
+                            <div className='fightclub__form-content_signup'>
+                                <span>Havent Register yet? <a href="/register">Join now</a></span>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -9,7 +9,7 @@ body{
 .sideBar{
   height: 100%;
   width: 250px;
-  border-right: 1px solid rgb(42,84,112);
+  border-right: 1px solid rgba(118, 55, 134, 0.8);
   /* background-color:  #1a1b1f; */
 }
 .sideBar-div{
@@ -141,16 +141,12 @@ body{
   display: flex;
   flex-direction: row;
   border-radius: 20px;
-  background: rgb(101,74,134);
-  background: linear-gradient(143deg, rgb(101,74,134) 0%, #271c34 100%);
-  /* border: 2px solid rgb(42,84,112); */
+  background: rgba(118, 55, 134, 0.1);
+  /* background: linear-gradient(143deg, rgb(101,74,134) 0%, #271c34 100%); */
+  border: 1px solid rgba(118, 55, 134, 0.5);
   padding: 0 1rem;
   margin: 2rem 1.5rem;
   transition: padding 200ms;
-}
-.fightclub__dashboard-content__boxes-box:nth-child(2){
-  background: #362848;
-  background: linear-gradient(143deg, #483661 0%, #17111e 100%);
 }
 .wrapper-box-content{
   display: flex;
@@ -192,7 +188,7 @@ body{
 .Header_tool_bar_icons_profile,
 .Header_tool_bar_icons_shop,
 .Header_tool_bar_icons_noti{
-  background-color: #364368;
+  background-color: #553b6e;
   padding: 0.5rem;
   border-radius: 20px;
   transition: background-color 200ms , color 200ms;
