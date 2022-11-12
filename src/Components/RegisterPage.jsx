@@ -9,6 +9,7 @@ function RegisterPage (){
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [show, setShow] = useState(true);
   const [stage, setStage] = useState(1);
   const handleNext = (e) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ function RegisterPage (){
       switch(stage){
         case 1: {
           return(
-            <div className="fightclub__form-content_input-form__email">
+            <div className="fightclub__form-content_input-form__email scale-up-center">
               <span>ENTER YOUR EMAIL</span>
               <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
             </div>
@@ -55,7 +56,7 @@ function RegisterPage (){
         }
         case 2: {
           return (
-            <div>
+            <div className='scale-up-center'>
               <div className="fightclub__form-content_input-form__password">
                   <span>PASSWORD</span>
                   <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
@@ -68,8 +69,9 @@ function RegisterPage (){
           )
         }
         case 3: {
+
           return (
-            <div>
+            <div className='scale-up-center'>
               <div className="fightclub__form-content_input-form__nickname">
                   <span>AVATAR</span>
                   <input type="password" onChange= {(e)=>setNickName(e.target.value)}/>

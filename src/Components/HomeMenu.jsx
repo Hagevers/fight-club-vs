@@ -14,7 +14,6 @@ const Menu = () => (
 )
 
 function HomeMenu (){
-  const [current, setCurrent] = useState();
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
       <div className="fightclub__navbar">
