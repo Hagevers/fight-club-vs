@@ -132,6 +132,9 @@
   .fightclub__form-title{
     text-align: center;
   }
+  .fightclub__login{
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 280px) {
