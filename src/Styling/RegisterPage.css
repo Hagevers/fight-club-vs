@@ -112,6 +112,10 @@
   color: rgb(101,74,134);
 }
 
+.shaker{
+  border: 1px solid #c15755;
+}
+
 @media screen and (max-width: 280px) {
   .fightclub__register{
     padding-top: 20px;

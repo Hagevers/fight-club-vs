@@ -16,17 +16,38 @@ function RegisterPage (){
     if(stage === 1){
       const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if(res.test(String(Email).toLowerCase())){
-        setStage(stage+1);
+        setStage(stage + 1);
         setErrorMsg('');
+        document.getElementById('Email').style.border = '1px solid #5b627c;';
         return;
       }else{
+        document.getElementById('Email').focus();
+        document.getElementById('Email').style.border = '1px solid #c15755';
         setErrorMsg('EMAIL IS NOT VALID!');
         return;
       }
-    }else{
-      const registerDetails = {
-        
+    }else if(stage === 2){
+      const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
+      if(pattern.test(password)){
+        if(password === confirmPassword){
+          setStage(stage +1 );
+          setErrorMsg('');
+          document.getElementById('password').style.border = '1px solid #5b627c;';
+          document.getElementById('confirmPassword ').style.border = '1px solid #5b627c;';
+          return;
+        }else{
+          setErrorMsg('PASSWORD DO NOT MATCH!');
+          document.getElementById('confirmPassword ').style.border = '1px solid #c15755;';
+          return;
+        }
+      }else{
+        setErrorMsg('PASSWORD IS NOT VALID!');
+        document.getElementById('confirmPassword ').style.border = '1px solid #c15755;';
+        return;
       }
+    }
+    const registerDetails = {
+
     }
   }
   const handleOnSubmit = async (e) => {
@@ -61,7 +82,6 @@ function RegisterPage (){
   const loadStage = (stage) =>{
       switch(stage){
         case 1: {
-          if(errorMsg) document.getElementById('Email').focus()
           return(
             <div className="fightclub__form-content_input-form__email scale-up-center">
               <span>ENTER YOUR EMAIL</span>
