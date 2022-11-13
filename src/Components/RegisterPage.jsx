@@ -8,12 +8,26 @@ function RegisterPage (){
   const [NickName, setNickName] = useState('');
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [show, setShow] = useState(true);
   const [stage, setStage] = useState(1);
   const handleNext = (e) => {
     e.preventDefault();
-    setStage(stage+1);
+    if(stage === 1){
+      const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if(res.test(String(Email).toLowerCase())){
+        setStage(stage+1);
+        setErrorMsg('');
+        return;
+      }else{
+        setErrorMsg('EMAIL IS NOT VALID!');
+        return;
+      }
+    }else{
+      const registerDetails = {
+        
+      }
+    }
   }
   const handleOnSubmit = async (e) => {
     const registerDetails = {
@@ -47,21 +61,22 @@ function RegisterPage (){
   const loadStage = (stage) =>{
       switch(stage){
         case 1: {
+          if(errorMsg) document.getElementById('Email').focus()
           return(
             <div className="fightclub__form-content_input-form__email scale-up-center">
               <span>ENTER YOUR EMAIL</span>
-              <input type="text" value={Email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+              <input type="text" value={Email} id="Email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
             </div>
           )
         }
         case 2: {
           return (
-            <div className='scale-up-center'>
-              <div className="fightclub__form-content_input-form__password">
+            <div>
+              <div className="fightclub__form-content_input-form__password scale-up-center">
                   <span>PASSWORD</span>
                   <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
               </div>
-              <div className="fightclub__form-content_input-form__password">
+              <div className="fightclub__form-content_input-form__password scale-up-center">
                     <span>CONFIRM PASSWORD</span>
                     <input type="password" onChange= {(e)=>setConfirmPassword(e.target.value)}/>
               </div>
@@ -69,7 +84,6 @@ function RegisterPage (){
           )
         }
         case 3: {
-
           return (
             <div className='scale-up-center'>
               <div className="fightclub__form-content_input-form__nickname">
@@ -102,8 +116,11 @@ function RegisterPage (){
             <div className='fightclub__form-content'>
               <div className='fightclub__form-content_input-form'>
                 {loadStage(stage)}
+                <div className="fightclub__form-content_input-form__error">
+                    {errorMsg}
+                </div>
                 <div className='fightclub__form-content_input-form__submit'>
-                  <button onClick={handleNext}>Next</button>
+                  <button onClick={handleNext}>{stage==3 ? <span>Register</span> : <span>Next</span>}</button>
                 </div>
               </div>
               <div className='fightclub__form-content_login'>

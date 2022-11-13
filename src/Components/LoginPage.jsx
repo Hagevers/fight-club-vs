@@ -16,19 +16,16 @@ function LoginPage (props){
         e.preventDefault();
         if(!email.includes('@') || !email.includes('.')){
             setErrorMsg('EMAIL IS NOT VALID!');
-            console.log(errorMsg);
-            console.log(email);
             return;
         }else if(password.length < 8){
             setErrorMsg('PASSWORD MUST CONTAIN ATLEAST 8 DIGITS!');
-            console.log(errorMsg);
             return;
         }
         
         submitButton.setAttribute('disabled', '')
         const toastId = toast.loading('Loading...');
         const registerDetails = {
-          'Email': email,
+          'Email': email.toLowerCase(),
           'password': password
         };
         const res = await axios ({

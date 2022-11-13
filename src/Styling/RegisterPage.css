@@ -98,7 +98,11 @@
 .fightclub__form-content_input-form__submit button:hover{
   background: linear-gradient(90deg, rgb(112, 86, 204) 0%, rgb(136, 100, 180) 100%);
 }
-
+.fightclub__form-content_input-form__error{
+  text-align: center;
+  color: #c15755;
+  font-weight: 400;
+}
 .fightclub__form-content_login{
   text-align: center;
   border-top: 1px solid #333;
