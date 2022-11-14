@@ -10,8 +10,13 @@ function RegisterPage (){
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [avatar, setAvatar] = useState('');
+  const [showAvatars, setShowAvatars] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [stage, setStage] = useState(1);
+  const handleAvatarDiv =(e) => {
+    e.preventDefault();
+    setShowAvatars(!showAvatars);
+  }
   const handleNext = (e) => {
     e.preventDefault();
     if(stage === 1){
@@ -127,7 +132,10 @@ function RegisterPage (){
               </div>
               <div className="fightclub__form-content_input-form__nickname">
                   <span>AVATAR</span>
-                  <input id='Avatar' value={avatar} type="file" onChange= {(e)=>setAvatar(e.target.value)}/>
+                  {/* <input id='Avatar' value={avatar} type="file" onChange= {(e)=>setAvatar(e.target.value)}/> */}
+                  <div className='avatar-div'>
+                    <button className='avatarBtn' style={{backgroundColor: avatar}} onClick={handleAvatarDiv}></button>
+                  </div>
               </div>
             </div>
           )
@@ -150,7 +158,14 @@ function RegisterPage (){
           <form>
             <div className='fightclub__form-content'>
               <div className='fightclub__form-content_input-form'>
-                {loadStage(stage)}
+                 {loadStage(stage)}
+                 {showAvatars &&
+                 <div className='avatars-all-div scale-up-center'>
+                    <div className='avatar' onClick={()=>setAvatar('rgb(101,74,134)')}></div>
+                    <div className='avatar'></div>
+                    <div className='avatar'></div>
+                 </div>
+                 }
                 <div className="fightclub__form-content_input-form__error">
                     {errorMsg}
                 </div>

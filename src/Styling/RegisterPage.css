@@ -112,8 +112,35 @@
   color: rgb(101,74,134);
 }
 
-.shaker{
-  border: 1px solid #c15755;
+.avatar-div{
+  justify-content: center;
+  display: flex;
+}
+
+.fightclub__form-content_input-form__nickname .avatarBtn{
+  height: 120px;
+  width: 120px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.avatars-div{
+  background-color: #333;
+}
+.avatars-all-div{
+  display: flex;
+  flex-direction: row;
+  background-color: #333;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+.avatar{
+  height: 50px;
+  width: 50px;
+  margin: 2rem;
+  border-radius: 50%;
+  background-color: #c15755;
 }
 
 @media screen and (max-width: 280px) {
