@@ -56,7 +56,7 @@ function RegisterPage (){
     e.preventDefault()
     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.{8,})/;
     if (pattern.test(NickName)){
-      document.getElementById('password').style.border = '1px solid #5b627c';
+      document.getElementById('NickName').style.border = '1px solid #5b627c';
       setErrorMsg('');
       const registerDetails = {
         NickName: NickName,
