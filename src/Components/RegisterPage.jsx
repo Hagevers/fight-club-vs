@@ -86,6 +86,7 @@ function RegisterPage (){
         setPassword('');
         setConfirmPassword('');
         setErrorMsg('');
+        return window.location.href = '/login';
       }else{
         document.getElementById('NickName').style.border = '1px solid #c15755';
         setErrorMsg('NICK NAME IS NOT VALID!');
