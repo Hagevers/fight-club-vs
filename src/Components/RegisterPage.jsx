@@ -9,6 +9,7 @@ function RegisterPage (){
   const [Email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [avatar, setAvatar] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [stage, setStage] = useState(1);
   const handleNext = (e) => {
@@ -18,7 +19,7 @@ function RegisterPage (){
       if(res.test(String(Email).toLowerCase())){
         setStage(stage + 1);
         setErrorMsg('');
-        document.getElementById('Email').style.border = '1px solid #5b627c;';
+        document.getElementById('Email').style.border = '1px solid #5b627c';
         return;
       }else{
         document.getElementById('Email').focus();
@@ -27,57 +28,70 @@ function RegisterPage (){
         return;
       }
     }else if(stage === 2){
-      const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/
-      if(pattern.test(password)){
+      const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+      if(pattern.test(String(password))){
         if(password === confirmPassword){
           setStage(stage +1 );
           setErrorMsg('');
-          document.getElementById('password').style.border = '1px solid #5b627c;';
-          document.getElementById('confirmPassword ').style.border = '1px solid #5b627c;';
+          document.getElementById('password').style.border = '1px solid #5b627c';
+          document.getElementById('confirmPassword').style.border = '1px solid #5b627c;';
           return;
         }else{
+          document.getElementById('password').style.border = '1px solid #5b627c';
           setErrorMsg('PASSWORD DO NOT MATCH!');
-          document.getElementById('confirmPassword ').style.border = '1px solid #c15755;';
+          document.getElementById('confirmPassword').focus();
+          document.getElementById('confirmPassword').style.border = '1px solid #c15755';
           return;
         }
       }else{
+        document.getElementById('password').style.border = '1px solid #c15755';
         setErrorMsg('PASSWORD IS NOT VALID!');
-        document.getElementById('confirmPassword ').style.border = '1px solid #c15755;';
+        document.getElementById('password').focus();
+        
         return;
       }
     }
-    const registerDetails = {
-
-    }
   }
   const handleOnSubmit = async (e) => {
-    const registerDetails = {
-      NickName: NickName,
-      Email: Email,
-      password: password
-    }
     e.preventDefault()
-    const toastId = toast.loading('Loading...');
-    const res = await axios ({
-      method: 'POST',
-      headers:{ 'Content-Type': 'application/json'},
-      url: 'https://powerful-anchorage-21815.herokuapp.com/register',
-      data: JSON.stringify(registerDetails),
-      });
-      if (res.status === 200){
-        if(res.data.msg){
-          toast.error('User already exist',{id: toastId});
-          return;
+    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.{8,})/;
+    if (pattern.test(NickName)){
+      document.getElementById('password').style.border = '1px solid #5b627c';
+      setErrorMsg('');
+      const registerDetails = {
+        NickName: NickName,
+        Email: Email,
+        password: password
+      }
+      const toastId = toast.loading('Loading...');
+      const res = await axios ({
+        method: 'POST',
+        headers:{ 'Content-Type': 'application/json'},
+        url: 'https://powerful-anchorage-21815.herokuapp.com/register',
+        data: JSON.stringify(registerDetails),
+        });
+        if (res.status === 200){
+          if(res.data.msg){
+            toast.error('User already exist',{id: toastId});
+            return;
+          }
+          toast.success('Welcome! glad to have you',{id: toastId});
+          console.log(res);
         }
-        toast.success('Welcome! glad to have you',{id: toastId});
-        console.log(res);
+        else{
+          toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
+        }
+        setNickName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setErrorMsg('');
+      }else{
+        document.getElementById('NickName').style.border = '1px solid #c15755';
+        setErrorMsg('NICK NAME IS NOT VALID!');
+        document.getElementById('NickName').focus();
+        return;
       }
-      else{
-        toast.error('User already exist',{id: toastId});
-      }
-      setNickName('');
-      setEmail('');
-      setPassword('');
   }
   const loadStage = (stage) =>{
       switch(stage){
@@ -94,11 +108,11 @@ function RegisterPage (){
             <div>
               <div className="fightclub__form-content_input-form__password scale-up-center">
                   <span>PASSWORD</span>
-                  <input type="password" onChange= {(e)=>setPassword(e.target.value)}/>
+                  <input id='password' type="password" value={password} onChange= {(e)=>setPassword(e.target.value)}/>
               </div>
               <div className="fightclub__form-content_input-form__password scale-up-center">
                     <span>CONFIRM PASSWORD</span>
-                    <input type="password" onChange= {(e)=>setConfirmPassword(e.target.value)}/>
+                    <input id="confirmPassword" type="password" value={confirmPassword} onChange= {(e)=>setConfirmPassword(e.target.value)}/>
               </div>
             </div>
           )
@@ -107,12 +121,12 @@ function RegisterPage (){
           return (
             <div className='scale-up-center'>
               <div className="fightclub__form-content_input-form__nickname">
-                  <span>AVATAR</span>
-                  <input type="password" onChange= {(e)=>setNickName(e.target.value)}/>
+                  <span>NICK NAME</span>
+                  <input id='NickName' type="text" value={NickName} onChange= {(e)=>setNickName(e.target.value)}/>
               </div>
               <div className="fightclub__form-content_input-form__nickname">
-                  <span>NICK NAME</span>
-                  <input type="password" onChange= {(e)=>setNickName(e.target.value)}/>
+                  <span>AVATAR</span>
+                  <input id='Avatar' value={avatar} type="file" onChange= {(e)=>setAvatar(e.target.value)}/>
               </div>
             </div>
           )
@@ -140,7 +154,7 @@ function RegisterPage (){
                     {errorMsg}
                 </div>
                 <div className='fightclub__form-content_input-form__submit'>
-                  <button onClick={handleNext}>{stage==3 ? <span>Register</span> : <span>Next</span>}</button>
+                  <button onClick={stage==3 ? handleOnSubmit : handleNext}>{stage==3 ? <span>Register</span> : <span>Next</span>}</button>
                 </div>
               </div>
               <div className='fightclub__form-content_login'>
