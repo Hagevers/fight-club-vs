@@ -2,6 +2,7 @@ import React, {Component, useState, setState} from 'react';
 import '../Styling/RegisterPage.css';
 import toast, { Toaster } from 'react-hot-toast';
 import logo from '../Styling/fight_club_l.png';
+import { AvatarsData } from './AvatarsData';
 
 function RegisterPage (){
   const axios = require('axios');
@@ -63,42 +64,49 @@ function RegisterPage (){
     if (pattern.test(NickName)){
       document.getElementById('NickName').style.border = '1px solid #5b627c';
       setErrorMsg('');
-      const registerDetails = {
-        NickName: NickName,
-        Email: Email,
-        password: password
-      }
-      const toastId = toast.loading('Loading...');
-      const res = await axios ({
-        method: 'POST',
-        headers:{ 'Content-Type': 'application/json'},
-        url: 'https://powerful-anchorage-21815.herokuapp.com/register',
-        data: JSON.stringify(registerDetails),
-        });
-        if (res.status === 200){
-          if(res.data.msg){
-            toast.error('User already exist',{id: toastId});
-            return;
-          }
-          toast.success('Welcome! glad to have you',{id: toastId});
-          console.log(res);
-        }
-        else{
-          toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
-        }
-        setNickName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+      if(avatar){
+        document.getElementById('Avatar').style.border = '1px solid #5b627c';
         setErrorMsg('');
-        return window.location.href = '/login';
+        const registerDetails = {
+          NickName: NickName,
+          Email: Email,
+          password: password
+        }
+        const toastId = toast.loading('Loading...');
+        const res = await axios ({
+          method: 'POST',
+          headers:{ 'Content-Type': 'application/json'},
+          url: 'https://powerful-anchorage-21815.herokuapp.com/register',
+          data: JSON.stringify(registerDetails),
+          });
+          if (res.status === 200){
+            if(res.data.msg){
+              toast.error('User already exist',{id: toastId});
+              return;
+            }
+            toast.success('Welcome! glad to have you',{id: toastId});
+            console.log(res);
+          }
+          else{
+            toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
+          }
+          setNickName('');
+          setEmail('');
+          setPassword('');
+          setConfirmPassword('');
+          setErrorMsg('');
+          return window.location.href = '/login';
+        }else{
+          setErrorMsg('MUST PICK AVATAR');
+          document.getElementById('Avatar').focus();
+        }
       }else{
-        document.getElementById('NickName').style.border = '1px solid #c15755';
-        setErrorMsg('NICK NAME IS NOT VALID!');
-        document.getElementById('NickName').focus();
-        return;
-      }
-  }
+          document.getElementById('NickName').style.border = '1px solid #c15755';
+          setErrorMsg('NICK NAME IS NOT VALID!');
+          document.getElementById('NickName').focus();
+          return;
+        }
+    }
   const loadStage = (stage) =>{
       switch(stage){
         case 1: {
@@ -134,7 +142,7 @@ function RegisterPage (){
                   <span>AVATAR</span>
                   {/* <input id='Avatar' value={avatar} type="file" onChange= {(e)=>setAvatar(e.target.value)}/> */}
                   <div className='avatar-div'>
-                    <button className='avatarBtn' style={{backgroundColor: avatar}} onClick={handleAvatarDiv}></button>
+                    <button className='avatarBtn' id='Avatar' style={{backgroundImage: `url(${avatar})`}} onClick={handleAvatarDiv}></button>
                   </div>
               </div>
             </div>
@@ -161,9 +169,14 @@ function RegisterPage (){
                  {loadStage(stage)}
                  {showAvatars &&
                  <div className='avatars-all-div scale-up-center'>
-                    <div className='avatar' onClick={()=>setAvatar('rgb(207, 207, 207)')}></div>
+                    {AvatarsData.map((val, key) => {
+                      return (
+                        <div className='avatar' style={{backgroundImage: `url(${val.img})`}} onClick={()=> setAvatar(val.avatar)} key={key}></div>
+                      )
+                    })}
+                    {/* <div className='avatar' onClick={()=>setAvatar('rgb(207, 207, 207)')}></div>
                     <div className='avatar'></div>
-                    <div className='avatar'></div>
+                    <div className='avatar'></div> */}
                  </div>
                  }
                 <div className="fightclub__form-content_input-form__error">
