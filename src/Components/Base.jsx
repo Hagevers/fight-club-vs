@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import '../Styling/Dashboard.css'
 import LoadingBoxes from './LoadingBoxes';
-function Base() {
+function Base(props) {
     const axios = require('axios');
     const [nickname, setNickName] = useState("");
     const [resource, setResource] = useState();
     const [loading, setLoading] = useState(true);
 
     const firstGetRes = (res) => {
+        console.log(res);
+        props.avatar(res.avatar);
         const resources = res.map(
-            user =>
-            <div className="fightclub__dashboard-content__boxes">
+            (user,key) =>
+            <div key={key} className="fightclub__dashboard-content__boxes">
                 <div className="fightclub__dashboard-content__boxes-box">
                     <div className="whole_box_wrraper">
                         <div className="box-content">
@@ -101,21 +103,21 @@ function Base() {
         }
     }
     useEffect(()=>{
-    setNickName(getNickName());
-    axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
-    {headers:{'Authorization': getCookie('token')}
-    })
-    .then(result=>{
-    })
-    axios
-    .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
-    {headers:{'Authorization': getCookie('token')}
-    })
-    .then(result=>{
-        setTimeout(() => setLoading(false), 1000);
-        firstGetRes(result.data);
-    })
+        setNickName(getNickName());
+        axios
+        .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
+        {headers:{'Authorization': getCookie('token')}
+        })
+        .then(result=>{
+        })
+        axios
+        .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
+        {headers:{'Authorization': getCookie('token')}
+        })
+        .then(result=>{
+            setTimeout(() => setLoading(false), 1000);
+            firstGetRes(result.data);
+        })
     }, []);
   return (
     <div className="Dashboard_content">

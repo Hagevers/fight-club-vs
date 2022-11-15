@@ -14,6 +14,7 @@ function RegisterPage (){
   const [showAvatars, setShowAvatars] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [stage, setStage] = useState(1);
+  const [avatarVal, setAvatarVal] = useState('');
   const handleAvatarDiv =(e) => {
     e.preventDefault();
     setShowAvatars(!showAvatars);
@@ -70,7 +71,8 @@ function RegisterPage (){
         const registerDetails = {
           NickName: NickName,
           Email: Email,
-          password: password
+          password: password,
+          avatar: avatarVal
         }
         const toastId = toast.loading('Loading...');
         const res = await axios ({
@@ -84,8 +86,7 @@ function RegisterPage (){
               toast.error('User already exist',{id: toastId});
               return;
             }
-            toast.success('Welcome! glad to have you',{id: toastId});
-            console.log(res);
+            toast.success('Registerd succesfully redirecting to login page...',{id: toastId});
           }
           else{
             toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
@@ -93,6 +94,8 @@ function RegisterPage (){
           setNickName('');
           setEmail('');
           setPassword('');
+          setAvatar('');
+          setAvatarVal('');
           setConfirmPassword('');
           setErrorMsg('');
           return window.location.href = '/login';
@@ -106,7 +109,11 @@ function RegisterPage (){
           document.getElementById('NickName').focus();
           return;
         }
-    }
+  }
+  const handleValClick = (val) => {
+    setAvatar(val.avatar);
+    setAvatarVal(val.title);
+  }
   const loadStage = (stage) =>{
       switch(stage){
         case 1: {
@@ -140,7 +147,6 @@ function RegisterPage (){
               </div>
               <div className="fightclub__form-content_input-form__nickname">
                   <span>AVATAR</span>
-                  {/* <input id='Avatar' value={avatar} type="file" onChange= {(e)=>setAvatar(e.target.value)}/> */}
                   <div className='avatar-div'>
                     <button className='avatarBtn' id='Avatar' style={{backgroundImage: `url(${avatar})`}} onClick={handleAvatarDiv}></button>
                   </div>
@@ -171,12 +177,9 @@ function RegisterPage (){
                  <div className='avatars-all-div scale-up-center'>
                     {AvatarsData.map((val, key) => {
                       return (
-                        <div className='avatar' style={{backgroundImage: `url(${val.img})`}} onClick={()=> setAvatar(val.avatar)} key={key}></div>
+                        <div className='avatar' style={{backgroundImage: `url(${val.img})`}} onClick={()=> handleValClick(val)} key={key}></div>
                       )
                     })}
-                    {/* <div className='avatar' onClick={()=>setAvatar('rgb(207, 207, 207)')}></div>
-                    <div className='avatar'></div>
-                    <div className='avatar'></div> */}
                  </div>
                  }
                 <div className="fightclub__form-content_input-form__error">

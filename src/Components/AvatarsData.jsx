@@ -9,9 +9,9 @@ import dwarfAvatar from '../Styling/dwarf.jpg';
 
 export const AvatarsData = [
     {
-        title: 'ork',
+        title: 'dwarf',
         img: dwarf,
-        avatar: dwarfAvatar
+        avatar: dwarfAvatar,
     },
     {
         title: 'viking',

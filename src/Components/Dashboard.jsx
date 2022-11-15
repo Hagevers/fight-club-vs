@@ -13,35 +13,11 @@ import Logout from "./Logout";
 
 function Dashboard(){
     const axios = require('axios');
-    // const getTable = async () => {
-    //     let time = 0;
-    //     try{
-    //         const timer = setInterval(() => {
-    //             console.log(time);
-    //             time++
-    //         }, 1000);
-    //         const res = await axios({
-    //             method: 'GET',
-    //             url: 'api/dashboard',
-    //             headers:{ 'Content-Type': 'application/json'}
-    //         });
-    //         window.localStorage.setItem('dashboardTable', res.data);
-    //         console.log(res.data);
-    //         console.log("after fetch time "+ time);
-    //         const map = res.data.map(
-    //             user => <tr><td>{user.UserId.NickName}</td><td>{user.Gold}</td><td>{user.Solfour}</td><td>{user.Marble}</td><td>{user.Food}</td></tr>
-    //         )
-    //         console.log("after map time "+ time);
-    //         clearInterval(timer);
-    //         return map
-    //     }catch(e){
-    //         console.log(e);
-    //     }
-    // }
     const [notiColor, setNotiColor] = useState("#bdbec7");
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
     const [active, setActive] = useState('Base');
+    const [avatar, setAvatar] = useState();
     const getCookie = (cname) =>{
         try{
             let name = cname + "=";
@@ -64,7 +40,7 @@ function Dashboard(){
     const loadComp = (link) => {
         switch (link){
             case 'Base':
-                return <Base />
+                return <Base avatar={setAvatar}/>
             case 'Shop':
                 return <Shop />
             case 'Attack':
@@ -72,7 +48,7 @@ function Dashboard(){
             case 'Logout':
                 return <Logout />
             default:
-                return <Base />
+                return <Base avatar={setAvatar}/>
         }
     }
     useEffect(()=>{
@@ -100,7 +76,7 @@ function Dashboard(){
                                 <ShoppingCartCheckoutRoundedIcon sx={{color:cartColor, width:42, height:42}}/>
                             </div></a>
                             <a href="#"><div className="Header_tool_bar_icons_profile">
-                                <Avatar alt="Remy Sharp" src={nisim} sx={{color:"#bdbec7", width:48, height:48}}/>
+                                <Avatar alt="Remy Sharp" src={avatar} sx={{color:"#bdbec7", width:48, height:48}}/>
                             </div></a>
                         </div>
                     </div>

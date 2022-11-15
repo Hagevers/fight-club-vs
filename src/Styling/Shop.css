@@ -38,11 +38,11 @@
     padding: 1rem;
     color: #fff;
     background: #212940;
-    background: linear-gradient(143deg, #212940 0%, #1c2437 100%);
+    background: linear-gradient(143deg, #312441 0%, #3d2a50 100%);
     outline: none;
     font-size: 15px;
     font-family: var(--font-family);
-    border: 1px solid #364163;
+    border: 1px solid rgba(118, 55, 134, 0.8);
     text-align: center;
     height: 30px;
 }
@@ -50,11 +50,11 @@
     border-radius: 10px;
     color: #fff;
     background: #212940;
-    background: linear-gradient(143deg, #212940 0%, #1c2437 100%);
+    background: linear-gradient(143deg, #312441 0%, #3d2a50 100%);
     outline: none;
     font-size: 15px;
     font-family: var(--font-family);
-    border: 1px solid #364163;
+    border: 1px solid rgba(118, 55, 134, 0.8);
     height: 30px;
     text-align: center;
     width: 30%;
