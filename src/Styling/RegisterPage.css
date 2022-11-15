@@ -120,17 +120,16 @@
 .fightclub__form-content_input-form__nickname .avatarBtn{
   height: 120px;
   width: 120px;
-  background-color: #333;
+  background-color: rgb(101,74,134);
   border-radius: 50%;
+  outline: none;
+  border: none;
 }
 
-.avatars-div{
-  background-color: #333;
-}
 .avatars-all-div{
   display: flex;
   flex-direction: row;
-  background-color: #333;
+  background-color: rgb(155, 125, 192);
   height: 100%;
   width: 100%;
   justify-content: center;
@@ -140,7 +139,7 @@
   width: 50px;
   margin: 2rem;
   border-radius: 50%;
-  background-color: #c15755;
+  background-color: rgb(207, 207, 207);
 }
 
 @media screen and (max-width: 280px) {

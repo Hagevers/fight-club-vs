@@ -5,7 +5,6 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import LogoutIcon from '@mui/icons-material/Logout';
-import toast, { Toaster } from 'react-hot-toast';
 
 export const SidebarData = [
     {

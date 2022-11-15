@@ -161,7 +161,7 @@ function RegisterPage (){
                  {loadStage(stage)}
                  {showAvatars &&
                  <div className='avatars-all-div scale-up-center'>
-                    <div className='avatar' onClick={()=>setAvatar('rgb(101,74,134)')}></div>
+                    <div className='avatar' onClick={()=>setAvatar('rgb(207, 207, 207)')}></div>
                     <div className='avatar'></div>
                     <div className='avatar'></div>
                  </div>
