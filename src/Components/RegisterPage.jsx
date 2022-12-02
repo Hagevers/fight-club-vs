@@ -61,7 +61,7 @@ function RegisterPage (){
   }
   const handleOnSubmit = async (e) => {
     e.preventDefault()
-    const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.{8,})/;
+    const pattern = /^([a-z])\w+|([A-Z])\w/;
     if (pattern.test(NickName)){
       document.getElementById('NickName').style.border = '1px solid #5b627c';
       setErrorMsg('');
@@ -86,7 +86,7 @@ function RegisterPage (){
               toast.error('User already exist',{id: toastId});
               return;
             }
-            toast.success('Registerd succesfully redirecting to login page...',{id: toastId});
+            toast.success('Registerd succesfully, please validate your account in your mail address',{id: toastId});
           }
           else{
             toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
@@ -98,10 +98,11 @@ function RegisterPage (){
           setAvatarVal('');
           setConfirmPassword('');
           setErrorMsg('');
-          return window.location.href = '/login';
+          return;
         }else{
           setErrorMsg('MUST PICK AVATAR');
           document.getElementById('Avatar').focus();
+          return;
         }
       }else{
           document.getElementById('NickName').style.border = '1px solid #c15755';

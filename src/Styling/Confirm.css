@@ -1,0 +1,46 @@
+.confirm-wrraper{
+    width: 100vw;
+    height: 100vh;
+    background: rgb(101,74,134);
+    background: -moz-linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+    background: linear-gradient(180deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#654a86",endColorstr="#5944a8",GradientType=1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+}
+
+.confirm-outer{
+    padding: 2rem;
+    height: 500px;
+    width: 500px;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    flex-direction: column;
+}
+.confirm-content{
+    width: 100%;
+    margin: 2rem;
+}
+.confirm-content button{
+    width: 80%;
+    height: 50px;
+    outline: none;
+    background: linear-gradient(90deg, rgba(101,74,134,1) 0%, rgba(89,68,168,1) 100%);
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.confirm-content button:hover{
+    background: linear-gradient(90deg, rgb(112, 86, 204) 0%, rgb(136, 100, 180) 100%);
+}

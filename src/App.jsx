@@ -30,7 +30,7 @@ function App() {
     }else{
       setUser(false)
     }
-  }, []);
+  }, [user]);
   return (
     <div>
       {!user ?

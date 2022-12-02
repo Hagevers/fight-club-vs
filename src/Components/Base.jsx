@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import '../Styling/Dashboard.css'
 import LoadingBoxes from './LoadingBoxes';
+import ork from '../Styling/ork.png';
+import dwarf from '../Styling/dwarf-avatar.jpg';
+import viking from '../Styling/viking-avatar.jpg';
+
 function Base(props) {
     const axios = require('axios');
     const [nickname, setNickName] = useState("");
@@ -8,8 +12,23 @@ function Base(props) {
     const [loading, setLoading] = useState(true);
 
     const firstGetRes = (res) => {
-        console.log(res);
-        props.avatar(res.avatar);
+        switch(res[0].avatar){
+            case "ork" : {
+                props.avatar(ork);
+                break;
+            }
+            case "dwarf" : {
+                props.avatar(dwarf);
+                break;
+            }
+            case "viking" :{
+                props.avatar(viking);
+                break;
+            }
+            default : {
+                break;
+            }
+        }
         const resources = res.map(
             (user,key) =>
             <div key={key} className="fightclub__dashboard-content__boxes">
@@ -118,7 +137,7 @@ function Base(props) {
             setTimeout(() => setLoading(false), 1000);
             firstGetRes(result.data);
         })
-    }, []);
+    }, [loading]);
   return (
     <div className="Dashboard_content">
         <div className="fightclub__dashboard-big__box">
