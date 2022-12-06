@@ -1,6 +1,7 @@
 body{
   margin: 0;
   padding: 0;
+  overflow: hidden;
   /* background-color: #1a1b1f; */
 }
 
@@ -227,6 +228,7 @@ body{
   font-weight: 500;
   transition: background-color 200ms;
   min-height: 40px;
+  cursor: pointer;
 }
 
 .table__content-table__row td{
@@ -236,16 +238,27 @@ body{
 .table__content-table__row:hover{
   background-color: #2e3958;
 }
-
+.attack__sidebar{
+  width: 1%;
+  transition: width 0.3s ease;
+}
 .attack__sidebar-content{
   color: #fff;
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #333;
+  background-color: rgba(81, 62, 105, 0.2);
   height: 100%;
   margin: 2rem;
   padding: 2rem;
+  border-radius: 5%;
+}
+
+.attack__sidebar.show{
+  width: 100%;
+}
+.table__content-table.left{
+  float:left;
 }
 /* ------------------------------------------- */
 .lgot-btn-wrapper{

@@ -1,7 +1,7 @@
 import { ShowerRounded } from '@mui/icons-material';
-import React, {useEffect, useState} from 'react'
-// import '../Styling/Attack.css'
-import '../Styling/Dashboard.css'
+import React, {useEffect, useState} from 'react';
+// import '../Styling/Attack.css';
+import '../Styling/Dashboard.css';
 
 function Attack() {
     const axios = require('axios');
@@ -75,7 +75,7 @@ function Attack() {
             </tr>
             {members}
         </table>
-        <div className='attack__sidebar'>
+        <div className={alreadyShown ? 'attack__sidebar show' : 'attack__sidebar'}>
             {alreadyShown && attackDetails}
         </div>
     </div>
