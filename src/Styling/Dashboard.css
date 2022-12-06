@@ -261,6 +261,10 @@ body{
 .attack__sidebar-content__inner{
   text-align: center;
 }
+.attack__sidebar-content__inner p {
+  font-size: 20px;
+  font-weight: 400;
+}
 /* ------------------------------------------- */
 .lgot-btn-wrapper{
   text-align: center;

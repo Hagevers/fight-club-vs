@@ -27,7 +27,7 @@ function Attack() {
     const showAttackOptions = (prop) => {
         if(alreadyShown) {
             if(lastMember === prop.NickName) return setAlreadyShown(false)
-        }
+        }else setAlreadyShown(true)
         const res = 
         <div className='attack__sidebar-content'>
             <h1>{prop.NickName}</h1>
@@ -37,8 +37,6 @@ function Attack() {
         </div>
         setAttackDetails(res);
         setLastMember(prop.NickName);
-        setAlreadyShown(true);
-            
     }
     const getCookie = (cname) =>{
         try{
