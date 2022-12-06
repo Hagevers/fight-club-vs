@@ -209,7 +209,7 @@ body{
   font-family: var(--font-family);
 }
 /* ----------------------- END OF RESOURCES CSS ---------------------------- */
-
+/*------------------------TABLE CSS----------------------------------------- */
 .table__content{
   width: 100%;
   display: flex;
@@ -237,6 +237,17 @@ body{
   background-color: #2e3958;
 }
 
+.attack__sidebar-content{
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #333;
+  height: 100%;
+  margin: 2rem;
+  padding: 2rem;
+}
+/* ------------------------------------------- */
 .lgot-btn-wrapper{
   text-align: center;
   margin: auto;
