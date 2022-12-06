@@ -31,6 +31,9 @@ function Attack() {
         const res = 
         <div className='attack__sidebar-content'>
             <h1>{prop.NickName}</h1>
+            <div className='attack__sidebar-content__inner'>
+                <p>Soldiers: {prop.Power.Soldiers.Ammount}</p>
+            </div>
         </div>
         setAttackDetails(res);
         setLastMember(prop.NickName);

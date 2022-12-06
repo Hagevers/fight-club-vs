@@ -257,8 +257,9 @@ body{
 .attack__sidebar.show{
   width: 100%;
 }
-.table__content-table.left{
-  float:left;
+
+.attack__sidebar-content__inner{
+  text-align: center;
 }
 /* ------------------------------------------- */
 .lgot-btn-wrapper{
