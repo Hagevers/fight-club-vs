@@ -9,7 +9,19 @@ function Attack() {
     const [attackDetails, setAttackDetails] = useState('');
     const [alreadyShown, setAlreadyShown] = useState(false);
     const [lastMember, setLastMember] = useState();
+    const {getCookie, getNickName} = require('../Backend/getNickName');
     
+
+    const attackMember = async (member) =>{
+        const attackerId = getNickName(getCookie);
+        const res = await axios({
+            method: 'POST',
+            headers:{ 'Content-Type': 'application/json'},
+            url: `https://powerful-anchorage-21815.herokuapp.com/${member._id}`,
+            data: JSON.stringify({attacker: attackerId})
+        });
+        console.log(res);
+    }
     const getTableMembers = (result) =>{
         let i = 1
         const members = result.map((member, key) =>{
@@ -33,29 +45,13 @@ function Attack() {
             <h1>{prop.NickName}</h1>
             <div className='attack__sidebar-content__inner'>
                 <p>Soldiers: {prop.Power.Soldiers.Ammount}</p>
+                <p>Gold : </p>
+                <button className='attack__sidebar-content__inner-spy'>Spy</button>
+                <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button>
             </div>
         </div>
         setAttackDetails(res);
         setLastMember(prop.NickName);
-    }
-    const getCookie = (cname) =>{
-        try{
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for(let i = 0; i <ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-            }
-            return "";
-        }catch{
-            return "";
-        }
     }
     useEffect(()=>{
         axios.get('https://powerful-anchorage-21815.herokuapp.com/getMembers',
