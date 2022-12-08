@@ -9,6 +9,7 @@ function Attack() {
     const [attackDetails, setAttackDetails] = useState('');
     const [alreadyShown, setAlreadyShown] = useState(false);
     const [lastMember, setLastMember] = useState();
+    const [showAttackBtn,setShowAttackBtn] = useState(true);
     const {getCookie, getNickName} = require('../Backend/getNickName');
     
 
@@ -40,6 +41,9 @@ function Attack() {
         if(alreadyShown) {
             if(lastMember === prop.NickName) return setAlreadyShown(false)
         }else setAlreadyShown(true)
+        if(prop.NickName === getNickName(getCookie)){
+            setShowAttackBtn(false);
+        }else{setShowAttackBtn(true);}
         const res = 
         <div className='attack__sidebar-content'>
             <h1>{prop.NickName}</h1>
@@ -47,7 +51,7 @@ function Attack() {
                 <p>Soldiers: {prop.Power.Soldiers.Ammount}</p>
                 <p>Gold : </p>
                 <button className='attack__sidebar-content__inner-spy'>Spy</button>
-                <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button>
+                {showAttackBtn && <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button>}
             </div>
         </div>
         setAttackDetails(res);
@@ -59,7 +63,7 @@ function Attack() {
         .then(result => {
             getTableMembers(result.data);
         })
-    },[alreadyShown, lastMember])
+    },[alreadyShown, lastMember, showAttackBtn])
   return (
     <div className='table__content'>
         <table className='table__content-table'>
