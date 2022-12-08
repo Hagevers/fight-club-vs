@@ -1,7 +1,6 @@
 body{
   margin: 0;
   padding: 0;
-  overflow: hidden;
   /* background-color: #1a1b1f; */
 }
 
@@ -214,6 +213,7 @@ body{
 .table__content{
   width: 100%;
   display: flex;
+  overflow: hidden;
   justify-content: center;
 }
 .table__content-table{

@@ -16,11 +16,11 @@ function Attack() {
         const attackerId = getNickName(getCookie);
         const res = await axios({
             method: 'POST',
-            headers:{ 'Content-Type': 'application/json'},
-            url: `https://powerful-anchorage-21815.herokuapp.com/${member._id}`,
-            data: JSON.stringify({attacker: attackerId})
+            headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
+            url: `https://powerful-anchorage-21815.herokuapp.com/attack/${member._id}`,
+            data: JSON.stringify({attacker: attackerId}),
         });
-        console.log(res);
+        console.log(res.data);
     }
     const getTableMembers = (result) =>{
         let i = 1
