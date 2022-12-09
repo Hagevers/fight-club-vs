@@ -95,6 +95,7 @@ function Base(props) {
         {headers:{'Authorization': getCookie('token')}
         })
         .then(result=>{
+            console.log(result);
         })
         axios
         .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
@@ -104,7 +105,7 @@ function Base(props) {
             setTimeout(() => setLoading(false), 1000);
             firstGetRes(result.data);
         })
-    }, [loading, resource]);
+    }, [loading]);
   return (
     <div className="Dashboard_content">
         {/* <div className="fightclub__dashboard-big__box">
