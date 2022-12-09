@@ -45,7 +45,8 @@
     background: #ffd700;
 }
 .fightclub__prizes-content__places-box h1{
-    padding: 4.5rem;
+    /* padding: 3.5rem; */
+    font-size: 102px;
     opacity: 60%;
     font-family: var(--font-family);
 }
