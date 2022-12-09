@@ -59,7 +59,7 @@ function Dashboard(){
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
-                <Sidebar acti= {(val) => setActive(val)}/>
+                <Sidebar whichActive= {active} acti= {(val) => setActive(val)}/>
             </div>
             <div className="content spacer">
                 <div className="Header_content">

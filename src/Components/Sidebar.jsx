@@ -8,7 +8,7 @@ function Sidebar(props){
             <ul className="sideBarList">
                 {SidebarData.map((val, key) => {
                     return (
-                        <li id={window.location.pathname === val.link ? "active" : ""} key={key} className="row" onClick={()=>val.func(props.acti)}>
+                        <li id={props.whichActive === val.title ? "active" : ""} key={key} className="row" onClick={()=>val.func(props.acti)}>
                             <div id="icon">{val.icon}</div>
                             <div id="title" >
                                 {val.title}

@@ -10,7 +10,7 @@ body{
   height: 100%;
   width: 250px;
   border-right: 1px solid rgba(118, 55, 134, 0.8);
-  /* background-color:  #1a1b1f; */
+  background-color:  #282043;
 }
 .sideBar-div{
   display: flex;
@@ -52,8 +52,7 @@ body{
   background-color: #5944a8;
 }
 .sideBar #active{
-  background-color: rgba(76,65,119,100);
-  filter: drop-shadow(0 0 0.75rem crimson);
+  background-color: #F85D58;
 }
 
 /* ----------------------- END OF SIDEBAR CSS ----------------------- */
@@ -66,8 +65,8 @@ body{
   height: 100vh;
   width: 100vw;
   display: flex;
-  background: rgb(101,74,134);
-  background: linear-gradient(143deg, rgb(101,74,134) 0%, rgba(0,0,0,1) 100%);
+  background: #2D2449;
+  /* background: linear-gradient(143deg, rgb(150, 94, 242) 0%, rgba(0,0,0,1) 100%); */
 }
 .Header_tool_bar{
   width: 100%;
@@ -92,8 +91,8 @@ body{
   width: 30%;
   padding: 1rem 1rem 1rem 3rem;
   color: #fff;
-  background: rgb(101,74,134);
-  background: linear-gradient(143deg, rgb(101,74,134) 0%, #4d3866 100%);
+  background: #2D2449;
+  /* background: linear-gradient(143deg, rgb(101,74,134) 0%, #4d3866 100%); */
   outline: none;
   font-size: 15px;
   font-family: var(--font-family);
@@ -193,7 +192,7 @@ body{
 .Header_tool_bar_icons_profile,
 .Header_tool_bar_icons_shop,
 .Header_tool_bar_icons_noti{
-  background-color: #553b6e;
+  background-color: #332E59;
   padding: 0.5rem;
   border-radius: 20px;
   transition: background-color 200ms , color 200ms;
@@ -201,7 +200,7 @@ body{
 .Header_tool_bar_icons_profile:hover,
 .Header_tool_bar_icons_shop:hover,
 .Header_tool_bar_icons_noti:hover{
-  background-color: #5944a8;
+  background-color: #F85D58;
   color:#fff;
 }
 /* ----------------------- END OF DASHBOARD CSS ---------------------------- */
@@ -349,7 +348,7 @@ body{
 .base__content__big-box{
   width: 100%;
   min-height: 250px;
-  background-color: #2e3958;
+  background-color: #332E59;
   border-radius: 15px;
 }
 /*change style color */
@@ -373,7 +372,7 @@ body{
   min-height: 300px;
   display: flex;
   border-radius: 15px;
-  background-color: #2e3958;
+  background-color: #332E59;
 }
 
 .test{
@@ -381,7 +380,7 @@ body{
   flex: 1;
 }
 .test h1{
-  margin:0;
+  margin:1rem;
   font-size: 28px;
 }
 .test div,h1{
