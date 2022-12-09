@@ -7,6 +7,7 @@ import viking from '../Styling/viking-avatar.jpg';
 
 function Base(props) {
     const axios = require('axios');
+    const {getCookie, getUserParam} = require('../Backend/getNickName');
     const [nickname, setNickName] = useState("");
     const [resource, setResource] = useState();
     const [loading, setLoading] = useState(true);
@@ -31,61 +32,55 @@ function Base(props) {
         }
         const resources = res.map(
             (user,key) =>
-            <div key={key} className="fightclub__dashboard-content__boxes">
-                <div className="fightclub__dashboard-content__boxes-box">
-                    <div className="whole_box_wrraper">
-                        <div className="box-content">
-                            <h1>Resources</h1>
-                            <div>Available Workers : {user.Workers.Available}</div>
-                            <div>Gold: {user.Resources.Gold}</div>
-                            <div>Solfour: {user.Resources.Solfour}</div>
-                            <div>Marble: {user.Resources.Marble}</div>
-                            <div>Food: {user.Resources.Food}</div>
-                        </div>
-                        <div className="box-content">
-                            <h1>Workers</h1>
-                            <div>Workers : {user.Workers.Mine + user.Workers.Mountains + user.Workers.Quary + user.Workers.Farm}</div>
-                            <div>Mine: {user.Workers.Mine}</div>
-                            <div>Mountains: {user.Workers.Mountains}</div>
-                            <div>Quary: {user.Workers.Quary}</div>
-                            <div>Farm: {user.Workers.Farm}</div>
-                        </div>
+            <div key={key} className="base__content__small-box__wrapper">
+                <div className="small-box">
+                    <div className="test">
+                        <h1>Resources</h1>
+                        <div>Available Workers : {user.Workers.Available}</div>
+                        <div>Gold: {user.Resources.Gold}</div>
+                        <div>Solfour: {user.Resources.Solfour}</div>
+                        <div>Marble: {user.Resources.Marble}</div>
+                        <div>Food: {user.Resources.Food}</div>
+                    </div>
+                    <div className="test">
+                        <h1>Workers</h1>
+                        <div>Workers : {user.Workers.Mine + user.Workers.Mountains + user.Workers.Quary + user.Workers.Farm}</div>
+                        <div>Mine: {user.Workers.Mine}</div>
+                        <div>Mountains: {user.Workers.Mountains}</div>
+                        <div>Quary: {user.Workers.Quary}</div>
+                        <div>Farm: {user.Workers.Farm}</div>
                     </div>
                 </div>
-                <div className="fightclub__dashboard-content__boxes-box">
-                    <div className="whole_box_wrraper">
-                        <div className="box-content">
-                            <h1>Vault</h1>
-                            <div>Gold: {user.Resources.Vault.Gold}</div>
-                            <div>Solfour: {user.Resources.Vault.Solfour}</div>
-                            <div>Marble: {user.Resources.Vault.Marble}</div>
-                            <div>Food: {user.Resources.Vault.Food}</div>
-                        </div>
-                        <div className="box-content">
-                            <h1>Efficiency</h1>
-                            <div>Mine: {user.Workers.Efficiency.Mine}</div>
-                            <div>Mountains: {user.Workers.Efficiency.Mountains}</div>
-                            <div>Quary: {user.Workers.Efficiency.Quary}</div>
-                            <div>Farm: {user.Workers.Efficiency.Farm}</div>
-                        </div>
+                <div className="small-box">
+                    <div className="test">
+                        <h1>Vault</h1>
+                        <div>Gold: {user.Resources.Vault.Gold}</div>
+                        <div>Solfour: {user.Resources.Vault.Solfour}</div>
+                        <div>Marble: {user.Resources.Vault.Marble}</div>
+                        <div>Food: {user.Resources.Vault.Food}</div>
+                    </div>
+                    <div className="test">
+                        <h1>Efficiency</h1>
+                        <div>Mine: {user.Workers.Efficiency.Mine}</div>
+                        <div>Mountains: {user.Workers.Efficiency.Mountains}</div>
+                        <div>Quary: {user.Workers.Efficiency.Quary}</div>
+                        <div>Farm: {user.Workers.Efficiency.Farm}</div>
                     </div>
                 </div>
-                <div className="fightclub__dashboard-content__boxes-box">
-                    <div className="whole_box_wrraper">
-                        <div className="box-content">
-                            <h1>Soldiers</h1>
-                            <div>Ammout: {user.Power.Soldiers.Ammount}</div>
-                            <div>Available: {user.Power.Soldiers.Available}</div>
-                            <div>Level: {user.Power.Soldiers.Level}</div>
-                            <div>Spies: none</div>
-                        </div>
-                        <div className="box-content">
-                            <h1>Power</h1>
-                            <div>Land: {user.Power.Items}</div>
-                            <div>Sea: {user.Power.Items}</div>
-                            <div>Air: {user.Power.Items}</div>
-                            <div>Spies: {user.Power.Items}</div>
-                        </div>
+                <div className="small-box">
+                    <div className="test">
+                        <h1>Soldiers</h1>
+                        <div>Ammout: {user.Power.Soldiers.Ammount}</div>
+                        <div>Available: {user.Power.Soldiers.Available}</div>
+                        <div>Level: {user.Power.Soldiers.Level}</div>
+                        <div>Spies: none</div>
+                    </div>
+                    <div className="test">
+                        <h1>Power</h1>
+                        <div>Land: {user.Power.Soldiers.Ammount}</div>
+                        <div>Sea: {user.Power.Soldiers.Ammount}</div>
+                        <div>Air: {user.Power.Soldiers.Ammount}</div>
+                        <div>Spies: {user.Power.Soldiers.Ammount}</div>
                     </div>
                 </div>
             </div>
@@ -93,36 +88,8 @@ function Base(props) {
         setResource(resources);
     
     }
-    const getNickName = () => {
-        try{
-        const nick = getCookie('token').split(' ')[1];
-        const decode = JSON.parse(Buffer.from(nick.split('.')[1], 'base64'));
-        return decode.NickName
-        }catch{
-            return ""
-        }
-      }
-    const getCookie = (cname) =>{
-        try{
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for(let i = 0; i <ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-            }
-            return "";
-        }catch{
-            return "";
-        }
-    }
     useEffect(()=>{
-        setNickName(getNickName());
+        setNickName(getUserParam(getCookie, 'NickName'));
         axios
         .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
         {headers:{'Authorization': getCookie('token')}
@@ -137,16 +104,15 @@ function Base(props) {
             setTimeout(() => setLoading(false), 1000);
             firstGetRes(result.data);
         })
-    }, [loading]);
+    }, [loading, resource]);
   return (
     <div className="Dashboard_content">
-        <div className="fightclub__dashboard-big__box">
+        {/* <div className="fightclub__dashboard-big__box">
             <div className='fightclub__dashboard-content__boxes-box'>
                 <p>NickName: {nickname}</p>
             </div>
         </div>
         {loading ? 
-        <>
             <div className="fightclub__dashboard-content__boxes">
                 <div className="fightclub__dashboard-content__boxes-box">
                     <div className="whole_box_wrraper">
@@ -170,12 +136,45 @@ function Base(props) {
                     </div>
                 </div>
             </div>
-        </>
         : 
-        <div>
-        {resource}
+        <div className='fightclub__dashboard-small__box'>
+            {resource}
         </div>
-        }
+        } */}
+        <div className='base__content'>
+            <div className='base__content__big-box'>
+                <p>NickName: {nickname}</p>
+            </div>
+            {/* <div className='base__content__small-box__wrapper'>
+                <div className='small-box'>
+                    <div className='test'>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                    </div>
+                </div>
+                <div className='small-box'>
+                    <div className='test'>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                    </div>
+                </div>
+                <div className='small-box'>
+                    <div className='test'>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                        <div>Amit</div>
+                    </div>
+                </div>
+            </div>*/}
+            {resource}
+        </div> 
+
+        {/* <button style={{height:'250px', width:'100%'}}>Amit</button> */}
     </div>
   )
 }

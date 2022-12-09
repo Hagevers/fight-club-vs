@@ -11,7 +11,7 @@ const LoadingBoxes = (props) => (
     foregroundColor="#4d2c5e"
     {...props}
   >
-    <rect x="42" y="77" rx="10" ry="10" width="450" height="400" />
+    <rect x="42" y="77" rx="10" ry="10" width="100%" height="400" />
   </ContentLoader>
 )
 

@@ -9,12 +9,11 @@ function Attack() {
     const [attackDetails, setAttackDetails] = useState('');
     const [alreadyShown, setAlreadyShown] = useState(false);
     const [lastMember, setLastMember] = useState();
-    const [showAttackBtn,setShowAttackBtn] = useState(true);
-    const {getCookie, getNickName} = require('../Backend/getNickName');
+    const {getCookie, getUserParam} = require('../Backend/getNickName');
     
 
     const attackMember = async (member) =>{
-        const attackerId = getNickName(getCookie);
+        const attackerId = getUserParam(getCookie, '_id');
         const res = await axios({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
@@ -37,21 +36,32 @@ function Attack() {
             )})
         setMembers(members);
     }
-    const showAttackOptions = (prop) => {
+    let shown = true;
+    const showAttackOptions = async (prop) => {
         if(alreadyShown) {
             if(lastMember === prop.NickName) return setAlreadyShown(false)
         }else setAlreadyShown(true)
-        if(prop.NickName === getNickName(getCookie)){
-            setShowAttackBtn(false);
-        }else{setShowAttackBtn(true);}
+        console.log(prop._id);
+
+        if(prop._id === getUserParam(getCookie, '_id')) shown = false;
+        else shown = true;
+
         const res = 
         <div className='attack__sidebar-content'>
             <h1>{prop.NickName}</h1>
             <div className='attack__sidebar-content__inner'>
                 <p>Soldiers: {prop.Power.Soldiers.Ammount}</p>
                 <p>Gold : </p>
-                <button className='attack__sidebar-content__inner-spy'>Spy</button>
-                {showAttackBtn && <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button>}
+                {shown ?
+                <div>
+                    <div>
+                        <button className='attack__sidebar-content__inner-spy'>Spy</button>
+                    </div>
+                    <div>
+                        <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button> 
+                    </div>
+                </div>
+                : null}
             </div>
         </div>
         setAttackDetails(res);
@@ -63,7 +73,7 @@ function Attack() {
         .then(result => {
             getTableMembers(result.data);
         })
-    },[alreadyShown, lastMember, showAttackBtn])
+    },[shown, alreadyShown, lastMember])
   return (
     <div className='table__content'>
         <table className='table__content-table'>

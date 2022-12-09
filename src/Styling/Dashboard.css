@@ -124,7 +124,11 @@ body{
 }
 .fightclub__dashboard-big__box{
   width: 100%;
-  display: flex;
+  margin: 2rem 0 1rem;
+  min-height: 450px;
+}
+.fightclub__dashboard-small__box{
+  width: 100%;
   margin: 2rem 0 1rem;
   min-height: 450px;
 }
@@ -138,15 +142,14 @@ body{
 .fightclub__dashboard-content__boxes-box{
   width: 100%;
   min-height: 250px;
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   border-radius: 20px;
   background: rgba(118, 55, 134, 0.1);
   /* background: linear-gradient(143deg, rgb(101,74,134) 0%, #271c34 100%); */
   border: 1px solid rgba(118, 55, 134, 0.5);
   padding: 0 1rem;
   margin: 2rem 1.5rem;
-  transition: padding 200ms;
 }
 .wrapper-box-content{
   display: flex;
@@ -158,11 +161,13 @@ body{
 }
 .box-content{
   flex:1;
+  width: 100%;
   margin-left: 2rem;
 }
 .box-content div{
   color: #fff;
   margin-left: 2rem;
+  width: 100%;
 }
 .wrapper-box-content h1{
   font-size: 34px;
@@ -330,4 +335,61 @@ body{
 
 .lgot-btn:hover{
   background-color: #5944a8;
+}
+
+
+/* ------------------------------------------ */
+.base__content{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.base__content__big-box{
+  width: 100%;
+  min-height: 250px;
+  background-color: #2e3958;
+  border-radius: 15px;
+}
+/*change style color */
+.base__content__big-box p {
+  margin: 2rem;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
+}
+.base__content__small-box__wrapper{
+  width: 100%;
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: row;
+  gap: 20px;
+}
+.small-box{
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  border-radius: 15px;
+  background-color: #2e3958;
+}
+
+.test{
+  width: 100%;
+  flex: 1;
+}
+.test h1{
+  margin:0;
+  font-size: 28px;
+}
+.test div,h1{
+  margin: 2rem;
+  width: 100%;
+  color: #fff;
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 32px;
 }

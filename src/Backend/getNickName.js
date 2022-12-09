@@ -17,11 +17,21 @@ exports.getCookie = (cname) =>{
         return "";
     }
 }
-exports.getNickName = (getCookie) => {
+exports.getUserParam = (getCookie,param) => {
     try{
     const nick = getCookie('token').split(' ')[1];
     const decode = JSON.parse(Buffer.from(nick.split('.')[1], 'base64'));
-    return decode.user_id
+    switch (param){
+        case 'NickName':
+            return decode.NickName
+        case 'Power':
+            return decode.Power
+        case '_id':
+            return decode.user_id
+        default:
+            return decode.NickName
+    }
+    return ""
     }catch{
         return ""
     }
