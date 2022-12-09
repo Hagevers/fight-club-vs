@@ -91,13 +91,6 @@ function Base(props) {
     useEffect(()=>{
         setNickName(getUserParam(getCookie, 'NickName'));
         axios
-        .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
-        {headers:{'Authorization': getCookie('token')}
-        })
-        .then(result=>{
-            console.log(result);
-        })
-        axios
         .get('https://powerful-anchorage-21815.herokuapp.com/getResources',
         {headers:{'Authorization': getCookie('token')}
         })

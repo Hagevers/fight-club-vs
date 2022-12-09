@@ -1,4 +1,3 @@
-import { ShowerRounded } from '@mui/icons-material';
 import React, {useEffect, useState} from 'react';
 // import '../Styling/Attack.css';
 import '../Styling/Dashboard.css';
@@ -77,14 +76,16 @@ function Attack() {
   return (
     <div className='table__content'>
         <table className='table__content-table'>
-            <tr className='table__content-table__row'>
-                <th>Rank</th>
-                <th>NickName</th>
-                <th>Soldiers</th>
-                <th>Alliance</th>
-                <th>Satus</th>
-            </tr>
-            {members}
+            <tbody>
+                <tr className='table__content-table__row'>
+                    <th>Rank</th>
+                    <th>NickName</th>
+                    <th>Soldiers</th>
+                    <th>Alliance</th>
+                    <th>Satus</th>
+                </tr>
+                {members}
+            </tbody>
         </table>
         <div className={alreadyShown ? 'attack__sidebar show' : 'attack__sidebar'}>
             {alreadyShown && attackDetails}

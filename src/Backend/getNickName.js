@@ -31,7 +31,6 @@ exports.getUserParam = (getCookie,param) => {
         default:
             return decode.NickName
     }
-    return ""
     }catch{
         return ""
     }

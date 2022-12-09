@@ -1,5 +1,3 @@
-import React from 'react';
-import ork from '../Styling/ork.png';
 import orks from '../Styling/orks.png';
 import orker from '../Styling/orker.png';
 import vikingAvatar from '../Styling/viking.jpg';

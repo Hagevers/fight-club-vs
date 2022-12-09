@@ -1,15 +1,12 @@
 import React from 'react'
-import toast, { Toaster , resolveValue} from 'react-hot-toast'
-import LogoutIcon from '@mui/icons-material/Logout';
 import '../Styling/Dashboard.css'
 
 function Logout() {
-
     const logoutF = () =>{
         const d = new Date();
         d.setTime(d.getTime() - 8880);
         let expires = "expires=" + d.toUTCString();
-        document.cookie = 'token' + "=" + 'loggedOut' + ";" + expires + ";path=/";
+        document.cookie = 'token=loggedOut;' + expires + ';path=/';
         window.location.href="/"
     }
   return (

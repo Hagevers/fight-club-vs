@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { ShopData } from './ShopData'
 import '../Styling/Shop.css'
 function Shop() {

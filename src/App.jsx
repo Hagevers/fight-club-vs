@@ -3,27 +3,13 @@ import HomeMenu from './Components/HomeMenu';
 import Dashboard from './Components/Dashboard';
 import './App.css';
 import LandingOpener from './Components/LandingOpener';
-import {BrowserRouter,Routes,Route, useNavigate} from "react-router-dom";
 import About from './Components/About';
 import Prizes from './Components/Prizes';
+import VideoOpener from './Components/VideoOpener';
 
 function App() {
   const [user, setUser] = useState(false);
-  const getCookie = (cname) =>{
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+  const {getCookie} = require('./Backend/getNickName');
   useEffect(()=>{
     if(getCookie('token')){
       setUser(true)
@@ -36,6 +22,7 @@ function App() {
       {!user ?
         <div>
             <div className='gradient__bg'>
+              <VideoOpener />
               <HomeMenu />
               <LandingOpener />
             </div>

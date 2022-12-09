@@ -1,7 +1,7 @@
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import '../Styling/LoginPage.css'
 import toast, { Toaster } from 'react-hot-toast';
 import logo from '../Styling/fight_club_l.png';
@@ -11,7 +11,7 @@ function LoginPage (props){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
-    const [isChecked, setisChecked] = useState(false);
+    // const [isChecked, setisChecked] = useState(false);
     const clickLogin = async (e) => {
         e.preventDefault();
         if(!email.includes('@') || !email.includes('.')){

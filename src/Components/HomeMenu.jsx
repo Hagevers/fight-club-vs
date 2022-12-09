@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import '../Styling/HomeMenu.css';
 import logo from '../Styling/smallLogo.PNG';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,7 +16,7 @@ const Menu = () => (
 function HomeMenu (){
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
-      <div className="fightclub__navbar">
+      <div className="fightclub__navbar" id="menu">
         <div className="fightclub__navbar-links">
           <div className="fightclub__navbar-links_logo">
             <img src={logo} alt= "logo" />

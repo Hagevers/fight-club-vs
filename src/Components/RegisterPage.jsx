@@ -1,4 +1,4 @@
-import React, {Component, useState, setState} from 'react';
+import React, {useState} from 'react';
 import '../Styling/RegisterPage.css';
 import toast, { Toaster } from 'react-hot-toast';
 import logo from '../Styling/fight_club_l.png';
@@ -22,7 +22,7 @@ function RegisterPage (){
   const handleNext = (e) => {
     e.preventDefault();
     if(stage === 1){
-      const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const res = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       if(res.test(String(Email).toLowerCase())){
         setStage(stage + 1);
         setErrorMsg('');
@@ -117,6 +117,14 @@ function RegisterPage (){
   }
   const loadStage = (stage) =>{
       switch(stage){
+        default: {
+          return(
+            <div className="fightclub__form-content_input-form__email scale-up-center">
+              <span>ENTER YOUR EMAIL</span>
+              <input type="text" value={Email} id="Email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+            </div>
+          )
+        }
         case 1: {
           return(
             <div className="fightclub__form-content_input-form__email scale-up-center">
@@ -187,7 +195,7 @@ function RegisterPage (){
                     {errorMsg}
                 </div>
                 <div className='fightclub__form-content_input-form__submit'>
-                  <button onClick={stage==3 ? handleOnSubmit : handleNext}>{stage==3 ? <span>Register</span> : <span>Next</span>}</button>
+                  <button onClick={stage===3 ? handleOnSubmit : handleNext}>{stage===3 ? <span>Register</span> : <span>Next</span>}</button>
                 </div>
               </div>
               <div className='fightclub__form-content_login'>
