@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 // import '../Styling/Attack.css';
 import '../Styling/Dashboard.css';
 
@@ -10,16 +11,25 @@ function Attack() {
     const [lastMember, setLastMember] = useState();
     const {getCookie, getUserParam} = require('../Backend/getNickName');
     
-
     const attackMember = async (member) =>{
         const attackerId = getUserParam(getCookie, '_id');
+
         const res = await axios({
             method: 'POST',
             headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
             url: `https://powerful-anchorage-21815.herokuapp.com/attack/${member._id}`,
             data: JSON.stringify({attacker: attackerId}),
         });
-        console.log(res.data);
+        if(res.status === 200){
+            console.log(res.data);
+            return (<Link
+                to={{
+                    pathname: "/attack",
+                    data: res.data // your data array of objects
+                }}
+                />)
+        }
+        
     }
     const getTableMembers = (result) =>{
         let i = 1

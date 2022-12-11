@@ -1,7 +1,9 @@
 import React from 'react'
 import '../Styling/AttackPlayer.css';
+import { useLocation } from 'react-router-dom';
 
-function AttackPlayer(props) {
+function AttackPlayer() {
+    const { data } = useLocation().data;
   return (
     <div className='player__attack'>
         <div className='player__attack__container'>
@@ -40,15 +42,15 @@ function AttackPlayer(props) {
                 <div className='player__attack-content__again'>
                     <div className='player__attack-content__resources'>
                         <span>NickName:</span>
-                        <span>somthing</span>
+                        <span>{data.NickName}</span>
                     </div>
                     <div className='player__attack-content__resources'>
                         <span>Alliance:</span>
-                        <span>somthing</span>
+                        <span>{data.Alliance}</span>
                     </div>
                     <div className='player__attack-content__resources'>
                         <span>Soldiers died:</span>
-                        <span>103</span>
+                        <span>{data.soldiers}</span>
                     </div>
                     <div className='player__attack-content__resources btn'>
                         <button>Attack again</button>
