@@ -20,7 +20,7 @@ root.render(
           <Route path='login' element={<LoginPage />} />
           <Route path='register' element={<RegisterPage />} />
           <Route path='Dashboard' element={<Dashboard />} />
-          <Route path='attack' element={<AttackPlayer />} />
+          <Route path='report/:id' element={<AttackPlayer />} />
         </Routes>
       </BrowserRouter>
   // </React.StrictMode>

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-// import '../Styling/Attack.css';
 import '../Styling/Dashboard.css';
+import { attackMember } from '../Backend/attackMember';
 
 function Attack() {
     const axios = require('axios');
@@ -10,25 +9,9 @@ function Attack() {
     const [alreadyShown, setAlreadyShown] = useState(false);
     const [lastMember, setLastMember] = useState();
     const {getCookie, getUserParam} = require('../Backend/getNickName');
-    
-    const attackMember = async (member) =>{
-        const attackerId = getUserParam(getCookie, '_id');
 
-        const res = await axios({
-            method: 'POST',
-            headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
-            url: `https://powerful-anchorage-21815.herokuapp.com/attack/${member._id}`,
-            data: JSON.stringify({attacker: attackerId}),
-        });
-        if(res.status === 200){
-            console.log(res.data);
-            return (<Link
-                to={{
-                    pathname: "/attack",
-                    data: res.data // your data array of objects
-                }}
-                />)
-        }
+    const getAttackRes = (prop) => {
+        console.log(attackMember(prop));
         
     }
     const getTableMembers = (result) =>{
@@ -67,7 +50,7 @@ function Attack() {
                         <button className='attack__sidebar-content__inner-spy'>Spy</button>
                     </div>
                     <div>
-                        <button className='attack__sidebar-content__inner-attack' onClick={()=>attackMember(prop)}>Attack</button> 
+                        <button className='attack__sidebar-content__inner-attack' onClick={() => getAttackRes(prop)}>Attack</button> 
                     </div>
                 </div>
                 : null}

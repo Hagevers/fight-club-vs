@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect }from 'react'
 import '../Styling/AttackPlayer.css';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { attackMember } from '../Backend/attackMember';
 
 function AttackPlayer() {
-    const { data } = useLocation().data;
+    const axios = require('axios');
+    const {getCookie, getUserParam} = require('../Backend/getNickName');
+    const [userData, setUserData] = useState('');
+    const {id} = useParams();
+
+    const fetchReportData = async (id) =>{
+        const res = await axios({
+            method: 'get',
+            headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
+            url: `https://powerful-anchorage-21815.herokuapp.com/report/${id}`
+        })
+        if (res.status === 200) setUserData(res.data);
+    }
+    useEffect(()=>{
+        fetchReportData(id);
+    },[])
   return (
     <div className='player__attack'>
         <div className='player__attack__container'>
@@ -42,18 +58,18 @@ function AttackPlayer() {
                 <div className='player__attack-content__again'>
                     <div className='player__attack-content__resources'>
                         <span>NickName:</span>
-                        <span>{data.NickName}</span>
+                        <span>{userData.Defender}</span>
                     </div>
                     <div className='player__attack-content__resources'>
                         <span>Alliance:</span>
-                        <span>{data.Alliance}</span>
+                        <span>{userData.alliance}</span>
                     </div>
                     <div className='player__attack-content__resources'>
                         <span>Soldiers died:</span>
-                        <span>{data.soldiers}</span>
+                        <span>{userData.SoldiersDied}</span>
                     </div>
                     <div className='player__attack-content__resources btn'>
-                        <button>Attack again</button>
+                        <button onClick={() => attackMember(userData.Defender_Id)}>Attack again</button>
                     </div>
                 </div>
             </div>
