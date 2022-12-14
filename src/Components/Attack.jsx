@@ -50,7 +50,7 @@ function Attack() {
                         <button className='attack__sidebar-content__inner-spy'>Spy</button>
                     </div>
                     <div>
-                        <button className='attack__sidebar-content__inner-attack' onClick={() => getAttackRes(prop)}>Attack</button> 
+                        <button className='attack__sidebar-content__inner-attack' onClick={() => getAttackRes(prop._id)}>Attack</button> 
                     </div>
                 </div>
                 : null}

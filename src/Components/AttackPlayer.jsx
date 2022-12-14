@@ -2,11 +2,13 @@ import React, { useState, useEffect }from 'react'
 import '../Styling/AttackPlayer.css';
 import { useParams } from 'react-router-dom';
 import { attackMember } from '../Backend/attackMember';
+import SimpleLoader from './SimpleLoader';
 
 function AttackPlayer() {
     const axios = require('axios');
     const {getCookie, getUserParam} = require('../Backend/getNickName');
     const [userData, setUserData] = useState('');
+    const [loading, setLoading] = useState(true);
     const {id} = useParams();
 
     const fetchReportData = async (id) =>{
@@ -15,7 +17,10 @@ function AttackPlayer() {
             headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
             url: `https://powerful-anchorage-21815.herokuapp.com/report/${id}`
         })
-        if (res.status === 200) setUserData(res.data);
+        if (res.status === 200){
+            setUserData(res.data);
+            setLoading(false);
+        } 
     }
     useEffect(()=>{
         fetchReportData(id);
@@ -23,9 +28,11 @@ function AttackPlayer() {
   return (
     <div className='player__attack'>
         <div className='player__attack__container'>
+            {loading ? <SimpleLoader /> : 
+            <div>
             <div className='player__attack-title'>
                 <div className='player__attack-result'>
-                    Attack Successfull
+                    {userData.HaveWon ? 'Attack Successfull': 'Attack Failed'}
                 </div>
             </div>
             <div className='player__attack-content'>
@@ -33,25 +40,25 @@ function AttackPlayer() {
                     <div className='player__attack-content__resources'>
                         <p>
                             <span>Gold: </span>
-                            <span>Number</span>
+                            <span>{userData.Gold}</span>
                         </p>
                     </div>
                     <div className='player__attack-content__resources'>
                         <p>
                             <span>Solfour: </span>
-                            <span>Number</span>
+                            <span>{userData.Solfour}</span>
                         </p>
                     </div>
                     <div className='player__attack-content__resources'>
                         <p>
                             <span>Marble: </span>
-                            <span>Number</span>
+                            <span>{userData.Marble}</span>
                         </p>
                     </div>
                     <div className='player__attack-content__resources'>
                         <p>
                             <span>Food: </span>
-                            <span>Number</span>
+                            <span>{userData.Food}</span>
                         </p>
                     </div>
                 </div>
@@ -73,6 +80,8 @@ function AttackPlayer() {
                     </div>
                 </div>
             </div>
+            </div>
+            }
         </div>
     </div>
   )

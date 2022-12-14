@@ -6,7 +6,7 @@ exports.attackMember = (member) =>{
     axios({
         method: 'POST',
         headers:{ 'Content-Type': 'application/json', 'Authorization': getCookie('token')},
-        url: `https://powerful-anchorage-21815.herokuapp.com/attack/${member._id}`,
+        url: `https://powerful-anchorage-21815.herokuapp.com/attack/${member}`,
         data: JSON.stringify({attacker: attackerId}),
     }).then(res=> {
         if(res.status === 200){

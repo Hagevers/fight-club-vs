@@ -1,0 +1,31 @@
+@keyframes loading {
+    0% {
+      width: 50pt;
+      height: 50pt;
+      margin-top: 0;
+    }
+    25% {
+      height: 4pt;
+      margin-top: 23pt;
+    }
+    50% {
+      width: 4pt;
+    }
+    75% {
+      width: 50pt;
+    }
+    100% {
+      width: 50pt;
+      height: 50pt;
+      margin-top: 0;
+    }
+  }
+  
+  .loader {
+    width: 50pt;
+    height: 50pt;
+    border-radius: 100%;
+    border: #F85D58 4pt solid;
+    background-color: transparent;
+    animation: loading 1s infinite;
+  }
