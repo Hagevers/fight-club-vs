@@ -33,7 +33,7 @@ function Attack(props) {
             <h1>{prop.NickName}</h1>
             <div className='attack__sidebar-content__inner'>
                 <p>Soldiers: {prop.Power.Soldiers.Ammount}</p>
-                <p>Gold : </p>
+                <p>Gold : {Math.ceil(prop.Resources.Gold)}</p>
                 {shown ?
                 <div>
                     <div>

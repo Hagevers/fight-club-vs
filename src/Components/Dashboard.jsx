@@ -15,6 +15,7 @@ import viking from '../Styling/viking-avatar.jpg';
 import { useQuery} from "react-query";
 import axios from 'axios';
 import SimpleLoader from "./SimpleLoader";
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard(){
     const {getCookie} = require('../Backend/getNickName');
@@ -22,6 +23,14 @@ function Dashboard(){
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
     const [active, setActive] = useState('Base');
+    const navigate = useNavigate();
+
+    const { data:cookie,isLoading, error } = useQuery('session', async () =>
+    {
+        const res = await axios.get("https://powerful-anchorage-21815.herokuapp.com/getCookie", {headers:{'Authorization': getCookie('token')}})
+        if(res.status === 200) return res.data
+        else throw new Error(res.statusText)
+    },{refetchInterval: 60000,});
 
     const { status:getMembersStatus, data:membersData } = useQuery(["member"], () =>
         axios.get("https://powerful-anchorage-21815.herokuapp.com/getMembers",{headers:{'Authorization': getCookie('token')}})
@@ -29,7 +38,12 @@ function Dashboard(){
     const { status:getResourcesStatus, data:resourcesData } = useQuery(["resources"], () =>
         axios.get("https://powerful-anchorage-21815.herokuapp.com/getResources",{headers:{'Authorization': getCookie('token')}})
     );
-    if (getMembersStatus === 'loading' || getResourcesStatus === 'loading') return <div className="center"><SimpleLoader /></div>;
+
+    if (getMembersStatus === 'loading' || getResourcesStatus === 'loading' || isLoading) return <div className="center"><SimpleLoader /></div>;
+    
+    if(error || !cookie.valid){
+        return navigate('/login');
+    }
 
     let avatar;
     switch(resourcesData.data[0].avatar){

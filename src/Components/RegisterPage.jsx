@@ -15,6 +15,8 @@ function RegisterPage (){
   const [confirmPassword, setConfirmPassword] = useState('');
   const [stage, setStage] = useState(1);
   const [avatarVal, setAvatarVal] = useState('');
+  const [disable, setDisable] = useState(false);
+
   const handleAvatarDiv =(e) => {
     e.preventDefault();
     setShowAvatars(!showAvatars);
@@ -61,6 +63,7 @@ function RegisterPage (){
   }
   const handleOnSubmit = async (e) => {
     e.preventDefault()
+    setDisable(true);
     const pattern = /^([a-z])\w+|([A-Z])\w/;
     if (pattern.test(NickName)){
       document.getElementById('NickName').style.border = '1px solid #5b627c';
@@ -84,12 +87,15 @@ function RegisterPage (){
           if (res.status === 200){
             if(res.data.msg){
               toast.error('User already exist',{id: toastId});
+              setDisable(false);
               return;
             }
             toast.success('Registerd succesfully, please validate your account in your mail address',{id: toastId});
           }
           else{
             toast.error('Somthing went wrong, please try again in few minutes',{id: toastId});
+            setDisable(false);
+            return;
           }
           setNickName('');
           setEmail('');
@@ -98,16 +104,19 @@ function RegisterPage (){
           setAvatarVal('');
           setConfirmPassword('');
           setErrorMsg('');
+          setDisable(false);
           return;
         }else{
           setErrorMsg('MUST PICK AVATAR');
           document.getElementById('Avatar').focus();
+          setDisable(false);
           return;
         }
       }else{
           document.getElementById('NickName').style.border = '1px solid #c15755';
           setErrorMsg('NICK NAME IS NOT VALID!');
           document.getElementById('NickName').focus();
+          setDisable(false);
           return;
         }
   }
@@ -195,7 +204,7 @@ function RegisterPage (){
                     {errorMsg}
                 </div>
                 <div className='fightclub__form-content_input-form__submit'>
-                  <button onClick={stage===3 ? handleOnSubmit : handleNext}>{stage===3 ? <span>Register</span> : <span>Next</span>}</button>
+                  <button disabled = {disable} onClick={stage===3 ? handleOnSubmit : handleNext}>{stage===3 ? <span>Register</span> : <span>Next</span>}</button>
                 </div>
               </div>
               <div className='fightclub__form-content_login'>
