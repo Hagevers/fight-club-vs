@@ -1,44 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState, Fragment} from 'react';
 import '../Styling/Dashboard.css';
 import { attackMember } from '../Backend/attackMember';
 
-function Attack() {
-    const axios = require('axios');
-    const [members, setMembers] = useState('');
+function Attack(props) {
     const [attackDetails, setAttackDetails] = useState('');
     const [alreadyShown, setAlreadyShown] = useState(false);
     const [lastMember, setLastMember] = useState();
     const {getCookie, getUserParam} = require('../Backend/getNickName');
 
-    const getAttackRes = (prop) => {
-        console.log(attackMember(prop));
-        
-    }
-    const getTableMembers = (result) =>{
-        let i = 1
-        const members = result.map((member, key) =>{
-            return(
-                <tr key= {key} className='table__content-table__row' onClick={() => showAttackOptions(member)}>
-                    <td>{i++}</td>
-                    <td>{member.NickName}</td>
-                    <td>{member.Power.Soldiers.Ammount}</td>
-                    <td>{member.alliance}</td>
-                    <td>Status</td>
-                </tr>
-            )})
-        setMembers(members);
-    }
+    let i = 1;
+    let res;    
     let shown = true;
+
+    const attackPlayer = (prop) => {
+        console.log(prop);
+        console.log(attackMember(prop));
+    }
+
     const showAttackOptions = async (prop) => {
         if(alreadyShown) {
-            if(lastMember === prop.NickName) return setAlreadyShown(false)
+            if(lastMember === prop.NickName){
+                setAlreadyShown(false);
+                 return alreadyShown;
+            }
         }else setAlreadyShown(true)
-        console.log(prop._id);
 
         if(prop._id === getUserParam(getCookie, '_id')) shown = false;
         else shown = true;
 
-        const res = 
+        res = 
         <div className='attack__sidebar-content'>
             <h1>{prop.NickName}</h1>
             <div className='attack__sidebar-content__inner'>
@@ -50,22 +40,16 @@ function Attack() {
                         <button className='attack__sidebar-content__inner-spy'>Spy</button>
                     </div>
                     <div>
-                        <button className='attack__sidebar-content__inner-attack' onClick={() => getAttackRes(prop._id)}>Attack</button> 
+                        <button className='attack__sidebar-content__inner-attack' onClick={() => attackPlayer(prop._id)}>Attack</button> 
                     </div>
                 </div>
                 : null}
             </div>
         </div>
+
         setAttackDetails(res);
         setLastMember(prop.NickName);
     }
-    useEffect(()=>{
-        axios.get('https://powerful-anchorage-21815.herokuapp.com/getMembers',
-        {headers:{'Authorization': getCookie('token')}})
-        .then(result => {
-            getTableMembers(result.data);
-        })
-    },[shown, alreadyShown, lastMember])
   return (
     <div className='table__content'>
         <table className='table__content-table'>
@@ -77,7 +61,21 @@ function Attack() {
                     <th>Alliance</th>
                     <th>Satus</th>
                 </tr>
-                {members}
+                <>
+                    {props.data.data.map((member, key)=> {
+                        return (
+                            <Fragment key={key}>
+                                <tr className='table__content-table__row' onClick={() => showAttackOptions(member)}>
+                                    <td>{i++}</td>
+                                    <td>{member.NickName}</td>
+                                    <td>{member.Power.Soldiers.Ammount}</td>
+                                    <td>{member.alliance}</td>
+                                    <td>Status</td>
+                                </tr>
+                            </Fragment>
+                        )
+                    })}
+                </>
             </tbody>
         </table>
         <div className={alreadyShown ? 'attack__sidebar show' : 'attack__sidebar'}>

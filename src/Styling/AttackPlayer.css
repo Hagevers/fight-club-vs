@@ -30,6 +30,9 @@
     letter-spacing: .055em;
     font-weight: 300;
 }
+.player__attack-result.red{
+    color: #F85D58;
+}
 .player__attack-title{
     display: flex;
     margin-bottom: 1rem;

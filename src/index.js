@@ -8,11 +8,14 @@ import LoginPage from './Components/LoginPage';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Confirm from './Components/Confirm';
 import AttackPlayer from './Components/AttackPlayer';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
+const queryClient = new QueryClient();
 root.render(
     // <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route path='' element={<App />} />
@@ -23,5 +26,6 @@ root.render(
           <Route path='report/:id' element={<AttackPlayer />} />
         </Routes>
       </BrowserRouter>
+      </QueryClientProvider>
   // </React.StrictMode>
 );

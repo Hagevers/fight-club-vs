@@ -4,6 +4,15 @@ body{
   /* background-color: #1a1b1f; */
 }
 
+.center{
+  min-height: 100vh;
+  width: 100%;
+  background-color: #2D2449;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* ----------------------- SIDEBAR CSS ----------------------- */
 
 .sideBar{
@@ -196,6 +205,7 @@ body{
   padding: 0.5rem;
   border-radius: 20px;
   transition: background-color 200ms , color 200ms;
+  cursor: pointer;
 }
 .Header_tool_bar_icons_profile:hover,
 .Header_tool_bar_icons_shop:hover,
@@ -370,6 +380,7 @@ body{
 }
 .small-box{
   width: 100%;
+  background-color: #332E59;
   min-height: 300px;
   display: flex;
   border-radius: 15px;
@@ -383,7 +394,7 @@ body{
   margin:1rem;
   font-size: 28px;
 }
-.test div,h1{
+.test > div ,.test > h1{
   margin: 2rem;
   width: 100%;
   color: #fff;

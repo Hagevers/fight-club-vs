@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import Sidebar from "./Sidebar";
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
@@ -9,41 +9,66 @@ import Base from "./Base";
 import Shop from "./Shop";
 import Attack from "./Attack";
 import Logout from "./Logout";
+import ork from '../Styling/ork.png';
+import dwarf from '../Styling/dwarf-avatar.jpg';
+import viking from '../Styling/viking-avatar.jpg';
+import { useQuery} from "react-query";
+import axios from 'axios';
+import SimpleLoader from "./SimpleLoader";
 
 function Dashboard(){
-    const axios = require('axios');
-    const {getCookie, getUserParam} = require('../Backend/getNickName');
+    const {getCookie} = require('../Backend/getNickName');
     const [notiColor, setNotiColor] = useState("#bdbec7");
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
     const [active, setActive] = useState('Base');
-    const [avatar, setAvatar] = useState();
+
+    const { status:getMembersStatus, data:membersData } = useQuery(["member"], () =>
+        axios.get("https://powerful-anchorage-21815.herokuapp.com/getMembers",{headers:{'Authorization': getCookie('token')}})
+    );
+    const { status:getResourcesStatus, data:resourcesData } = useQuery(["resources"], () =>
+        axios.get("https://powerful-anchorage-21815.herokuapp.com/getResources",{headers:{'Authorization': getCookie('token')}})
+    );
+    if (getMembersStatus === 'loading' || getResourcesStatus === 'loading') return <div className="center"><SimpleLoader /></div>;
+
+    let avatar;
+    switch(resourcesData.data[0].avatar){
+        case "ork" : {
+            avatar = ork;
+            break;
+        }
+        case "dwarf" : {
+            avatar = dwarf;
+            break;
+        }
+        case "viking" :{
+            avatar = viking;
+            break;
+        }
+        default : {
+            avatar = ork;
+            break;
+        }
+    }
+
     const loadComp = (link) => {
         switch (link){
             case 'Base':
-                return <Base avatar={setAvatar}/>
+                return <Base data={resourcesData}/>
+            case 'Upgrade':
+                return <h1>Comming soon...</h1>
+            case 'Training':
+                return <h1>Comming soon...</h1>
             case 'Shop':
                 return <Shop />
             case 'Attack':
-                return <Attack />
+                return <Attack data={membersData}/>
             case 'Logout':
                 return <Logout />
             default:
-                return <Base avatar={setAvatar}/>
+                return <Base data={resourcesData}/>
         }
     }
-    useEffect(()=>{
-        if(!getCookie('token')){
-            return window.location.href = '/'
-        }
-        axios
-        .get('https://powerful-anchorage-21815.herokuapp.com/getCookie',
-        {headers:{'Authorization': getCookie('token')}
-        })
-        .then(result=>{
-            console.log(result);
-        })
-    })
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
@@ -57,15 +82,15 @@ function Dashboard(){
                             <input type="search" className="Header_tool_bar_input_search" onMouseLeave={()=>setSearchColor("#bdbec7")} onMouseEnter={()=>setSearchColor("#fff")} placeholder="Search..." />
                         </div>
                         <div className="Header_tool_bar_icons">
-                            <a href="#s"><div onMouseLeave={()=>setNotiColor("#bdbec7")} onMouseEnter={()=>setNotiColor("#fff")} className="Header_tool_bar_icons_noti">
+                            <div onMouseLeave={()=>setNotiColor("#bdbec7")} onMouseEnter={()=>setNotiColor("#fff")} className="Header_tool_bar_icons_noti">
                                 <CircleNotificationsRoundedIcon sx={{color:notiColor, width:42, height:42}}/>
-                            </div></a>
-                            <a href="#s"><div onMouseLeave={()=>setCartColor("#bdbec7")} onMouseEnter={()=>setCartColor("#fff")} className="Header_tool_bar_icons_shop">
+                            </div>
+                            <div onMouseLeave={()=>setCartColor("#bdbec7")} onMouseEnter={()=>setCartColor("#fff")} className="Header_tool_bar_icons_shop">
                                 <ShoppingCartCheckoutRoundedIcon sx={{color:cartColor, width:42, height:42}}/>
-                            </div></a>
-                            <a href="#s"><div className="Header_tool_bar_icons_profile">
+                            </div>
+                            <div className="Header_tool_bar_icons_profile">
                                 <Avatar alt="Remy Sharp" src={avatar} sx={{color:"#bdbec7", width:48, height:48}}/>
-                            </div></a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -16,9 +16,9 @@ function Shop() {
         </thead>
         <tbody>
           {
-          ShopData.map(val => {
+          ShopData.map((val, key) => {
             return(
-              <tr className='table_row'>
+              <tr className='table_row' key={key}>
                 <td>{val.pic}</td>
                 <td>{val.title}</td>
                 {

@@ -6,7 +6,7 @@ import SimpleLoader from './SimpleLoader';
 
 function AttackPlayer() {
     const axios = require('axios');
-    const {getCookie, getUserParam} = require('../Backend/getNickName');
+    const {getCookie} = require('../Backend/getNickName');
     const [userData, setUserData] = useState('');
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
@@ -31,7 +31,7 @@ function AttackPlayer() {
             {loading ? <SimpleLoader /> : 
             <div>
             <div className='player__attack-title'>
-                <div className='player__attack-result'>
+                <div className={userData.HaveWon ? 'player__attack-result' : 'player__attack-result red'}>
                     {userData.HaveWon ? 'Attack Successfull': 'Attack Failed'}
                 </div>
             </div>
