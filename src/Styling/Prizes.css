@@ -1,6 +1,7 @@
 .fightclub__prizes{
     display: flex;
-    background-color: #2b2d33
+    background-color: #2b2d33;
+
 }
 
 .fightclub__prizes-content{
