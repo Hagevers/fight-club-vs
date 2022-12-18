@@ -23,6 +23,9 @@ function Dashboard(){
     const [cartColor, setCartColor] = useState("#bdbec7");
     const [searchColor, setSearchColor] = useState("#bdbec7");
     const [active, setActive] = useState('Base');
+    const [searchValue, setSearchValue] = useState('');
+    const [searchMembers, setSearchMembers] = useState([]);
+    const [showSearchMembers, setShowSearchMembers] = useState(false);
     const navigate = useNavigate();
 
     const { data:cookie,isLoading, error } = useQuery('session', async () =>
@@ -83,6 +86,35 @@ function Dashboard(){
                 return <Base data={resourcesData}/>
         }
     }
+    const members = [];
+    membersData.data.map((member) => {
+        members.push(member.NickName);
+    });
+
+    const handleSearchChange = (e) =>{
+        setSearchValue(e.target.value);
+        if(searchValue.length >= 2){
+            members.map((member) => {
+                if (member.includes(searchValue)){
+                    if(searchMembers && searchMembers.length > 0){
+                        searchMembers.forEach(element => {
+                            if(member !== element){
+                                setSearchMembers(array => [...array,member]);
+                            }
+                        });
+                    }else{
+                        setSearchMembers(array => [...array,member]);
+                        setShowSearchMembers(true);
+                    }
+                }else{
+                    setSearchMembers(array => array.filter(user => user !== member))
+                }
+            })
+        }else{
+            setSearchMembers([]);
+            setShowSearchMembers(false);
+        }
+    }
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
@@ -93,7 +125,14 @@ function Dashboard(){
                     <div className="Header_tool_bar">
                         <div className="Header_tool_bar_input">
                             <LocationSearchingIcon sx={{color:searchColor}} className="search_icon"/>
-                            <input type="search" className="Header_tool_bar_input_search" onMouseLeave={()=>setSearchColor("#bdbec7")} onMouseEnter={()=>setSearchColor("#fff")} placeholder="Search..." />
+                            <input value={searchValue} onFocus={()=> setShowSearchMembers(true)} onBlur={()=> setShowSearchMembers(false)} onChange={(e)=> handleSearchChange(e)} type="search" className="Header_tool_bar_input_search" onMouseLeave={()=>setSearchColor("#bdbec7")} onMouseEnter={()=>setSearchColor("#fff")} placeholder="Search..." />
+                            <div className= {`Header-tool-bar_input-options ${showSearchMembers ?'show' : ''}` }>
+                                {searchMembers.map((member, key)=> {
+                                    return(
+                                        <div className="Header-tool-bar_input-option" key={key}><span>{member}</span></div>
+                                    )
+                                })}
+                            </div>
                         </div>
                         <div className="Header_tool_bar_icons">
                             <div onMouseLeave={()=>setNotiColor("#bdbec7")} onMouseEnter={()=>setNotiColor("#fff")} className="Header_tool_bar_icons_noti">
