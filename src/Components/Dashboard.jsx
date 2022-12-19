@@ -16,6 +16,7 @@ import { useQuery} from "react-query";
 import axios from 'axios';
 import SimpleLoader from "./SimpleLoader";
 import { useNavigate } from 'react-router-dom';
+import Profile from "./Profile";
 
 function Dashboard(){
     const {getCookie} = require('../Backend/getNickName');
@@ -26,6 +27,7 @@ function Dashboard(){
     const [searchValue, setSearchValue] = useState('');
     const [searchMembers, setSearchMembers] = useState([]);
     const [showSearchMembers, setShowSearchMembers] = useState(false);
+    const [profile, setProfile] = useState();
     const navigate = useNavigate();
 
     const { data:cookie,isLoading, error } = useQuery('session', async () =>
@@ -125,8 +127,8 @@ function Dashboard(){
                     <div className="Header_tool_bar">
                         <div className="Header_tool_bar_input">
                             <LocationSearchingIcon sx={{color:searchColor}} className="search_icon"/>
-                            <input value={searchValue} onFocus={()=> setShowSearchMembers(true)} onBlur={()=> setShowSearchMembers(false)} onChange={(e)=> handleSearchChange(e)} type="search" className="Header_tool_bar_input_search" onMouseLeave={()=>setSearchColor("#bdbec7")} onMouseEnter={()=>setSearchColor("#fff")} placeholder="Search..." />
-                            <div className= {`Header-tool-bar_input-options ${showSearchMembers ?'show' : ''}` }>
+                            <input value={searchValue} onFocus={()=> setShowSearchMembers(true)} onBlur={()=> setShowSearchMembers(false)} onChange={(e)=> handleSearchChange(e)} type="search" className="Header_tool_bar_input_search" placeholder="Search..." />
+                            <div className= {`Header-tool-bar_input-options ${showSearchMembers ? 'show' : ''}` }>
                                 {searchMembers.map((member, key)=> {
                                     return(
                                         <div className="Header-tool-bar_input-option" key={key}><span>{member}</span></div>
@@ -151,6 +153,9 @@ function Dashboard(){
                         loadComp(active)
                     }
                 
+            </div>
+            <div style={{height:"500px", width:"500px"}}>
+                <Profile user={profile}/>
             </div>
         </div>
     )
