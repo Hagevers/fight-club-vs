@@ -1,6 +1,7 @@
 .profile__container{
-    height: 100%;
-    width: 100%;
+    height: 700px;
+    width: 700px;
+    position: relative;
 }
 
 .profile__wrapper{
@@ -12,7 +13,18 @@
     align-items: center;
     width: 100%;
 }
-
+.close-btn-div{
+    position: absolute;
+    right: 1rem;
+    color: #fff;
+    transition: color 300ms;
+}
+.close-btn{
+    cursor: pointer;
+}
+.close-btn-div:hover{
+    color: #F85D58;
+}
 .profile__header{
     margin-top: 2rem;
     width: 100%;
@@ -26,7 +38,7 @@
 
 .profile__header > span{
     color: #fff;
-    font-size: 26px;
+    font-size: 32px;
     font-weight: var(--font-family);
 }
 
@@ -43,12 +55,9 @@
     gap: 8px;
     text-align: center;
     padding: 1rem;
-    font-size: 20px;
+    font-size: 24px;
     justify-content: center;
     display: flex;
     flex-direction: column;
     font-weight: var(--font-family);
-}
-.profile__content-para:nth-child(1){
-    border-right: 1px solid #F85D58;
 }

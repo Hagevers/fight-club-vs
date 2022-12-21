@@ -432,3 +432,12 @@ body{
   font-weight: 500;
   line-height: 32px;
 }
+.profile__abs{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(.25em);
+}

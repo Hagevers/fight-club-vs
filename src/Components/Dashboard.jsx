@@ -17,6 +17,7 @@ import axios from 'axios';
 import SimpleLoader from "./SimpleLoader";
 import { useNavigate } from 'react-router-dom';
 import Profile from "./Profile";
+import { useRef } from "react";
 
 function Dashboard(){
     const {getCookie} = require('../Backend/getNickName');
@@ -29,6 +30,7 @@ function Dashboard(){
     const [showSearchMembers, setShowSearchMembers] = useState(false);
     const [profile, setProfile] = useState();
     const navigate = useNavigate();
+    const profileRef = useRef(null);
 
     const { data:cookie,isLoading, error } = useQuery('session', async () =>
     {
@@ -117,6 +119,18 @@ function Dashboard(){
             setShowSearchMembers(false);
         }
     }
+
+    const handleMemberClick = (member) =>{
+        setProfile(member)
+
+    }
+
+    const closeOpenMenus = (e)=>{
+        if(profileRef.current && profile && !profileRef.current.contains(e.target)){
+          setProfile(undefined)
+        }
+    }
+    document.addEventListener('mousedown',closeOpenMenus)
     return (
         <div className="Dashboard">
             <div className="sideBar-div">
@@ -127,11 +141,11 @@ function Dashboard(){
                     <div className="Header_tool_bar">
                         <div className="Header_tool_bar_input">
                             <LocationSearchingIcon sx={{color:searchColor}} className="search_icon"/>
-                            <input value={searchValue} onFocus={()=> setShowSearchMembers(true)} onBlur={()=> setShowSearchMembers(false)} onChange={(e)=> handleSearchChange(e)} type="search" className="Header_tool_bar_input_search" placeholder="Search..." />
+                            <input value={searchValue} onFocus={()=> setShowSearchMembers(true)} onChange={(e)=> handleSearchChange(e)} type="search" className="Header_tool_bar_input_search" placeholder="Search..." />
                             <div className= {`Header-tool-bar_input-options ${showSearchMembers ? 'show' : ''}` }>
                                 {searchMembers.map((member, key)=> {
                                     return(
-                                        <div className="Header-tool-bar_input-option" key={key}><span>{member}</span></div>
+                                        <div className="Header-tool-bar_input-option" onClick={()=>handleMemberClick(member)} key={key}><span>{member}</span></div>
                                     )
                                 })}
                             </div>
@@ -154,9 +168,14 @@ function Dashboard(){
                     }
                 
             </div>
-            <div style={{height:"500px", width:"500px"}}>
-                <Profile user={profile}/>
+            {
+            profile &&
+            <div className="profile__abs" >
+                <div ref={profileRef}>
+                    <Profile setShow={() => setProfile()} user={profile}/>
+                </div>
             </div>
+            }
         </div>
     )
 }
