@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import Sidebar from "./Sidebar";
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
 import CircleNotificationsRoundedIcon from '@mui/icons-material/CircleNotificationsRounded';
@@ -17,8 +17,9 @@ import axios from 'axios';
 import SimpleLoader from "./SimpleLoader";
 import { useNavigate } from 'react-router-dom';
 import Profile from "./Profile";
-import { useRef } from "react";
 import Alliance from "./Alliance";
+import Vault from "./Vault";
+
 
 function Dashboard(){
     const {getCookie} = require('../Backend/getNickName');
@@ -30,6 +31,7 @@ function Dashboard(){
     const [searchMembers, setSearchMembers] = useState([]);
     const [showSearchMembers, setShowSearchMembers] = useState(false);
     const [profile, setProfile] = useState();
+    const [profileAvatar, setProfileAvatar] = useState();
     const navigate = useNavigate();
     const profileRef = useRef(null);
 
@@ -89,6 +91,8 @@ function Dashboard(){
                 return <Logout />
             case 'Alliance':
                 return <Alliance />
+            case 'Vault':
+                return <Vault />
             default:
                 return <Base data={resourcesData}/>
         }
@@ -126,7 +130,25 @@ function Dashboard(){
     const handleMemberClick = (member) =>{
         membersData.data.map(mem => {
             if(member === mem.NickName){
-                setProfile(mem)
+                setProfile(mem);
+                switch(mem.avatar){
+                    case "ork" : {
+                        setProfileAvatar(ork);
+                        break;
+                    }
+                    case "dwarf" : {
+                        setProfileAvatar(dwarf);
+                        break;
+                    }
+                    case "viking" :{
+                        setProfileAvatar(viking);
+                        break;
+                    }
+                    default : {
+                        setProfileAvatar(ork);
+                        break;
+                    }
+                }
             }
         })
     }
@@ -178,7 +200,7 @@ function Dashboard(){
             profile &&
             <div className="profile__abs" >
                 <div ref={profileRef}>
-                    <Profile setShow={() => setProfile()} user={profile}/>
+                    <Profile same={profile._id===resourcesData.data[0]._id? true : false} setShow={() => setProfile()} user={profile} avatar={profileAvatar}/>
                 </div>
             </div>
             }

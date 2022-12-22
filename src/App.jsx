@@ -70,11 +70,11 @@ function App() {
     threshold: 0.35,
   })
   const element1Props = useSpring({
-    to: element1InView ? { opacity: 1, transform:"translateY(0)" } : { opacity: 0, transform: "translateY(-100px)" },
+    to: element1InView ? { opacity: 1, transform:"translateX(0)" } : { opacity: 0, transform: "translateX(-100px)" },
     config: windowSize > 1100 ? { duration: 400 } : { duration: 600 } ,
   });
   const element2Props = useSpring({
-    to: element2InView ? { opacity: 1, transform:"translateY(0)" } : { opacity: 0, transform: "translateY(-100px)" },
+    to: element2InView ? { opacity: 1, transform:"translateX(0)" } : { opacity: 0, transform: "translateX(-100px)" },
     config: windowSize > 1100 ? { duration: 400 } : { duration: 600 },
   })
   return (

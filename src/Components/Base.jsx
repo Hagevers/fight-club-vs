@@ -9,7 +9,7 @@ function Base(props) {
     <div className="Dashboard_content">
         <div className='base__content'>
             <div className='base__content__big-box'>
-                <p>NickName: {getUserParam(getCookie,'NickName')}</p>
+                <p>{getUserParam(getCookie,'NickName')}</p>
             </div>
             <>
             {props.data.data.map((resources, key) =>{

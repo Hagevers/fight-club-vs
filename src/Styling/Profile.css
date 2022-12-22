@@ -57,6 +57,7 @@
     padding: 1rem;
     font-size: 24px;
     justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     font-weight: var(--font-family);
