@@ -9,6 +9,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Confirm from './Components/Confirm';
 import AttackPlayer from './Components/AttackPlayer';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Card from './Components/Card';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
           <Route path='register' element={<RegisterPage />} />
           <Route path='Dashboard' element={<Dashboard />} />
           <Route path='report/:id' element={<AttackPlayer />} />
+          <Route path='card' element={<Card />} />
         </Routes>
       </BrowserRouter>
       </QueryClientProvider>

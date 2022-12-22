@@ -1,11 +1,16 @@
-import React from 'react'
-import { ShopData } from './ShopData'
-import '../Styling/Shop.css'
+import React from 'react';
+// import { ShopData } from './ShopData';
+import '../Styling/Shop.css';
+import Card from './Card';
+import Wand from '../Styling/wand.jpg';
+import stingShot from '../Styling/stingShot.jpg';
+import bronzeSword from '../Styling/bronzeSword.jpg';
+
 function Shop() {
 
   return (
     <div className='shop__wrapper'>
-      <table className='shop__table__wrapper'>
+      {/* <table className='shop__table__wrapper'>
         <thead>
           <tr>
             <th></th>
@@ -36,7 +41,14 @@ function Shop() {
             )})
           }
         </tbody>
-      </table>
+      </table> */}
+      
+      <div className='shop__grid-content'>
+        <Card bg={Wand} />
+        <Card bg={stingShot} />
+        <Card bg={bronzeSword} />
+      </div>
+      
     </div>
   )
 }
