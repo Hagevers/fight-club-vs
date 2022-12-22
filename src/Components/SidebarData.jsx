@@ -5,6 +5,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import SportsMartialArtsIcon from '@mui/icons-material/SportsMartialArts';
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
 import LogoutIcon from '@mui/icons-material/Logout';
+import AllianceIcon from '@mui/icons-material/Diversity3';
 
 export const SidebarData = [
     {
@@ -37,6 +38,14 @@ export const SidebarData = [
         link: "/#upgrade",
         func: function(props){
             props('Upgrade');
+        }
+    },
+    {
+        title: "Alliance",
+        icon: <AllianceIcon />,
+        link: "Alliance",
+        func: function(props){
+            props('Alliance');
         }
     },
     {

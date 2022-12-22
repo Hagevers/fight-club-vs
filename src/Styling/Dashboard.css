@@ -179,11 +179,8 @@ body{
 .fightclub__dashboard-content__boxes-box{
   width: 100%;
   min-height: 250px;
-  /* display: flex;
-  flex-direction: row; */
   border-radius: 20px;
   background: rgba(118, 55, 134, 0.1);
-  /* background: linear-gradient(143deg, rgb(101,74,134) 0%, #271c34 100%); */
   border: 1px solid rgba(118, 55, 134, 0.5);
   padding: 0 1rem;
   margin: 2rem 1.5rem;
@@ -213,9 +210,6 @@ body{
   width: 100%;
   display: flex;
 }
-/* .fightclub__dashboard-content__boxes-box:hover{
-  padding: 1rem 2rem;
-} */
 
 .fightclub__dashboard-content__boxes-box p,
 .fightclub__dashboard-content__boxes-box div{
@@ -440,4 +434,48 @@ body{
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(.25em);
+}
+
+@media screen and (max-width: 1000px){
+  .Dashboard{
+    height: 100%;
+    width: 100%;
+  }
+
+  .sideBar{
+    display: none;
+  }
+  .base__content__small-box__wrapper{
+    flex-direction: column;
+    width: 80%;
+  }
+  .base__content{
+    align-items: center;
+  }
+  .Header_tool_bar_input_search{
+    width: 90%;
+  }
+  .Header-tool-bar_input-options{
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .small-box{
+    flex-direction: column;
+  }
+  .base__content__small-box__wrapper{
+    width: 100%;
+  }
+  .Header_tool_bar_input{
+    display: none;
+  }
+  .Header_tool_bar_icons{
+    width: 100%;
+    justify-content: center;
+    margin-right: 0;
+  }
+  .test > div{
+    margin-left: 1rem;
+  }
 }

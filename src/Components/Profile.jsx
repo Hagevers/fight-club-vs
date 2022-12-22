@@ -12,14 +12,14 @@ function Profile(props) {
                     <CloseIcon className='close-btn' sx={{width:34, height:34}} />
                 </div>
                 <Avatar alt="Remy Sharp" src={props.Avatar} sx={{color:"#bdbec7", width:96, height:96}}/>
-                <span>Hagever</span>
+                <span>{props.user.NickName}</span>
             </div>
             <div className='profile__content'>
                 <div className='profile__content-para'>
                     <span>Rank:</span>
-                    <span>Alliance:</span>
-                    <span>Gold:</span>
-                    <span>Soldiers:</span>
+                    <span>Alliance: {props.user.alliance}</span>
+                    <span>Gold: {Math.ceil(props.user.Resources.Gold)}</span>
+                    <span>Soldiers: {props.user.Power.Soldiers.Ammount}</span>
                 </div>
                 <div className='profile__content-para'>
                     <span>Somthing</span>

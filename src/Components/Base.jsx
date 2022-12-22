@@ -18,7 +18,6 @@ function Base(props) {
                         <div className="base__content__small-box__wrapper">
                             <div className="small-box">
                                 <div className="test">
-                                    <h1>Resources</h1>
                                     <div>Available Workers : {resources.Workers.Available}</div>
                                     <div>Gold: {Math.ceil(resources.Resources.Gold)}</div>
                                     <div>Solfour: {Math.ceil(resources.Resources.Solfour)}</div>
@@ -26,7 +25,6 @@ function Base(props) {
                                     <div>Food: {Math.ceil(resources.Resources.Food)}</div>
                                 </div>
                                 <div className="test">
-                                    <h1>Workers</h1>
                                     <div>Workers : {resources.Workers.Mine + resources.Workers.Mountains + resources.Workers.Quary + resources.Workers.Farm}</div>
                                     <div>Mine: {resources.Workers.Mine}</div>
                                     <div>Mountains: {resources.Workers.Mountains}</div>
