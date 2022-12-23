@@ -1,13 +1,11 @@
-import React from 'react';
+import React, {lazy} from 'react';
 // import { ShopData } from './ShopData';
 import '../Styling/Shop.css';
 import Card from './Card';
-import Wand from '../Styling/wand.jpg';
-import stingShot from '../Styling/stingShot.jpg';
-import bronzeSword from '../Styling/bronzeSword.jpg';
+import tank from '../Styling/tank.jpg';
+import destroyer from '../Styling/destroyer.jpg';
 
 function Shop() {
-
   return (
     <div className='shop__wrapper'>
       {/* <table className='shop__table__wrapper'>
@@ -42,13 +40,18 @@ function Shop() {
           }
         </tbody>
       </table> */}
-      
-      <div className='shop__grid-content'>
-        <Card bg={Wand} />
-        <Card bg={stingShot} />
-        <Card bg={bronzeSword} />
+      <div className='shop__grid-content'> 
+          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          <Card height='150px' width='600px' bg={destroyer} />
       </div>
-      
+      <div className='shop__grid-content'>
+          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+      </div>
+      <div className='shop__grid-content'>
+          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+      </div>
     </div>
   )
 }

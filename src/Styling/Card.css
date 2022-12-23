@@ -1,16 +1,30 @@
 .card{
+    background-size: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border: 1px solid #333;
+}
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
     transition: all 0.2s ease-out;
     cursor: pointer;
-    background-size: cover;
+    width: fit-content;
+    background-color: #282043;
     border-radius: 15px;
-    border: 1px solid #ddd;
 }
-
-.card:hover{
+.card-details{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    color: #fff;
+    font-weight: 500;
+}
+.card-wrapper:hover{
     box-shadow: 0 0 4em 0px rgba(0, 0, 0, 0.4);
     transform: scale(1.05);
 }
 
-.card:active{
+.card-wrapper:active{
     transform: scale(1.05) translateY(0.2rem);
 }
