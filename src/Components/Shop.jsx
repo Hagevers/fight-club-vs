@@ -40,17 +40,22 @@ function Shop() {
           }
         </tbody>
       </table> */}
-      <div className='shop__grid-content'> 
-          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
-          <Card height='150px' width='600px' bg={destroyer} />
-      </div>
-      <div className='shop__grid-content'>
-          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
-          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
-      </div>
-      <div className='shop__grid-content'>
-          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
-          <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+        <div className='shop__grid-content'> 
+          <div className='card'>
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          </div>
+          <div className='card'>
+            <Card height='150px' width='600px' bg={destroyer} />
+          </div>
+          <div className='card'>
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          </div>
+          <div className='card'>
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          </div>
+          <div className='card'>
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+          </div>
       </div>
     </div>
   )

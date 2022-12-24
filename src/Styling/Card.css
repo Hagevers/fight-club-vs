@@ -2,7 +2,6 @@
     background-size: cover;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    border: 1px solid #333;
 }
 .card-wrapper{
     display: flex;
@@ -10,15 +9,20 @@
     transition: all 0.2s ease-out;
     cursor: pointer;
     width: fit-content;
-    background-color: #282043;
+    position: relative;
     border-radius: 15px;
 }
 .card-details{
     display: flex;
     flex-direction: column;
+    opacity: 0;
     padding: 1rem;
     color: #fff;
     font-weight: 500;
+}
+
+.drop{
+    opacity: 1;
 }
 .card-wrapper:hover{
     box-shadow: 0 0 4em 0px rgba(0, 0, 0, 0.4);
