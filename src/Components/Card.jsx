@@ -12,7 +12,7 @@ function Card(props) {
     }
   return (
     <div className='card-wrapper' onMouseEnter={()=> setDropdown(true)} onMouseLeave={() => setDropdown(false)} style={dropdown ? {backgroundColor:'#282043'} : null}>
-        <img style={card} src={props.bg} className='card' />
+        <img style={card} alt='card' src={props.bg} className='card' />
         <div className={`card-details ${dropdown ? 'drop': ''}`} style={{width: props.width}}>
             <div>Desc: {props.desc}</div>
             <div>Price: {props.price}</div>

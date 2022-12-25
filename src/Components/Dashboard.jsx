@@ -6,7 +6,7 @@ import ShoppingCartCheckoutRoundedIcon from '@mui/icons-material/ShoppingCartChe
 import '../Styling/Dashboard.css';
 import { Avatar } from "@mui/material";
 import Base from "./Base";
-// import Shop from "./Shop";
+import Shop from "./Shop";
 import Attack from "./Attack";
 import Logout from "./Logout";
 import ork from '../Styling/ork.png';
@@ -20,7 +20,6 @@ import Profile from "./Profile";
 import Alliance from "./Alliance";
 import Vault from "./Vault";
 
-const Shop = React.lazy(() => import('./Shop'))
 function Dashboard(){
     const {getCookie} = require('../Backend/getNickName');
     const [notiColor, setNotiColor] = useState("#bdbec7");
