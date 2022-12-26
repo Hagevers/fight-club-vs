@@ -11,13 +11,13 @@ function Shop() {
     <div className='shop__wrapper'>
         <div className='shop__grid-content'> 
           <div className='card'>
-            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' func={()=>buyItem({item:{name:'wand', power: 15}})}/>
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' func={()=>buyItem({item:{name:'wand', power: 15, price: 600}})}/>
           </div>
           <div className='card'>
             <Card height='150px' width='600px' bg={destroyer} />
           </div>
           <div className='card'>
-            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
+            <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource'  func={()=>buyItem({item:{name:'wand', power: 15, price: 30000}})} />
           </div>
           <div className='card'>
             <Card height='150px' width='600px' bg={tank} desc='A modern tank, strong against militiary' price='20,000 each resource' />
